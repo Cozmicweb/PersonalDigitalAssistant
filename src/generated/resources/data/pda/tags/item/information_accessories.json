@@ -14,6 +14,8 @@
     "pda:gps",
     "pda:fish_finder",
     "pda:pillager_tech",
-    "pda:pda"
+    "pda:pda",
+    "minecraft:compass",
+    "minecraft:clock"
   ]
 }
