@@ -1,0 +1,7 @@
+Code:
+MIT
+
+Assets:
+Terraria assets © Re-Logic.
+Not licensed under MIT.
+Used with attribution.
