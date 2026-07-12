@@ -16,6 +16,7 @@ public class PDAConfig {
 
     // Radar
     public static final ModConfigSpec.IntValue RADAR_SIZE;
+    public static final ModConfigSpec.IntValue RADAR_UPDATE_RATE;
 
     static {
         // Tally Counter
@@ -31,7 +32,8 @@ public class PDAConfig {
 
         // Radar
         BUILDER.push("Radar");
-        RADAR_SIZE = BUILDER.comment("Size of the radar's detection zone.").defineInRange("radar_size", 16, 8, 64);
+        RADAR_SIZE = BUILDER.comment("Size of the radar's detection zone.").defineInRange("radar_size", 16, 8, 128);
+        RADAR_UPDATE_RATE = BUILDER.comment("How often the radar should scan for monsters in seconds.").defineInRange("radar_update_rate", 5, 1, 30);
         BUILDER.pop();
 
         SPEC = BUILDER.build();

@@ -20,10 +20,14 @@ public class MonstersDisplayHandler extends InfoDisplayHandler {
         return PDAConfig.RADAR_SIZE.get();
     }
 
+    public static int getUpdateInterval() {
+        return PDAConfig.RADAR_UPDATE_RATE.get();
+    }
+
     @Override
     public Component getDisplayText() {
         long now = System.currentTimeMillis();
-        if (now - lastCheck < 5000) return lastText;
+        if (now - lastCheck < getUpdateInterval() * 1000L) return lastText;
         lastCheck = now;
 
         LocalPlayer player = Minecraft.getInstance().player;
