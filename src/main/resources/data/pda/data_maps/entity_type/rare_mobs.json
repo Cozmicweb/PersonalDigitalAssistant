@@ -3,6 +3,7 @@
     "minecraft:axolotl": { "id": "blue_axolotl", "nbt": { "Variant": 4 }, "translation_key": "entity.pda.blue_axolotl" },
     "minecraft:cat": { "id": "black_cat", "nbt": { "variant": "minecraft:all_black" }, "translation_key": "entity.pda.black_cat" },
     "minecraft:creeper": { "id": "charged_creeper", "nbt": { "powered": 1 }, "translation_key": "entity.pda.charged_creeper" },
+    "minecraft:pillager": { "id": "pillager_leader", "nbt": { "PatrolLeader": 1 }, "translation_key": "entity.pda.pillager_leader" },
     "minecraft:rabbit": { "id": "killer_rabbit", "nbt": { "RabbitType": 99 }, "translation_key": "entity.pda.killer_rabbit" },
     "minecraft:sheep": { "id": "pink_sheep", "nbt": { "Color": 6 }, "translation_key": "entity.pda.pink_sheep" },
 
