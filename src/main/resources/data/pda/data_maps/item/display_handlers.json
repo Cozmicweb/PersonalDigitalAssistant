@@ -1,0 +1,8 @@
+{
+  "values": {
+    "minecraft:clock": "pda:display_time",
+    "minecraft:compass": "pda:display_position",
+    "pda:tally_counter": "pda:display_kills",
+    "pda:stopwatch": "pda:display_velocity"
+  }
+}

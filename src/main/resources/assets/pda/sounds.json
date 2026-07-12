@@ -1,0 +1,26 @@
+{
+  "tally_forward": {
+    "sounds": [
+      "pda:item/tally_counter/tally_forward_0",
+      "pda:item/tally_counter/tally_forward_1",
+      "pda:item/tally_counter/tally_forward_2"
+    ]
+  },
+  "tally_backward": {
+    "sounds": [
+      "pda:item/tally_counter/tally_backward_0",
+      "pda:item/tally_counter/tally_backward_1",
+      "pda:item/tally_counter/tally_backward_2"
+    ]
+  },
+  "tally_tick": {
+    "sounds": [
+      "pda:item/tally_counter/tally_tick_0",
+      "pda:item/tally_counter/tally_tick_1",
+      "pda:item/tally_counter/tally_tick_2",
+      "pda:item/tally_counter/tally_tick_3",
+      "pda:item/tally_counter/tally_tick_4",
+      "pda:item/tally_counter/tally_tick_5"
+    ]
+  }
+}

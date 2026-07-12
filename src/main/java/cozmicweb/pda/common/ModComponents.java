@@ -1,0 +1,38 @@
+package cozmicweb.pda.common;
+
+import com.mojang.serialization.Codec;
+import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Supplier;
+
+public class ModComponents {
+
+    public static final DeferredRegister<DataComponentType<?>> DATA_COMPONENTS = DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, PDACommon.MOD_ID);
+
+    public static final Supplier<DataComponentType<Integer>> TALLY_COUNT =DATA_COMPONENTS.register("tally_count",
+            () -> DataComponentType.<Integer>builder()
+                            .persistent(Codec.INT)
+                            .networkSynchronized(ByteBufCodecs.INT)
+                            .build());
+
+    public static final Supplier<DataComponentType<Integer>> TALLY_DISPLAY = DATA_COMPONENTS.register("tally_display",
+            () -> DataComponentType.<Integer>builder()
+                    .persistent(Codec.INT)
+                    .networkSynchronized(ByteBufCodecs.VAR_INT)
+                    .build());
+
+    public static final Supplier<DataComponentType<TallyAnimState>> TALLY_ANIM = DATA_COMPONENTS.register("tally_anim",
+            () -> DataComponentType.<TallyAnimState>builder()
+                    .persistent(TallyAnimState.CODEC)
+                    .networkSynchronized(TallyAnimState.STREAM_CODEC)
+                    .build());
+
+    public static void register(IEventBus modEventBus) {
+        DATA_COMPONENTS.register(modEventBus);
+    }
+
+}
