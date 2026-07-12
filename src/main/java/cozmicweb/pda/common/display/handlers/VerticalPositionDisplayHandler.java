@@ -15,8 +15,8 @@ public class VerticalPositionDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
-    public String getBehavior() {
-        return "vertical position";
+    public Component getBehavior() {
+        return Component.translatable("pda.behavior.vertical_position");
     }
 
     @Override
@@ -34,6 +34,6 @@ public class VerticalPositionDisplayHandler extends InfoDisplayHandler {
         }
 
         Vec3 pos = player.position();
-        return Component.literal(String.format(PDAClientConfig.DEPTH_FORMAT.get(), pos.y));
+        return Component.translatable("text.pda.depth.format", String.format("%.1f", pos.y));
     }
 }

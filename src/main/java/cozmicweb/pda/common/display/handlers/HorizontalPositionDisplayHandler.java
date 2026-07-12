@@ -15,8 +15,8 @@ public class HorizontalPositionDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
-    public String getBehavior() {
-        return "horizontal position";
+    public Component getBehavior() {
+        return Component.translatable("pda.behavior.horizontal_position");
     }
 
     @Override
@@ -31,9 +31,9 @@ public class HorizontalPositionDisplayHandler extends InfoDisplayHandler {
 
         Vec3 pos = player.position();
         if (InfoDisplayManager.isHandlerActive("display_vertical_position")) {
-            return Component.literal(String.format(PDAClientConfig.COMBINED_POSITION_FORMAT.get(), pos.x, pos.y, pos.z));
+            return Component.translatable("text.pda.position_combined.format", String.format("%.1f", pos.x), String.format("%.1f", pos.y), String.format("%.1f", pos.z));
         }
-        return Component.literal(String.format(PDAClientConfig.POSITION_FORMAT.get(), pos.x, pos.z));
+        return Component.translatable("text.pda.position.format", String.format("%.1f", pos.x), String.format("%.1f", pos.z));
     }
 
 }

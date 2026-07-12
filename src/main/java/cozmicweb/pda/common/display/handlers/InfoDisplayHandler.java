@@ -69,8 +69,8 @@ public abstract class InfoDisplayHandler {
     /**
      * Tooltip
      */
-    public String getBehavior() {
-        return "";
+    public Component getBehavior() {
+        return Component.empty();
     }
 
     /**

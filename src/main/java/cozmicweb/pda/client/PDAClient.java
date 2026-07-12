@@ -8,7 +8,11 @@ import cozmicweb.pda.common.PDACommon;
 import cozmicweb.pda.common.network.ServerDataRequestPayload;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackSource;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -21,6 +25,7 @@ import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
+import net.neoforged.neoforge.event.AddPackFindersEvent;
 import org.slf4j.Logger;
 
 import java.util.ArrayList;
@@ -39,8 +44,18 @@ public class PDAClient {
     }
 
     @SubscribeEvent
-    static void onClientSetup(FMLClientSetupEvent event) {
+    public static void addPacks(AddPackFindersEvent event) {
+        if (event.getPackType() != PackType.CLIENT_RESOURCES)
+            return;
 
+        event.addPackFinders(
+                PDACommon.id("resourcepacks/terraria_styled_info"),
+                PackType.CLIENT_RESOURCES,
+                Component.literal("Terraria Styled Translations"),
+                PackSource.DEFAULT,
+                false,
+                Pack.Position.TOP
+        );
     }
 
     @SubscribeEvent

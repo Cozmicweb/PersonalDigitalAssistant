@@ -32,8 +32,8 @@ public class OreDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
-    public String getBehavior() {
-        return "valuable ores";
+    public Component getBehavior() {
+        return Component.translatable("pda.behavior.ore");
     }
 
     public int getSize() {

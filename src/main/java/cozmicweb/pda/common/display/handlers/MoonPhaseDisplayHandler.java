@@ -31,8 +31,8 @@ public class MoonPhaseDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
-    public String getBehavior() {
-        return "moon phase";
+    public Component getBehavior() {
+        return Component.translatable("pda.behavior.moon_phase");
     }
 
     @Override

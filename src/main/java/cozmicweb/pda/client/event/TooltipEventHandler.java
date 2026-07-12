@@ -25,9 +25,9 @@ public class TooltipEventHandler {
             return;
         }
 
-        List<String> behaviors = handlers.stream()
+        List<Component> behaviors = handlers.stream()
                 .map(InfoDisplayHandler::getBehavior)
-                .filter(s -> !s.isEmpty())
+                .filter(c -> !c.equals(Component.empty()))
                 .collect(Collectors.toList());
 
         if (behaviors.isEmpty()) {
@@ -36,14 +36,23 @@ public class TooltipEventHandler {
 
         for (int i = 0; i < behaviors.size(); i += 4) {
             int end = Math.min(i + 4, behaviors.size());
-            String line = String.join(", ", behaviors.subList(i, end));
+            List<Component> subList = behaviors.subList(i, end);
+            
+            Component line;
             if (i == 0) {
-                line = "Displays " + line;
+                line = Component.translatable("text.pda.tooltip.displays");
+            } else {
+                line = Component.empty();
             }
-            if (end < behaviors.size()) {
-                line += ",";
+
+            for (int j = 0; j < subList.size(); j++) {
+                line = line.copy().append(subList.get(j));
+                if (j < subList.size() - 1 || end < behaviors.size()) {
+                    line = line.copy().append(Component.literal(", "));
+                }
             }
-            event.getToolTip().add(Component.literal(line).withColor(0x8A8E92));
+            
+            event.getToolTip().add(line.copy().withColor(0x8A8E92));
         }
     }
 }

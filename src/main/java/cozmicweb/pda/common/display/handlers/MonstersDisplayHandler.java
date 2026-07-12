@@ -22,8 +22,8 @@ public class MonstersDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
-    public String getBehavior() {
-        return "nearby monsters";
+    public Component getBehavior() {
+        return Component.translatable("pda.behavior.monsters");
     }
 
     public int getSize() {

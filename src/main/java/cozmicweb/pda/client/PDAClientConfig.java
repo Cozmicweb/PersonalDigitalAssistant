@@ -14,14 +14,7 @@ public class PDAClientConfig {
     public static final ModConfigSpec SPEC;
 
     private static final HashMap<Identifier, ModConfigSpec.ConfigValue<Integer>> PRIORITY_MAP = new HashMap<>();
-
-    // Stopwatch
-    public static final ModConfigSpec.ConfigValue<String> STOPWATCH_FORMAT;
-
-    // Position
-    public static final ModConfigSpec.ConfigValue<String> POSITION_FORMAT;
-    public static final ModConfigSpec.ConfigValue<String> DEPTH_FORMAT;
-    public static final ModConfigSpec.ConfigValue<String> COMBINED_POSITION_FORMAT;
+    private static final HashMap<Identifier, ModConfigSpec.ConfigValue<Boolean>> VISIBILITY_MAP = new HashMap<>();
 
     // Clock
     public static final ModConfigSpec.EnumValue<TimeDisplayHandler.TimeFormat> CLOCK_FORMAT;
@@ -62,6 +55,11 @@ public class PDAClientConfig {
         });
         BUILDER.pop();
 
+        // All Display Handler Visibility
+        BUILDER.push("visibility");
+        InfoDisplayManager.getAllHandlers().forEach((id, _) -> VISIBILITY_MAP.put(id, BUILDER.define(id + "_visibility", true)));
+        BUILDER.pop();
+
         // Clock
         BUILDER.push("clock");
         CLOCK_FORMAT = BUILDER.defineEnum("clock_format", TimeDisplayHandler.TimeFormat.HOUR12);
@@ -74,23 +72,15 @@ public class PDAClientConfig {
         LIFEFORM_ANALYZER_SOUND = BUILDER.comment("Whether to play a sound when a new lifeform is detected.").define("lifeform_analyzer_sound", true);
         BUILDER.pop();
 
-        // Position
-        BUILDER.push("position");
-        POSITION_FORMAT = BUILDER.comment("The first two Java format specifiers will be replaced with your current X and Z coordinates as floats.").define("position_format", "%.1f, %.1f");
-        DEPTH_FORMAT = BUILDER.comment("The first Java format specifier will be replaced with your current Y coordinate as a float.").define("depth_format", "%.1f");
-        COMBINED_POSITION_FORMAT = BUILDER.comment("The first three Java format specifiers will be replaced with your current X, Y, and Z coordinates as floats.").define("combined_position_format", "%.1f, %.1f, %.1f");
-        BUILDER.pop();
-
-        // Stopwatch
-        BUILDER.push("stopwatch");
-        STOPWATCH_FORMAT = BUILDER.comment("The first Java format specifier will be replaced with your current velocity as a float.").define("stopwatch_format", "%.2f ᴍ/ꜱ");
-        BUILDER.pop();
-
         SPEC = BUILDER.build();
     }
 
     public static int getPriority(Identifier id) {
         return PRIORITY_MAP.get(id).get();
+    }
+
+    public static boolean getVisibility(Identifier id) {
+        return VISIBILITY_MAP.get(id).get();
     }
 
 }

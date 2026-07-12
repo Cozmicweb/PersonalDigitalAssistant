@@ -27,8 +27,8 @@ public class TimeDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
-    public String getBehavior() {
-        return "time";
+    public Component getBehavior() {
+        return Component.translatable("pda.behavior.time");
     }
 
     @Override
@@ -38,7 +38,7 @@ public class TimeDisplayHandler extends InfoDisplayHandler {
 
         int finalHour = 12;
         int finalMinute = 0;
-        String meridiem = "";
+        Component meridiem = Component.empty();
 
         if (level != null) {
             long time = level.getOverworldClockTime() % 24000L;
@@ -50,17 +50,17 @@ public class TimeDisplayHandler extends InfoDisplayHandler {
             if (is24HourFormat()) {
                 finalHour = hour24;
             } else {
-                String amPm = hour24 < 12 ? "PM" : "AM"; // IDK why it's swapped
+                Component amPm = hour24 < 12 ? Component.translatable("text.pda.time.pm") : Component.translatable("text.pda.time.am");
                 int hour12 = hour24 % 12;
                 if (hour12 == 0) hour12 = 12;
 
                 finalHour = hour12;
-                if (shouldAppendMeridiems()) meridiem = " " + amPm;
+                if (shouldAppendMeridiems()) meridiem = Component.literal(" ").append(amPm);
             }
         }
 
         String pattern = shouldZerosPersist() ? "%02d:%02d" : "%d:%02d";
-        return Component.literal(pattern.formatted(finalHour, finalMinute) + meridiem);
+        return Component.literal(pattern.formatted(finalHour, finalMinute)).append(meridiem);
     }
 
     public enum TimeFormat implements TranslatableEnum {

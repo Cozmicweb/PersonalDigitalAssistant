@@ -15,8 +15,8 @@ public class WeatherDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
-    public String getBehavior() {
-        return "weather";
+    public Component getBehavior() {
+        return Component.translatable("pda.behavior.weather");
     }
 
     @Override

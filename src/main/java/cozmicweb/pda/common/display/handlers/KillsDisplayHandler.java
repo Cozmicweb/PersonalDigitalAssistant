@@ -20,8 +20,8 @@ public class KillsDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
-    public String getBehavior() {
-        return "mob kills";
+    public Component getBehavior() {
+        return Component.translatable("pda.behavior.kills");
     }
 
     @Override
@@ -67,10 +67,10 @@ public class KillsDisplayHandler extends InfoDisplayHandler {
     public Component getDisplayText() {
         String entityType = (String) serverData.getOrDefault(LAST_KILLED_ENTITY_KEY, "minecraft:zombie");
         int killCount = (int) serverData.getOrDefault(LAST_KILL_COUNT_KEY, 0);
-        String translation = BuiltInRegistries.ENTITY_TYPE.getOptional(Identifier.parse(entityType))
-                .map(type -> type.getDescription().getString())
-                .orElse("minecraft:zombie");
-        return Component.literal(translation + ": " + killCount);
+        Component translation = BuiltInRegistries.ENTITY_TYPE.getOptional(Identifier.parse(entityType))
+                .map(EntityType::getDescription)
+                .orElse(EntityTypes.ZOMBIE.getDescription());
+        return Component.translatable("text.pda.kills.text", translation, killCount);
     }
 
 }

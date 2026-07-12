@@ -28,8 +28,8 @@ public class RareMobDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
-    public String getBehavior() {
-        return "rare mobs";
+    public Component getBehavior() {
+        return Component.translatable("pda.behavior.rare_mob");
     }
 
     public int getSize() {

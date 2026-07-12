@@ -87,7 +87,7 @@ public class InfoOverlay implements GuiLayer {
             return;
 
         Set<InfoDisplayHandler> handlers = InfoDisplayManager.getActiveHandlers();
-        List<InfoDisplayHandler> sorted = handlers.stream().sorted(Comparator.comparingInt(InfoDisplayHandler::getPriority)).toList();
+        List<InfoDisplayHandler> sorted = handlers.stream().filter(h -> PDAClientConfig.getVisibility(h.id)).sorted(Comparator.comparingInt(InfoDisplayHandler::getPriority)).toList();
 
         List<Component> lines = new ArrayList<>();
         for (InfoDisplayHandler handler : sorted) {

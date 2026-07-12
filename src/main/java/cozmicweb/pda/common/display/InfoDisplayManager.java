@@ -1,5 +1,6 @@
 package cozmicweb.pda.common.display;
 
+import cozmicweb.pda.client.PDAClientConfig;
 import cozmicweb.pda.common.registry.ModDataMaps;
 import cozmicweb.pda.common.PDACommon;
 import cozmicweb.pda.common.display.handlers.*;
@@ -7,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.UnmodifiableView;
@@ -52,7 +54,12 @@ public class InfoDisplayManager {
 
         for (ItemStack stack : player.getInventory().getNonEquipmentItems()) {
             if (stack.isEmpty()) continue;
-            active.addAll(getHandlersFor(stack));
+            List<InfoDisplayHandler> handlers = getHandlersFor(stack);
+
+            if (player.level().isClientSide())
+                handlers.stream().filter(h -> PDAClientConfig.getVisibility(h.id)).forEach(active::add);
+            else
+                active.addAll(handlers);
         }
         return active;
     }
@@ -61,7 +68,11 @@ public class InfoDisplayManager {
         Identifier identifier = PDACommon.id(id);
         InfoDisplayHandler handler = get(identifier);
         if (handler == null) return false;
-        return getActiveHandlers().contains(handler);
+        boolean visible = true;
+        Level level = Minecraft.getInstance().level;
+        if (level != null && level.isClientSide())
+            visible = PDAClientConfig.getVisibility(identifier);
+        return getActiveHandlers().contains(handler) && visible;
     }
 
     @Nullable

@@ -13,8 +13,8 @@ public class VelocityDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
-    public String getBehavior() {
-        return "velocity";
+    public Component getBehavior() {
+        return Component.translatable("pda.behavior.velocity");
     }
 
     @Override
@@ -26,7 +26,7 @@ public class VelocityDisplayHandler extends InfoDisplayHandler {
     public Component getDisplayText() {
         LocalPlayer player = Minecraft.getInstance().player;
         double velocity = player == null ? 0 : player.getDeltaMovement().multiply(20, 0, 20).length();
-        return Component.literal(String.format(PDAClientConfig.STOPWATCH_FORMAT.get(), velocity));
+        return Component.translatable("text.pda.velocity.format", String.format("%.2f", velocity));
     }
 
 }

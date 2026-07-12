@@ -18,8 +18,8 @@ public class DPSDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
-    public String getBehavior() {
-        return "damage per second";
+    public Component getBehavior() {
+        return Component.translatable("pda.behavior.dps");
     }
 
     @Override
@@ -56,7 +56,7 @@ public class DPSDisplayHandler extends InfoDisplayHandler {
     @Override
     public Component getDisplayText() {
         float dps = (float) serverData.getOrDefault(DPS_KEY, 0.0f);
-        return Component.literal(String.format(Locale.ROOT, "DPS: %.1f", dps));
+        return Component.translatable("text.pda.dps.text", String.format(Locale.ROOT, "%.1f", dps));
     }
 
 }
