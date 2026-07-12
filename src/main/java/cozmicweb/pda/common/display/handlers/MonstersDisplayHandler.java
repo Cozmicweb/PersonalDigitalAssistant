@@ -1,0 +1,42 @@
+package cozmicweb.pda.common.display.handlers;
+
+import cozmicweb.pda.common.PDAConfig;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
+
+import java.util.List;
+
+public class MonstersDisplayHandler extends InfoDisplayHandler {
+
+    private static long lastCheck = System.currentTimeMillis();
+    private static Component lastText = Component.literal("");
+
+    public static int getSize() {
+        return PDAConfig.RADAR_SIZE.get();
+    }
+
+    @Override
+    public Component getDisplayText() {
+        long now = System.currentTimeMillis();
+        if (now - lastCheck < 5000) return lastText;
+        lastCheck = now;
+
+        LocalPlayer player = Minecraft.getInstance().player;
+        if (player == null) return Component.literal("");
+
+        Vec3 position = player.position();
+        Level level = player.level();
+        int size = getSize();
+
+        List<Monster> monsters = level.getEntitiesOfClass(Monster.class, AABB.ofSize(position, size, size, size));
+
+        lastText = Component.literal(String.format("%d enemies nearby!", monsters.size()));
+        return lastText;
+    }
+
+}

@@ -14,6 +14,9 @@ public class PDAConfig {
     // Stopwatch
     public static final ModConfigSpec.BooleanValue STOPWATCH_PLAY_SOUND;
 
+    // Radar
+    public static final ModConfigSpec.IntValue RADAR_SIZE;
+
     static {
         // Tally Counter
         BUILDER.push("Tally Counter");
@@ -24,6 +27,11 @@ public class PDAConfig {
         // Stopwatch
         BUILDER.push("Stopwatch");
         STOPWATCH_PLAY_SOUND = BUILDER.comment("When a stopwatch is in your inventory, it will play a tick sound while running.").define("stopwatch_play_sound", true);
+        BUILDER.pop();
+
+        // Radar
+        BUILDER.push("Radar");
+        RADAR_SIZE = BUILDER.comment("Size of the radar's detection zone.").defineInRange("radar_size", 16, 8, 64);
         BUILDER.pop();
 
         SPEC = BUILDER.build();

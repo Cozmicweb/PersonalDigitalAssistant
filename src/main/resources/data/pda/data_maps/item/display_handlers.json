@@ -5,6 +5,7 @@
     "pda:tally_counter": "pda:display_kills",
     "pda:stopwatch": "pda:display_velocity",
     "pda:weather_radio": "pda:display_weather",
-    "pda:sextant": "pda:display_moon_phase"
+    "pda:sextant": "pda:display_moon_phase",
+    "pda:radar": "pda:display_monsters"
   }
 }
