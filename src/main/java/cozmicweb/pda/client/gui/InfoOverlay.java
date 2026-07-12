@@ -19,7 +19,7 @@ public class InfoOverlay implements GuiLayer {
 
     @Override
     public void render(@NonNull GuiGraphicsExtractor guiGraphics, @NonNull DeltaTracker deltaTracker) {
-        if (mc.player == null || mc.level == null || mc.gui.hud.isHidden() || mc.debugEntries.isOverlayVisible() || mc.gui.screen() != null)
+        if (mc.player == null || mc.level == null || mc.gui.hud.isHidden() || mc.debugEntries.isOverlayVisible())
             return;
 
         int y = 5;
