@@ -1,6 +1,6 @@
 package cozmicweb.pda.common.item;
 
-import cozmicweb.pda.common.*;
+import cozmicweb.pda.common.attachments.TallyAnimState;
 import cozmicweb.pda.common.registry.ModComponents;
 import cozmicweb.pda.common.registry.ModSounds;
 import net.minecraft.network.chat.Component;
@@ -17,8 +17,6 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Contract;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
-
-import java.awt.*;
 
 public class TallyCounterItem extends Item implements IClickReactive {
     public static final int MAX_PLACES = 5;

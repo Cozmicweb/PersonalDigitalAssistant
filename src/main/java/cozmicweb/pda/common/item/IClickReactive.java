@@ -1,4 +1,4 @@
-package cozmicweb.pda.common;
+package cozmicweb.pda.common.item;
 
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;

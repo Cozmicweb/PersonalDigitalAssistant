@@ -1,6 +1,6 @@
 package cozmicweb.pda.client.event;
 
-import cozmicweb.pda.common.IClickReactive;
+import cozmicweb.pda.common.item.IClickReactive;
 import cozmicweb.pda.common.network.ClickStatePayload;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.ItemStack;
