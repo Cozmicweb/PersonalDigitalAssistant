@@ -30,7 +30,8 @@ public class WeatherDisplayHandler extends InfoDisplayHandler {
         if (level == null) return Component.empty();
         boolean thundering = level.isThundering();
         boolean raining = level.isRaining();
-        return Component.literal(thundering ? "Thundering" : (raining ? "Raining" : "Sunny"));
+        String translation = thundering ? "thunder" : (raining ? "rain" : "clear");
+        return Component.translatable("weather.pda." + translation);
     }
 
 }
