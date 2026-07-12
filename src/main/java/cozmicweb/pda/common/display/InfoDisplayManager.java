@@ -20,6 +20,7 @@ public class InfoDisplayManager {
         register(PDACommon.id("display_kills"), new KillsDisplayHandler());
         register(PDACommon.id("display_position"), new PositionDisplayHandler());
         register(PDACommon.id("display_velocity"), new VelocityDisplayHandler());
+        register(PDACommon.id("display_weather"), new WeatherDisplayHandler());
     }
 
     public static void register(Identifier id, InfoDisplayHandler logic) {
