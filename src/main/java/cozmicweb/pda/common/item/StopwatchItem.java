@@ -20,7 +20,10 @@ import org.jspecify.annotations.Nullable;
 public class StopwatchItem extends Item implements IClickReactive {
 
     public StopwatchItem(@NonNull Properties properties) {
-        super(properties.component(ModComponents.STOPWATCH_PAUSED.get(), true));
+        super(properties
+                .component(ModComponents.STOPWATCH_PAUSED.get(), true)
+                .component(ModComponents.STOPWATCH_START_TIME.get(), -1L)
+        );
     }
 
     private static long now(@NonNull ServerPlayer player) {
@@ -91,7 +94,7 @@ public class StopwatchItem extends Item implements IClickReactive {
         long elapsed = end - start;
 
         boolean mainHand = player.getItemInHand(InteractionHand.MAIN_HAND).equals(stack);
-        if (mainHand) {
+        if (mainHand && start != -1) {
             float elapsedSeconds = (float) elapsed / 20f;
             long minutes = (long) (elapsedSeconds / 60);
             long seconds = (long) (elapsedSeconds % 60);

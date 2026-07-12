@@ -11,6 +11,8 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import org.jspecify.annotations.NonNull;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.function.BiConsumer;
 
 public record ChestLootSubProvider(HolderLookup.Provider registries) implements LootTableSubProvider {
@@ -62,7 +64,7 @@ public record ChestLootSubProvider(HolderLookup.Provider registries) implements 
                 .withPool(
                         LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
-                                .add(LootItem.lootTableItem(ModItems.TALLY_COUNTER))
+                                .add(LootItem.lootTableItem(ModItems.TALLY_COUNTER).apply(() -> new SetRandomTallyCountFunction(Collections.emptyList())))
                                 .add(LootItem.lootTableItem(ModItems.STOPWATCH))
                                 .add(LootItem.lootTableItem(ModItems.WEATHER_RADIO))
                                 .add(EmptyLootItem.emptyItem().setWeight(15))

@@ -5,6 +5,11 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "pda:random_tally_count"
+            }
+          ],
           "name": "pda:tally_counter"
         },
         {

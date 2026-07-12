@@ -30,6 +30,7 @@ public class PDACommon {
         ModComponents.register(modEventBus);
         ModSounds.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
+        ModLootFunctions.register(modEventBus);
         InfoDisplayManager.initialize();
     }
 
