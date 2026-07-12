@@ -2,10 +2,7 @@ package cozmicweb.pda.common;
 
 import com.mojang.logging.LogUtils;
 import cozmicweb.pda.common.display.InfoDisplayManager;
-import cozmicweb.pda.common.registry.ModAttachments;
-import cozmicweb.pda.common.registry.ModComponents;
-import cozmicweb.pda.common.registry.ModItems;
-import cozmicweb.pda.common.registry.ModSounds;
+import cozmicweb.pda.common.registry.*;
 import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -32,6 +29,7 @@ public class PDACommon {
         ModAttachments.register(modEventBus);
         ModComponents.register(modEventBus);
         ModSounds.register(modEventBus);
+        ModCreativeTabs.register(modEventBus);
         InfoDisplayManager.initialize();
     }
 
