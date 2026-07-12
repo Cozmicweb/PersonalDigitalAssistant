@@ -10,8 +10,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.player.Player;
 
-import java.util.Locale;
-
 public class KillsDisplayHandler extends InfoDisplayHandler {
 
     private static final String LAST_KILLED_ENTITY_KEY = "last_killed_entity";
