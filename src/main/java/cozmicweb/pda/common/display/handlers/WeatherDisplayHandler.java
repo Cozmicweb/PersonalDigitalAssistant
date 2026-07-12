@@ -10,6 +10,11 @@ import org.jspecify.annotations.NonNull;
 public class WeatherDisplayHandler extends InfoDisplayHandler {
 
     @Override
+    public int getPriority() {
+        return 100;
+    }
+
+    @Override
     public Component getDisplayText() {
         ClientLevel level = Minecraft.getInstance().level;
         if (level == null) return Component.empty();

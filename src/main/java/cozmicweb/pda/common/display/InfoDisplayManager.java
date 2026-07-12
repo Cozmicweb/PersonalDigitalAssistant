@@ -18,7 +18,8 @@ public class InfoDisplayManager {
     public static void initialize() {
         register(PDACommon.id("display_time"), new TimeDisplayHandler());
         register(PDACommon.id("display_kills"), new KillsDisplayHandler());
-        register(PDACommon.id("display_position"), new PositionDisplayHandler());
+        register(PDACommon.id("display_horizontal_position"), new HorizontalPositionDisplayHandler());
+        register(PDACommon.id("display_vertical_position"), new VerticalPositionDisplayHandler());
         register(PDACommon.id("display_velocity"), new VelocityDisplayHandler());
         register(PDACommon.id("display_weather"), new WeatherDisplayHandler());
         register(PDACommon.id("display_moon_phase"), new MoonPhaseDisplayHandler());

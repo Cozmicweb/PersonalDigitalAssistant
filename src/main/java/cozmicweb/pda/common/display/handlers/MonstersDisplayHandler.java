@@ -21,6 +21,11 @@ public class MonstersDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
+    public int getPriority() {
+        return 600;
+    }
+
+    @Override
     public int getUpdateInterval() {
         return PDAConfig.RADAR_UPDATE_RATE.get();
     }

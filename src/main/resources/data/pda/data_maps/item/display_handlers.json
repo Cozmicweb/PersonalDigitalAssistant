@@ -1,8 +1,8 @@
 {
   "values": {
     "minecraft:clock": "pda:display_time",
-    "minecraft:compass": "pda:display_position",
-    "pda:depth_meter": "pda:display_position",
+    "minecraft:compass": "pda:display_horizontal_position",
+    "pda:depth_meter": "pda:display_vertical_position",
     "pda:tally_counter": "pda:display_kills",
     "pda:stopwatch": "pda:display_velocity",
     "pda:weather_radio": "pda:display_weather",
@@ -20,12 +20,33 @@
     ],
     "pda:gps": [
       "pda:display_time",
-      "pda:display_position"
+      "pda:display_horizontal_position",
+      "pda:display_vertical_position"
     ],
     "pda:fish_finder": [
       "pda:display_moon_phase",
       "pda:display_weather",
       "pda:display_luck"
+    ],
+    "pda:pillager_tech": [
+      "pda:display_velocity",
+      "pda:display_ore",
+      "pda:display_dps"
+    ],
+
+    "pda:pda": [
+      "pda:display_time",
+      "pda:display_weather",
+      "pda:display_moon_phase",
+      "pda:display_luck",
+      "pda:display_ore",
+      "pda:display_rare",
+      "pda:display_monsters",
+      "pda:display_kills",
+      "pda:display_dps",
+      "pda:display_velocity",
+      "pda:display_horizontal_position",
+      "pda:display_vertical_position"
     ]
 
   }

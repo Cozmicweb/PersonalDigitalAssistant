@@ -16,6 +16,11 @@ public class KillsDisplayHandler extends InfoDisplayHandler {
     private static final String LAST_KILL_COUNT_KEY = "last_kill_count";
 
     @Override
+    public int getPriority() {
+        return 700;
+    }
+
+    @Override
     public boolean requiresServerSync() {
         return true;
     }

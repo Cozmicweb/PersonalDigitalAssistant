@@ -8,6 +8,11 @@ import net.minecraft.network.chat.Component;
 public class VelocityDisplayHandler extends InfoDisplayHandler {
 
     @Override
+    public int getPriority() {
+        return 900;
+    }
+
+    @Override
     public Component getDisplayText() {
         LocalPlayer player = Minecraft.getInstance().player;
         double velocity = player == null ? 0 : player.getDeltaMovement().multiply(20, 0, 20).length();

@@ -11,6 +11,9 @@
   "item.pda.gps": "GPS",
   "item.pda.fish_finder": "Fish Finder",
   "item.pda.metal_detector": "Metal Detector",
+  "item.pda.depth_meter": "Depth Meter",
+  "item.pda.pillager_tech": "Pillager Tech",
+  "item.pda.pda": "PDA",
 
   "text.pda.radar.detected_nearby": "%s enemies nearby!",
   "text.pda.metal_detector.detected_nearby": "%s detected nearby!",

@@ -13,6 +13,11 @@ public class DPSDisplayHandler extends InfoDisplayHandler {
     private static final String DPS_KEY = "dps";
 
     @Override
+    public int getPriority() {
+        return 800;
+    }
+
+    @Override
     public boolean requiresServerSync() {
         return true;
     }

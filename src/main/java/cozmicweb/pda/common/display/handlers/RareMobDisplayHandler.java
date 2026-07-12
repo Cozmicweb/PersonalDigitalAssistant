@@ -27,6 +27,11 @@ public class RareMobDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
+    public int getPriority() {
+        return 500;
+    }
+
+    @Override
     public int getUpdateInterval() {
         return PDAConfig.RADAR_UPDATE_RATE.get();
     }

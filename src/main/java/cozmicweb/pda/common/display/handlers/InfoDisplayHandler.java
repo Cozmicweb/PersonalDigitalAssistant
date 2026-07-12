@@ -47,6 +47,13 @@ public abstract class InfoDisplayHandler {
     }
 
     /**
+     * Higher numbers mean this handler will be displayed at the bottom of the list.
+     */
+    public int getPriority() {
+        return 0;
+    }
+
+    /**
      * Builds the text displayed on the PDA overlay.
      * <p>This is called on the client during overlay rendering.</p>
      * <p>For client-only handlers, this can calculate the text directly.</p>

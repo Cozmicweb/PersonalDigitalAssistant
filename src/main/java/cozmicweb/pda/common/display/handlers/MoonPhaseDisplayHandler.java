@@ -26,6 +26,11 @@ public class MoonPhaseDisplayHandler extends InfoDisplayHandler {
     );
 
     @Override
+    public int getPriority() {
+        return 200;
+    }
+
+    @Override
     public Component getDisplayText() {
         LocalPlayer player = Minecraft.getInstance().player;
         if (player == null) return Component.empty();

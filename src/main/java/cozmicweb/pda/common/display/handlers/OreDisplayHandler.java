@@ -31,6 +31,11 @@ public class OreDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
+    public int getPriority() {
+        return 400;
+    }
+
+    @Override
     public int getUpdateInterval() {
         return PDAConfig.METAL_DETECTOR_UPDATE_RATE.get();
     }
