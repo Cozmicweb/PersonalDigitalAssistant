@@ -64,7 +64,7 @@ public class OreDisplayHandler extends InfoDisplayHandler {
         int size = getSize();
 
         getNearby(level, position, size).ifPresentOrElse(hit -> {
-            BlockPos pos = hit.first(); // todo: xray visuals?
+            BlockPos pos = hit.first();
             BlockState state = hit.second();
             lastText = Component.translatable("text.pda.metal_detector.detected_nearby", state.getBlock().getName());
         }, () -> {
