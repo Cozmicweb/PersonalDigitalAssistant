@@ -21,6 +21,10 @@ public class PDAConfig {
     // DPS Meter
     public static final ModConfigSpec.IntValue DPS_METER_UPDATE_RATE;
 
+    // Metal Detector
+    public static final ModConfigSpec.IntValue METAL_DETECTOR_SIZE;
+    public static final ModConfigSpec.IntValue METAL_DETECTOR_UPDATE_RATE;
+
     static {
         // Tally Counter
         BUILDER.push("Tally Counter");
@@ -42,6 +46,12 @@ public class PDAConfig {
         // DPS Meter
         BUILDER.push("DPS Meter");
         DPS_METER_UPDATE_RATE = BUILDER.comment("How often the DPS meter should update in seconds.").defineInRange("dps_meter_update_rate", 3, 1, 15);
+        BUILDER.pop();
+
+        // Metal Detector
+        BUILDER.push("Metal Detector");
+        METAL_DETECTOR_SIZE = BUILDER.comment("Size of the metal detector's detection zone.").defineInRange("metal_detector_size", 16, 8, 128);
+        METAL_DETECTOR_UPDATE_RATE = BUILDER.comment("How often the metal detector should scan for monsters in seconds.").defineInRange("metal_detector_update_rate", 5, 1, 30);
         BUILDER.pop();
 
         SPEC = BUILDER.build();

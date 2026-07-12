@@ -19,7 +19,7 @@ import java.util.List;
 public class RareMobDisplayHandler extends InfoDisplayHandler {
 
     private static long lastCheck = System.currentTimeMillis();
-    private static Component lastText = Component.literal("");
+    private static Component lastText = Component.empty();
     private static String lastMob = "";
 
     public int getSize() {
@@ -38,7 +38,7 @@ public class RareMobDisplayHandler extends InfoDisplayHandler {
         lastCheck = now;
 
         LocalPlayer player = Minecraft.getInstance().player;
-        if (player == null) return Component.literal("");
+        if (player == null) return Component.empty();
 
         Vec3 position = player.position();
         Level level = player.level();

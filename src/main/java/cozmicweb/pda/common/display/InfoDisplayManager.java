@@ -25,6 +25,8 @@ public class InfoDisplayManager {
         register(PDACommon.id("display_monsters"), new MonstersDisplayHandler());
         register(PDACommon.id("display_rare"), new RareMobDisplayHandler());
         register(PDACommon.id("display_dps"), new DPSDisplayHandler());
+        register(PDACommon.id("display_luck"), new LuckDisplayHandler());
+        register(PDACommon.id("display_ore"), new OreDisplayHandler());
     }
 
     public static void register(Identifier id, InfoDisplayHandler logic) {

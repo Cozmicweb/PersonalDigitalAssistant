@@ -28,7 +28,7 @@ public class MoonPhaseDisplayHandler extends InfoDisplayHandler {
     @Override
     public Component getDisplayText() {
         LocalPlayer player = Minecraft.getInstance().player;
-        if (player == null) return Component.literal("");
+        if (player == null) return Component.empty();
         Level level = player.level();
         MoonPhase phase = level.environmentAttributes().getValue(EnvironmentAttributes.MOON_PHASE, player.blockPosition());
         return Component.translatable(PHASE_NAMES.get(phase));

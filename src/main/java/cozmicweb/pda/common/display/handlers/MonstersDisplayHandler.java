@@ -14,7 +14,7 @@ import java.util.List;
 public class MonstersDisplayHandler extends InfoDisplayHandler {
 
     private static long lastCheck = System.currentTimeMillis();
-    private static Component lastText = Component.literal("");
+    private static Component lastText = Component.empty();
 
     public int getSize() {
         return PDAConfig.RADAR_SIZE.get();
@@ -32,7 +32,7 @@ public class MonstersDisplayHandler extends InfoDisplayHandler {
         lastCheck = now;
 
         LocalPlayer player = Minecraft.getInstance().player;
-        if (player == null) return Component.literal("");
+        if (player == null) return Component.empty();
 
         Vec3 position = player.position();
         Level level = player.level();

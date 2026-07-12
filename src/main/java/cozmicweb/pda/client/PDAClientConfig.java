@@ -7,9 +7,6 @@ public class PDAClientConfig {
     public static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
     public static final ModConfigSpec SPEC;
 
-    // Compass
-    public static final ModConfigSpec.ConfigValue<String> COMPASS_FORMAT;
-
     // Stopwatch
     public static final ModConfigSpec.ConfigValue<String> STOPWATCH_FORMAT;
 
@@ -22,11 +19,6 @@ public class PDAClientConfig {
     public static final ModConfigSpec.BooleanValue LIFEFORM_ANALYZER_SOUND;
 
     static {
-        // Compass
-        BUILDER.push("Compass");
-        COMPASS_FORMAT = BUILDER.comment("The specifiers \"%x\", \"%y\", and \"%z\" will be replaced by their corresponding coordinate.").define("compass_format", "%x %y %z");
-        BUILDER.pop();
-
         // Stopwatch
         BUILDER.push("Stopwatch");
         STOPWATCH_FORMAT = BUILDER.comment("The first Java format specifier will be replaced with your current velocity as a float.").define("stopwatch_format", "%.2f ᴍ/ꜱ");

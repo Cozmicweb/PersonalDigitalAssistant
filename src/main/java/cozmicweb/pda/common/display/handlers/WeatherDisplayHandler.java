@@ -12,7 +12,7 @@ public class WeatherDisplayHandler extends InfoDisplayHandler {
     @Override
     public Component getDisplayText() {
         ClientLevel level = Minecraft.getInstance().level;
-        if (level == null) return Component.literal("");
+        if (level == null) return Component.empty();
         boolean thundering = level.isThundering();
         boolean raining = level.isRaining();
         return Component.literal(thundering ? "Thundering" : (raining ? "Raining" : "Sunny"));
