@@ -3,9 +3,9 @@ package cozmicweb.pda.common.item;
 import cozmicweb.pda.common.PDAConfig;
 import cozmicweb.pda.common.registry.ModComponents;
 import cozmicweb.pda.common.registry.ModSounds;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -101,11 +101,11 @@ public class StopwatchItem extends Item implements IClickReactive {
             long millis = (long) ((elapsedSeconds * 100) % 100);
 
             MutableComponent builder = Component.literal("[ ").withColor(0xE4D690);
-            builder.append(Component.literal(String.format("%02d", minutes)).withColor(TextColor.WHITE));
+            builder.append(Component.literal(String.format("%02d", minutes)).withStyle(ChatFormatting.WHITE));
             builder.append(Component.literal(":").withColor(0x8A8E92));
-            builder.append(Component.literal(String.format("%02d", seconds)).withColor(TextColor.WHITE));
+            builder.append(Component.literal(String.format("%02d", seconds)).withStyle(ChatFormatting.WHITE));
             builder.append(Component.literal(".").withColor(0x8A8E92));
-            builder.append(Component.literal(String.format("%02d", millis)).withColor(TextColor.WHITE));
+            builder.append(Component.literal(String.format("%02d", millis)).withStyle(ChatFormatting.WHITE));
             builder.append(Component.literal(" ]").withColor(0xE4D690));
             player.sendSystemMessage(builder, true);
         }

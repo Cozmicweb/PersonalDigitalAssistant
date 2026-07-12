@@ -7,7 +7,6 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.player.Player;
 
 public class KillsDisplayHandler extends InfoDisplayHandler {
@@ -54,8 +53,8 @@ public class KillsDisplayHandler extends InfoDisplayHandler {
         Identifier id = Identifier.tryParse(latestKilledEntity);
 
         EntityType<?> type = id == null
-                ? EntityTypes.ZOMBIE
-                : BuiltInRegistries.ENTITY_TYPE.getOptional(id).orElse(EntityTypes.ZOMBIE);
+                ? EntityType.ZOMBIE
+                : BuiltInRegistries.ENTITY_TYPE.getOptional(id).orElse(EntityType.ZOMBIE);
 
         Identifier resolvedId = BuiltInRegistries.ENTITY_TYPE.getKey(type);
         int killCount = serverPlayer.getStats().getValue(Stats.ENTITY_KILLED.get(type));
@@ -69,7 +68,7 @@ public class KillsDisplayHandler extends InfoDisplayHandler {
         int killCount = (int) serverData.getOrDefault(LAST_KILL_COUNT_KEY, 0);
         Component translation = BuiltInRegistries.ENTITY_TYPE.getOptional(Identifier.parse(entityType))
                 .map(EntityType::getDescription)
-                .orElse(EntityTypes.ZOMBIE.getDescription());
+                .orElse(EntityType.ZOMBIE.getDescription());
         return Component.translatable("text.pda.kills.text", translation, killCount);
     }
 

@@ -4,9 +4,9 @@ import cozmicweb.pda.common.PDAConfig;
 import cozmicweb.pda.common.attachments.TallyAnimState;
 import cozmicweb.pda.common.registry.ModComponents;
 import cozmicweb.pda.common.registry.ModSounds;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -64,7 +64,7 @@ public class TallyCounterItem extends Item implements IClickReactive {
         int[] d = digits(total);
         for (int i = 0; i < d.length; i++) {
             if (i > 0) builder.append(Component.literal(" : ").withColor(0x8A8E92));
-            builder.append(Component.literal(Integer.toString(d[i])).withColor(TextColor.WHITE));
+            builder.append(Component.literal(Integer.toString(d[i])).withStyle(ChatFormatting.WHITE));
         }
         return builder.append(Component.literal(" ]").withColor(0xE4D690));
     }
