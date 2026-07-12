@@ -31,7 +31,7 @@ public class PDAConfig {
         BUILDER.pop();
 
         // Radar
-        BUILDER.push("Radar");
+        BUILDER.push("Radar and Lifeform Analyzer");
         RADAR_SIZE = BUILDER.comment("Size of the radar's detection zone.").defineInRange("radar_size", 16, 8, 128);
         RADAR_UPDATE_RATE = BUILDER.comment("How often the radar should scan for monsters in seconds.").defineInRange("radar_update_rate", 5, 1, 30);
         BUILDER.pop();

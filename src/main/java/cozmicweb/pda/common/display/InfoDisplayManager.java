@@ -23,6 +23,7 @@ public class InfoDisplayManager {
         register(PDACommon.id("display_weather"), new WeatherDisplayHandler());
         register(PDACommon.id("display_moon_phase"), new MoonPhaseDisplayHandler());
         register(PDACommon.id("display_monsters"), new MonstersDisplayHandler());
+        register(PDACommon.id("display_rare"), new RareMobDisplayHandler());
     }
 
     public static void register(Identifier id, InfoDisplayHandler logic) {

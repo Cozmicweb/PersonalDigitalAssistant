@@ -6,6 +6,7 @@
     "pda:stopwatch": "pda:display_velocity",
     "pda:weather_radio": "pda:display_weather",
     "pda:sextant": "pda:display_moon_phase",
-    "pda:radar": "pda:display_monsters"
+    "pda:radar": "pda:display_monsters",
+    "pda:lifeform_analyzer": "pda:display_rare"
   }
 }

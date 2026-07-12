@@ -1,0 +1,29 @@
+{
+  "values": {
+    "minecraft:axolotl": { "id": "blue_axolotl", "nbt": { "Variant": 4 }, "translation_key": "entity.pda.blue_axolotl" },
+    "minecraft:cat": { "id": "black_cat", "nbt": { "variant": "minecraft:all_black" }, "translation_key": "entity.pda.black_cat" },
+    "minecraft:creeper": { "id": "charged_creeper", "nbt": { "powered": 1 }, "translation_key": "entity.pda.charged_creeper" },
+    "minecraft:rabbit": { "id": "killer_rabbit", "nbt": { "RabbitType": 99 }, "translation_key": "entity.pda.killer_rabbit" },
+    "minecraft:sheep": { "id": "pink_sheep", "nbt": { "Color": 6 }, "translation_key": "entity.pda.pink_sheep" },
+
+    "minecraft:allay": "allay",
+    "minecraft:breeze": "breeze",
+    "minecraft:camel_husk": "camel_husk",
+    "minecraft:creaking": "creaking",
+    "minecraft:elder_guardian": "elder_guardian",
+    "minecraft:ender_dragon": "ender_dragon",
+    "minecraft:evoker": "evoker",
+    "minecraft:giant": "giant",
+    "minecraft:illusioner": "illusioner",
+    "minecraft:nautilus": "nautilus",
+    "minecraft:piglin_brute": "piglin_brute",
+    "minecraft:ravager": "ravager",
+    "minecraft:skeleton_horse": "skeleton_horse",
+    "minecraft:sniffer": "sniffer",
+    "minecraft:warden": "warden",
+    "minecraft:witch": "witch",
+    "minecraft:wither": "wither",
+    "minecraft:zombie_horse": "zombie_horse",
+    "minecraft:zombie_nautilus": "zombie_nautilus"
+  }
+}

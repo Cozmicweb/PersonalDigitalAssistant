@@ -18,6 +18,8 @@ public class ModSounds {
     public static final Holder<SoundEvent> STOPWATCH_TICK_0 = SOUND_EVENTS.register("stopwatch_tick_0", SoundEvent::createVariableRangeEvent);
     public static final Holder<SoundEvent> STOPWATCH_TICK_1 = SOUND_EVENTS.register("stopwatch_tick_1", SoundEvent::createVariableRangeEvent);
 
+    public static final Holder<SoundEvent> RADAR_BEEP = SOUND_EVENTS.register("radar_beep", SoundEvent::createVariableRangeEvent);
+
     public static void register(IEventBus modEventBus) {
         SOUND_EVENTS.register(modEventBus);
     }

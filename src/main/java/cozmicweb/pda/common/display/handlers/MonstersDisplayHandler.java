@@ -39,7 +39,7 @@ public class MonstersDisplayHandler extends InfoDisplayHandler {
 
         List<Monster> monsters = level.getEntitiesOfClass(Monster.class, AABB.ofSize(position, size, size, size));
 
-        lastText = Component.literal(String.format("%d enemies nearby!", monsters.size()));
+        lastText = Component.translatable("text.pda.radar.detected_nearby", monsters.size());
         return lastText;
     }
 

@@ -18,6 +18,9 @@ public class PDAClientConfig {
     public static final ModConfigSpec.BooleanValue CLOCK_MERIDIEMS;
     public static final ModConfigSpec.BooleanValue CLOCK_ZEROS;
 
+    // Lifeform Analyzer
+    public static final ModConfigSpec.BooleanValue LIFEFORM_ANALYZER_SOUND;
+
     static {
         // Compass
         BUILDER.push("Compass");
@@ -34,6 +37,13 @@ public class PDAClientConfig {
         CLOCK_FORMAT = BUILDER.defineEnum("clock_format", TimeDisplayHandler.TimeFormat.HOUR12);
         CLOCK_MERIDIEMS = BUILDER.comment("Whether to display AM/PM on 12-hour time.").define("clock_meridiems", true);
         CLOCK_ZEROS = BUILDER.comment("Whether to display zeros in place of absent tens digits.").define("clock_zeros", true);
+        BUILDER.pop();
+
+        // Lifeform Analyzer
+        BUILDER.push("Lifeform Analyzer");
+        LIFEFORM_ANALYZER_SOUND = BUILDER.comment("Whether to play a sound when a new lifeform is detected.").define("lifeform_analyzer_sound", true);
+        BUILDER.pop();
+
         SPEC = BUILDER.build();
     }
 

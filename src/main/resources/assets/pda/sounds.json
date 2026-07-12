@@ -43,5 +43,10 @@
       "pda:item/stopwatch/stopwatch_tick_1_5",
       "pda:item/stopwatch/stopwatch_tick_1_6"
     ]
+  },
+  "radar_beep": {
+    "sounds": [
+      "pda:item/radar/radar_beep"
+    ]
   }
 }

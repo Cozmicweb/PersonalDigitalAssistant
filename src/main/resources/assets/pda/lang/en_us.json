@@ -4,7 +4,16 @@
   "item.pda.weather_radio": "Weather Radio",
   "item.pda.sextant": "Sextant",
   "item.pda.radar": "Radar",
+  "item.pda.lifeform_analyzer": "Lifeform Analyzer",
 
+  "text.pda.radar.detected_nearby": "%s enemies nearby!",
+  "text.pda.lifeform_analyzer.nothing": "No rare mobs nearby",
+
+  "entity.pda.pink_sheep": "Pink Sheep",
+  "entity.pda.charged_creeper": "Charged Creeper",
+  "entity.pda.blue_axolotl": "Blue Axolotl",
+  "entity.pda.black_cat": "Black Cat",
+  "entity.pda.killer_rabbit": "Killer Rabbit",
 
   "pda.configuration.clock_time_format.hour12": "12 Hour",
   "pda.configuration.clock_time_format.hour24": "24 Hour",
