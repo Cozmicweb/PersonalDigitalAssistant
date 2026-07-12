@@ -34,8 +34,7 @@ public class InfoDisplayManager {
 
         for (ItemStack stack : player.getInventory().getNonEquipmentItems()) {
             if (stack.isEmpty()) continue;
-            InfoDisplayHandler handler = getHandlerFor(stack);
-            if (handler != null) active.add(handler);
+            active.addAll(getHandlersFor(stack));
         }
         return active;
     }
@@ -60,10 +59,16 @@ public class InfoDisplayManager {
         return HANDLERS.get(id);
     }
 
-    @Nullable
-    public static InfoDisplayHandler getHandlerFor(@NonNull ItemStack stack) {
-        Identifier id = stack.getData(ModDataMaps.HANDLERS);
-        return id == null ? null : InfoDisplayManager.get(id);
+    @NonNull
+    public static List<InfoDisplayHandler> getHandlersFor(@NonNull ItemStack stack) {
+        List<Identifier> ids = stack.getData(ModDataMaps.HANDLERS);
+        if (ids == null) return Collections.emptyList();
+        List<InfoDisplayHandler> handlers = new ArrayList<>();
+        for (Identifier id : ids) {
+            InfoDisplayHandler handler = InfoDisplayManager.get(id);
+            if (handler != null) handlers.add(handler);
+        }
+        return handlers;
     }
 
 }
