@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_fishermans_pocket_guide": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pda:fishermans_pocket_guide"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sextant": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pda:sextant"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pda:fish_finder"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_weather_radio": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pda:weather_radio"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_fishermans_pocket_guide",
+      "has_weather_radio",
+      "has_sextant"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pda:fish_finder"
+    ]
+  }
+}

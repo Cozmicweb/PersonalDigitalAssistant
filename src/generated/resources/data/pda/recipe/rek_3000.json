@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "pda:radar",
+    "pda:tally_counter",
+    "pda:lifeform_analyzer"
+  ],
+  "result": {
+    "id": "pda:rek_3000"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "values": [
+    "pda:tally_counter",
+    "pda:stopwatch",
+    "pda:weather_radio",
+    "pda:sextant",
+    "pda:radar",
+    "pda:lifeform_analyzer",
+    "pda:dps_meter",
+    "pda:depth_meter",
+    "pda:fishermans_pocket_guide",
+    "pda:metal_detector",
+    "pda:rek_3000",
+    "pda:gps",
+    "pda:fish_finder",
+    "pda:pillager_tech",
+    "pda:pda"
+  ]
+}

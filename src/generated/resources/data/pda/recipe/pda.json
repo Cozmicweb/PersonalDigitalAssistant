@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "pda:gps",
+    "pda:rek_3000",
+    "pda:pillager_tech",
+    "pda:fish_finder"
+  ],
+  "result": {
+    "id": "pda:pda"
+  }
+}

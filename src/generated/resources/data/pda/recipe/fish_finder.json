@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "pda:fishermans_pocket_guide",
+    "pda:weather_radio",
+    "pda:sextant"
+  ],
+  "result": {
+    "id": "pda:fish_finder"
+  }
+}

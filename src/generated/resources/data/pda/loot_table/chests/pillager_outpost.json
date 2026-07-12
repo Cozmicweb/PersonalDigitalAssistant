@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "pda:tally_counter"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "pda:stopwatch"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "pda:weather_radio"
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 15
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "pda:chests/pillager_outpost"
+}

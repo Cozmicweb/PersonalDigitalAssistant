@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:clock",
+    "minecraft:compass",
+    "pda:depth_meter"
+  ],
+  "result": {
+    "id": "pda:gps"
+  }
+}

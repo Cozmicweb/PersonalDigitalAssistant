@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "pda:dps_meter",
+    "pda:stopwatch",
+    "pda:metal_detector"
+  ],
+  "result": {
+    "id": "pda:pillager_tech"
+  }
+}

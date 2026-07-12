@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "pda:fishermans_pocket_guide"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "pda:sextant"
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 15
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "pda:chests/buried_treasure"
+}
