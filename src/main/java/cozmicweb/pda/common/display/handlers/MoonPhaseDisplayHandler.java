@@ -22,7 +22,7 @@ public class MoonPhaseDisplayHandler extends InfoDisplayHandler {
             MoonPhase.NEW_MOON, "moon_phase.pda.new_moon",
             MoonPhase.WAXING_CRESCENT, "moon_phase.pda.waxing_crescent",
             MoonPhase.FIRST_QUARTER, "moon_phase.pda.first_quarter",
-            MoonPhase.WAXING_GIBBOUS, "moon_phase.pda.waxing_gibbouss"
+            MoonPhase.WAXING_GIBBOUS, "moon_phase.pda.waxing_gibbous"
     );
 
     @Override
