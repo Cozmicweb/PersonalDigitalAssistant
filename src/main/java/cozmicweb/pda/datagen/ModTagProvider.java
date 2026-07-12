@@ -4,7 +4,9 @@ import cozmicweb.pda.common.PDACommon;
 import cozmicweb.pda.common.registry.ModItems;
 import cozmicweb.pda.common.registry.ModTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.data.ItemTagsProvider;
 import org.jspecify.annotations.NonNull;
 
@@ -34,7 +36,9 @@ public class ModTagProvider {
                 .add(ModItems.GPS.getKey())
                 .add(ModItems.FISH_FINDER.getKey())
                 .add(ModItems.PILLAGER_TECH.getKey())
-                .add(ModItems.PDA.getKey());
+                .add(ModItems.PDA.getKey())
+                .add(BuiltInRegistries.ITEM.getResourceKey(Items.COMPASS).orElseThrow())
+                .add(BuiltInRegistries.ITEM.getResourceKey(Items.CLOCK).orElseThrow());
         }
     }
 
