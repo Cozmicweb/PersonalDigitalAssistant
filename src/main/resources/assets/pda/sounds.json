@@ -22,5 +22,26 @@
       "pda:item/tally_counter/tally_tick_4",
       "pda:item/tally_counter/tally_tick_5"
     ]
+  },
+  "stopwatch_tick_0": {
+    "sounds": [
+      "pda:item/stopwatch/stopwatch_tick_0_0",
+      "pda:item/stopwatch/stopwatch_tick_0_1",
+      "pda:item/stopwatch/stopwatch_tick_0_2",
+      "pda:item/stopwatch/stopwatch_tick_0_3",
+      "pda:item/stopwatch/stopwatch_tick_0_4",
+      "pda:item/stopwatch/stopwatch_tick_0_5"
+    ]
+  },
+  "stopwatch_tick_1": {
+    "sounds": [
+      "pda:item/stopwatch/stopwatch_tick_1_0",
+      "pda:item/stopwatch/stopwatch_tick_1_1",
+      "pda:item/stopwatch/stopwatch_tick_1_2",
+      "pda:item/stopwatch/stopwatch_tick_1_3",
+      "pda:item/stopwatch/stopwatch_tick_1_4",
+      "pda:item/stopwatch/stopwatch_tick_1_5",
+      "pda:item/stopwatch/stopwatch_tick_1_6"
+    ]
   }
 }

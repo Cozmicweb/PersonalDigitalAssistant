@@ -1,0 +1,118 @@
+package cozmicweb.pda.common.item;
+
+import cozmicweb.pda.common.PDAConfig;
+import cozmicweb.pda.common.registry.ModComponents;
+import cozmicweb.pda.common.registry.ModSounds;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.TextColor;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
+public class StopwatchItem extends Item implements IClickReactive {
+
+    public StopwatchItem(@NonNull Properties properties) {
+        super(properties.component(ModComponents.STOPWATCH_PAUSED.get(), true));
+    }
+
+    private static long now(@NonNull ServerPlayer player) {
+        return now(player.level());
+    }
+
+    private static long now(@NonNull ServerLevel level) {
+        return level.getGameTime();
+    }
+
+    public static void tick(@NonNull ServerPlayer player, float elapsed, float volume) {
+        if (PDAConfig.STOPWATCH_PLAY_SOUND.get()) {
+            if (elapsed % 6 == 0)
+                player.level().playSound(null, player.blockPosition(), ModSounds.STOPWATCH_TICK_0.value(), player.getSoundSource(), volume, 2.0F);
+            else if (elapsed % 3 == 0)
+                player.level().playSound(null, player.blockPosition(), ModSounds.STOPWATCH_TICK_1.value(), player.getSoundSource(), volume, 2.0F);
+        }
+    }
+
+    @Override
+    public void onLeftClickDown(ServerPlayer player, @NonNull ItemStack stack) {
+        TallyCounterItem.tick(player);
+
+        boolean paused = stack.getOrDefault(ModComponents.STOPWATCH_PAUSED.get(), true);
+        long now = now(player);
+
+        if (paused) {
+            long pauseStart = stack.getOrDefault(ModComponents.STOPWATCH_PAUSE_TIME.get(), now);
+            long start = stack.getOrDefault(ModComponents.STOPWATCH_START_TIME.get(), now);
+            stack.set(ModComponents.STOPWATCH_START_TIME.get(), start + (now - pauseStart));
+        } else {
+            stack.set(ModComponents.STOPWATCH_PAUSE_TIME.get(), now);
+        }
+
+        stack.set(ModComponents.STOPWATCH_PAUSED.get(), !paused);
+    }
+
+    @Override
+    public void onLeftClickUp(@NonNull ServerPlayer player, ItemStack stack) {
+        player.level().playSound(null, player.blockPosition(), ModSounds.TALLY_FORWARD.value(), player.getSoundSource(), 1.0F, 1.0F);
+    }
+
+    @Override
+    public void onRightClickDown(ServerPlayer player, @NonNull ItemStack stack) {
+        TallyCounterItem.tick(player);
+        long now = now(player);
+        stack.set(ModComponents.STOPWATCH_PAUSED.get(), true);
+        stack.set(ModComponents.STOPWATCH_PAUSE_TIME.get(), now);
+        stack.set(ModComponents.STOPWATCH_START_TIME.get(), now);
+    }
+
+    @Override
+    public void onRightClickUp(@NonNull ServerPlayer player, ItemStack stack) {
+        player.level().playSound(null, player.blockPosition(), ModSounds.TALLY_BACKWARD.value(), player.getSoundSource(), 1.0F, 1.0F);
+
+        long now = now(player);
+        stack.set(ModComponents.STOPWATCH_START_TIME.get(), now);
+        stack.set(ModComponents.STOPWATCH_PAUSED.get(), false);
+    }
+
+    @Override
+    public void inventoryTick(@NonNull ItemStack stack, @NonNull ServerLevel level, @NonNull Entity owner, @Nullable EquipmentSlot slot) {
+        if (!(owner instanceof ServerPlayer player)) return;
+
+        boolean paused = stack.getOrDefault(ModComponents.STOPWATCH_PAUSED.get(), true);
+        long start = stack.getOrDefault(ModComponents.STOPWATCH_START_TIME.get(), 0L);
+        long end = paused ? stack.getOrDefault(ModComponents.STOPWATCH_PAUSE_TIME.get(), now(player)) : now(player);
+        long elapsed = end - start;
+
+        boolean mainHand = player.getItemInHand(InteractionHand.MAIN_HAND).equals(stack);
+        if (mainHand) {
+            float elapsedSeconds = (float) elapsed / 20f;
+            long minutes = (long) (elapsedSeconds / 60);
+            long seconds = (long) (elapsedSeconds % 60);
+            long millis = (long) ((elapsedSeconds * 100) % 100);
+
+            MutableComponent builder = Component.literal("[ ").withColor(0xE4D690);
+            builder.append(Component.literal(String.format("%02d", minutes)).withColor(TextColor.WHITE));
+            builder.append(Component.literal(":").withColor(0x8A8E92));
+            builder.append(Component.literal(String.format("%02d", seconds)).withColor(TextColor.WHITE));
+            builder.append(Component.literal(".").withColor(0x8A8E92));
+            builder.append(Component.literal(String.format("%02d", millis)).withColor(TextColor.WHITE));
+            builder.append(Component.literal(" ]").withColor(0xE4D690));
+            player.sendSystemMessage(builder, true);
+        }
+
+        if (!paused)
+            tick(player, elapsed, mainHand ? 0.6f : 0.2f);
+    }
+
+    @Override
+    public boolean onEntitySwing(@NonNull ItemStack stack, @NonNull LivingEntity entity, @NonNull InteractionHand hand) {
+        return true;
+    }
+}

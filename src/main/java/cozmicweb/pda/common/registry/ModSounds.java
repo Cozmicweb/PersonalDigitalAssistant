@@ -15,6 +15,9 @@ public class ModSounds {
     public static final Holder<SoundEvent> TALLY_BACKWARD = SOUND_EVENTS.register("tally_backward", SoundEvent::createVariableRangeEvent);
     public static final Holder<SoundEvent> TALLY_TICK = SOUND_EVENTS.register("tally_tick", SoundEvent::createVariableRangeEvent);
 
+    public static final Holder<SoundEvent> STOPWATCH_TICK_0 = SOUND_EVENTS.register("stopwatch_tick_0", SoundEvent::createVariableRangeEvent);
+    public static final Holder<SoundEvent> STOPWATCH_TICK_1 = SOUND_EVENTS.register("stopwatch_tick_1", SoundEvent::createVariableRangeEvent);
+
     public static void register(IEventBus modEventBus) {
         SOUND_EVENTS.register(modEventBus);
     }

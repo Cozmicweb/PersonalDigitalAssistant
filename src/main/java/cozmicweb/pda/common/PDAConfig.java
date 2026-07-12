@@ -11,11 +11,19 @@ public class PDAConfig {
     public static final ModConfigSpec.BooleanValue TALLY_KILL_SOUND;
     public static final ModConfigSpec.IntValue TALLY_COUNT_LIMIT;
 
+    // Stopwatch
+    public static final ModConfigSpec.BooleanValue STOPWATCH_PLAY_SOUND;
+
     static {
         // Tally Counter
         BUILDER.push("Tally Counter");
         TALLY_KILL_SOUND = BUILDER.comment("When a tally counter is in your inventory, it will play a tick sound when a mob is killed.").define("tally_kill_sound", true);
         TALLY_COUNT_LIMIT = BUILDER.comment("How many places should the tally counter have? Anything over 9 places will not work as intended.").defineInRange("tally_count_limit", 5, 1, 9);
+        BUILDER.pop();
+
+        // Stopwatch
+        BUILDER.push("Stopwatch");
+        STOPWATCH_PLAY_SOUND = BUILDER.comment("When a stopwatch is in your inventory, it will play a tick sound while running.").define("stopwatch_play_sound", true);
         BUILDER.pop();
 
         SPEC = BUILDER.build();

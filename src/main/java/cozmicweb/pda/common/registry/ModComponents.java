@@ -33,6 +33,24 @@ public class ModComponents {
                     .networkSynchronized(TallyAnimState.STREAM_CODEC)
                     .build());
 
+    public static final Supplier<DataComponentType<Long>> STOPWATCH_START_TIME = DATA_COMPONENTS.register("stopwatch_start_time",
+            () -> DataComponentType.<Long>builder()
+                    .persistent(Codec.LONG)
+                    .networkSynchronized(ByteBufCodecs.LONG)
+                    .build());
+
+    public static final Supplier<DataComponentType<Long>> STOPWATCH_PAUSE_TIME = DATA_COMPONENTS.register("stopwatch_pause_time",
+            () -> DataComponentType.<Long>builder()
+                    .persistent(Codec.LONG)
+                    .networkSynchronized(ByteBufCodecs.LONG)
+                    .build());
+
+    public static final Supplier<DataComponentType<Boolean>> STOPWATCH_PAUSED = DATA_COMPONENTS.register("stopwatch_paused",
+            () -> DataComponentType.<Boolean>builder()
+                    .persistent(Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+                    .build());
+
     public static void register(IEventBus modEventBus) {
         DATA_COMPONENTS.register(modEventBus);
     }
