@@ -1,6 +1,9 @@
 package cozmicweb.pda.common.display.handlers;
 
+import cozmicweb.pda.client.PDAClientConfig;
+import cozmicweb.pda.common.display.InfoDisplayManager;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
 import org.jspecify.annotations.NonNull;
 
@@ -29,6 +32,12 @@ public abstract class InfoDisplayHandler {
      */
     protected final Map<String, Object> serverData = new HashMap<>();
 
+    public final Identifier id;
+
+    public InfoDisplayHandler(Identifier id) {
+        this.id = id;
+    }
+
     /**
      * Whether this handler needs to request data from the server.
      * <p>Return {@code false} if the display text can be generated entirely on the client.</p>
@@ -49,8 +58,12 @@ public abstract class InfoDisplayHandler {
     /**
      * Higher numbers mean this handler will be displayed at the bottom of the list.
      */
-    public int getPriority() {
+    public int getDefaultPriority() {
         return 0;
+    }
+
+    public int getPriority() {
+        return PDAClientConfig.getPriority(id);
     }
 
     /**

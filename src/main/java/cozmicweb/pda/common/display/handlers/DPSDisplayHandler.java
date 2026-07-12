@@ -4,6 +4,7 @@ import cozmicweb.pda.common.PDAConfig;
 import cozmicweb.pda.common.attachments.DamageTracker;
 import cozmicweb.pda.common.registry.ModAttachments;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.Locale;
@@ -12,8 +13,12 @@ public class DPSDisplayHandler extends InfoDisplayHandler {
 
     private static final String DPS_KEY = "dps";
 
+    public DPSDisplayHandler(Identifier id) {
+        super(id);
+    }
+
     @Override
-    public int getPriority() {
+    public int getDefaultPriority() {
         return 800;
     }
 

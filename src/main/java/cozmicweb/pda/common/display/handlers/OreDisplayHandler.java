@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.datafix.fixes.BlockEntityKeepPacked;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -26,12 +27,16 @@ public class OreDisplayHandler extends InfoDisplayHandler {
 
     private static final Predicate<BlockState> IS_VALUABLE = s -> s.is(Tags.Blocks.ORES) || s.is(Tags.Blocks.STORAGE_BLOCKS);
 
+    public OreDisplayHandler(Identifier id) {
+        super(id);
+    }
+
     public int getSize() {
         return PDAConfig.METAL_DETECTOR_SIZE.get();
     }
 
     @Override
-    public int getPriority() {
+    public int getDefaultPriority() {
         return 400;
     }
 

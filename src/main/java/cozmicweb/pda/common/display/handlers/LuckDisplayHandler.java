@@ -4,11 +4,16 @@ import cozmicweb.pda.client.PDAClientConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 
 public class LuckDisplayHandler extends InfoDisplayHandler {
 
+    public LuckDisplayHandler(Identifier id) {
+        super(id);
+    }
+
     @Override
-    public int getPriority() {
+    public int getDefaultPriority() {
         return 300;
     }
 

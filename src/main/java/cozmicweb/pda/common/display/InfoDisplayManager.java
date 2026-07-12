@@ -7,7 +7,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.UnmodifiableView;
 import org.jspecify.annotations.NonNull;
 
 import java.util.*;
@@ -16,22 +18,30 @@ public class InfoDisplayManager {
     private static final Map<Identifier, InfoDisplayHandler> HANDLERS = new HashMap<>();
 
     public static void initialize() {
-        register(PDACommon.id("display_time"), new TimeDisplayHandler());
-        register(PDACommon.id("display_kills"), new KillsDisplayHandler());
-        register(PDACommon.id("display_horizontal_position"), new HorizontalPositionDisplayHandler());
-        register(PDACommon.id("display_vertical_position"), new VerticalPositionDisplayHandler());
-        register(PDACommon.id("display_velocity"), new VelocityDisplayHandler());
-        register(PDACommon.id("display_weather"), new WeatherDisplayHandler());
-        register(PDACommon.id("display_moon_phase"), new MoonPhaseDisplayHandler());
-        register(PDACommon.id("display_monsters"), new MonstersDisplayHandler());
-        register(PDACommon.id("display_rare"), new RareMobDisplayHandler());
-        register(PDACommon.id("display_dps"), new DPSDisplayHandler());
-        register(PDACommon.id("display_luck"), new LuckDisplayHandler());
-        register(PDACommon.id("display_ore"), new OreDisplayHandler());
+        register(PDACommon.id("display_time"), TimeDisplayHandler.class);
+        register(PDACommon.id("display_kills"), KillsDisplayHandler.class);
+        register(PDACommon.id("display_horizontal_position"), HorizontalPositionDisplayHandler.class);
+        register(PDACommon.id("display_vertical_position"), VerticalPositionDisplayHandler.class);
+        register(PDACommon.id("display_velocity"), VelocityDisplayHandler.class);
+        register(PDACommon.id("display_weather"), WeatherDisplayHandler.class);
+        register(PDACommon.id("display_moon_phase"), MoonPhaseDisplayHandler.class);
+        register(PDACommon.id("display_monsters"), MonstersDisplayHandler.class);
+        register(PDACommon.id("display_rare"), RareMobDisplayHandler.class);
+        register(PDACommon.id("display_dps"), DPSDisplayHandler.class);
+        register(PDACommon.id("display_luck"), LuckDisplayHandler.class);
+        register(PDACommon.id("display_ore"), OreDisplayHandler.class);
     }
 
-    public static void register(Identifier id, InfoDisplayHandler logic) {
-        if (HANDLERS.putIfAbsent(id, logic) != null)
+    public static <T extends InfoDisplayHandler> void register(Identifier id, Class<T> clazz) {
+        T handler = null;
+
+        try {
+            handler = clazz.getDeclaredConstructor(Identifier.class).newInstance(id);
+        } catch (Exception e) {
+            PDACommon.LOGGER.error("Failed to register display handler: {}", id, e);
+        }
+
+        if (handler != null && HANDLERS.putIfAbsent(id, handler) != null)
             throw new IllegalStateException("Duplicate display handler: " + id);
     }
 
@@ -77,6 +87,11 @@ public class InfoDisplayManager {
             if (handler != null) handlers.add(handler);
         }
         return handlers;
+    }
+
+    @Contract(pure = true)
+    public static @NonNull @UnmodifiableView Map<Identifier, InfoDisplayHandler> getAllHandlers() {
+        return Collections.unmodifiableMap(HANDLERS);
     }
 
 }

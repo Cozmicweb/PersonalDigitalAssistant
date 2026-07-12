@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -25,8 +26,12 @@ public class MoonPhaseDisplayHandler extends InfoDisplayHandler {
             MoonPhase.WAXING_GIBBOUS, "moon_phase.pda.waxing_gibbous"
     );
 
+    public MoonPhaseDisplayHandler(Identifier id) {
+        super(id);
+    }
+
     @Override
-    public int getPriority() {
+    public int getDefaultPriority() {
         return 200;
     }
 

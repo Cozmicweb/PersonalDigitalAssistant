@@ -8,6 +8,7 @@ import io.netty.handler.codec.spdy.SpdyHttpResponseStreamIdHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -22,12 +23,16 @@ public class RareMobDisplayHandler extends InfoDisplayHandler {
     private static Component lastText = Component.empty();
     private static String lastMob = "";
 
+    public RareMobDisplayHandler(Identifier id) {
+        super(id);
+    }
+
     public int getSize() {
         return PDAConfig.RADAR_SIZE.get();
     }
 
     @Override
-    public int getPriority() {
+    public int getDefaultPriority() {
         return 500;
     }
 

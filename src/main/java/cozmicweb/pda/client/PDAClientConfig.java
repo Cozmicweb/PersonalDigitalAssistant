@@ -1,11 +1,17 @@
 package cozmicweb.pda.client;
 
+import cozmicweb.pda.common.display.InfoDisplayManager;
 import cozmicweb.pda.common.display.handlers.TimeDisplayHandler;
+import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.common.ModConfigSpec;
+
+import java.util.HashMap;
 
 public class PDAClientConfig {
     public static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
     public static final ModConfigSpec SPEC;
+
+    private static final HashMap<Identifier, ModConfigSpec.ConfigValue<Integer>> PRIORITY_MAP = new HashMap<>();
 
     // Stopwatch
     public static final ModConfigSpec.ConfigValue<String> STOPWATCH_FORMAT;
@@ -25,30 +31,42 @@ public class PDAClientConfig {
 
     static {
         // Stopwatch
-        BUILDER.push("Stopwatch");
+        BUILDER.push("stopwatch");
         STOPWATCH_FORMAT = BUILDER.comment("The first Java format specifier will be replaced with your current velocity as a float.").define("stopwatch_format", "%.2f ᴍ/ꜱ");
         BUILDER.pop();
 
         // Position
-        BUILDER.push("Position");
+        BUILDER.push("position");
         POSITION_FORMAT = BUILDER.comment("The first two Java format specifiers will be replaced with your current X and Z coordinates as floats.").define("position_format", "%.1f, %.1f");
         DEPTH_FORMAT = BUILDER.comment("The first Java format specifier will be replaced with your current Y coordinate as a float.").define("depth_format", "%.1f");
         COMBINED_POSITION_FORMAT = BUILDER.comment("The first three Java format specifiers will be replaced with your current X, Y, and Z coordinates as floats.").define("combined_position_format", "%.1f, %.1f, %.1f");
         BUILDER.pop();
 
         // Clock
-        BUILDER.push("Clock");
+        BUILDER.push("clock");
         CLOCK_FORMAT = BUILDER.defineEnum("clock_format", TimeDisplayHandler.TimeFormat.HOUR12);
         CLOCK_MERIDIEMS = BUILDER.comment("Whether to display AM/PM on 12-hour time.").define("clock_meridiems", true);
         CLOCK_ZEROS = BUILDER.comment("Whether to display zeros in place of absent tens digits.").define("clock_zeros", true);
         BUILDER.pop();
 
         // Lifeform Analyzer
-        BUILDER.push("Lifeform Analyzer");
+        BUILDER.push("lifeform_analyzer");
         LIFEFORM_ANALYZER_SOUND = BUILDER.comment("Whether to play a sound when a new lifeform is detected.").define("lifeform_analyzer_sound", true);
         BUILDER.pop();
 
+        // All Display Handler Priorities
+        BUILDER.push("priorities");
+        InfoDisplayManager.getAllHandlers().forEach((id, handler) -> {
+            int defaultPriority = handler.getDefaultPriority();
+            PRIORITY_MAP.put(id, BUILDER.comment("Higher = Lower").define(id + "_priority", defaultPriority));
+        });
+        BUILDER.pop();
+
         SPEC = BUILDER.build();
+    }
+
+    public static int getPriority(Identifier id) {
+        return PRIORITY_MAP.get(id).get();
     }
 
 }

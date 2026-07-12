@@ -4,6 +4,7 @@ import cozmicweb.pda.client.PDAClientConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.common.TranslatableEnum;
 import org.jspecify.annotations.NonNull;
 
@@ -19,6 +20,10 @@ public class TimeDisplayHandler extends InfoDisplayHandler {
 
     public static boolean shouldAppendMeridiems() {
         return PDAClientConfig.CLOCK_MERIDIEMS.get();
+    }
+
+    public TimeDisplayHandler(Identifier id) {
+        super(id);
     }
 
     @Override

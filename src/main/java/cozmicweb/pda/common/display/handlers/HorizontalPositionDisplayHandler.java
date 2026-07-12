@@ -5,12 +5,17 @@ import cozmicweb.pda.common.display.InfoDisplayManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.phys.Vec3;
 
 public class HorizontalPositionDisplayHandler extends InfoDisplayHandler {
 
+    public HorizontalPositionDisplayHandler(Identifier id) {
+        super(id);
+    }
+
     @Override
-    public int getPriority() {
+    public int getDefaultPriority() {
         return 1000;
     }
 

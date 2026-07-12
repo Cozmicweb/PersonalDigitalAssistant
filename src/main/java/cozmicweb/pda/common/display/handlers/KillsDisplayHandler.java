@@ -15,8 +15,12 @@ public class KillsDisplayHandler extends InfoDisplayHandler {
     private static final String LAST_KILLED_ENTITY_KEY = "last_killed_entity";
     private static final String LAST_KILL_COUNT_KEY = "last_kill_count";
 
+    public KillsDisplayHandler(Identifier id) {
+        super(id);
+    }
+
     @Override
-    public int getPriority() {
+    public int getDefaultPriority() {
         return 700;
     }
 
