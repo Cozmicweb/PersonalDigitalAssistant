@@ -27,6 +27,11 @@ public class TimeDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
+    public String getBehavior() {
+        return "time";
+    }
+
+    @Override
     public Component getDisplayText() {
         Minecraft minecraft = Minecraft.getInstance();
         ClientLevel level = minecraft.level;

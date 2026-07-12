@@ -31,6 +31,11 @@ public class OreDisplayHandler extends InfoDisplayHandler {
         super(id);
     }
 
+    @Override
+    public String getBehavior() {
+        return "valuable ores";
+    }
+
     public int getSize() {
         return PDAConfig.METAL_DETECTOR_SIZE.get();
     }

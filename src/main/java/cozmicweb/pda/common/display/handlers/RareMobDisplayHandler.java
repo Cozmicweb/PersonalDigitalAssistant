@@ -27,6 +27,11 @@ public class RareMobDisplayHandler extends InfoDisplayHandler {
         super(id);
     }
 
+    @Override
+    public String getBehavior() {
+        return "rare mobs";
+    }
+
     public int getSize() {
         return PDAConfig.RADAR_SIZE.get();
     }

@@ -13,6 +13,11 @@ public class LuckDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
+    public String getBehavior() {
+        return "luck";
+    }
+
+    @Override
     public int getDefaultPriority() {
         return 300;
     }

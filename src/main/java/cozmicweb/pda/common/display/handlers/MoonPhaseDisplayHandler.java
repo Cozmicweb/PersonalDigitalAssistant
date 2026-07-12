@@ -31,6 +31,11 @@ public class MoonPhaseDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
+    public String getBehavior() {
+        return "moon phase";
+    }
+
+    @Override
     public int getDefaultPriority() {
         return 200;
     }

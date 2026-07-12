@@ -15,6 +15,11 @@ public class VerticalPositionDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
+    public String getBehavior() {
+        return "vertical position";
+    }
+
+    @Override
     public int getDefaultPriority() {
         return 1001;
     }

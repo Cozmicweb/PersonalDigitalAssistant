@@ -67,6 +67,13 @@ public abstract class InfoDisplayHandler {
     }
 
     /**
+     * Tooltip
+     */
+    public String getBehavior() {
+        return "";
+    }
+
+    /**
      * Builds the text displayed on the PDA overlay.
      * <p>This is called on the client during overlay rendering.</p>
      * <p>For client-only handlers, this can calculate the text directly.</p>

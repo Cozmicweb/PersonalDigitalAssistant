@@ -15,6 +15,11 @@ public class HorizontalPositionDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
+    public String getBehavior() {
+        return "horizontal position";
+    }
+
+    @Override
     public int getDefaultPriority() {
         return 1000;
     }

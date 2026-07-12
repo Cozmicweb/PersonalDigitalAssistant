@@ -20,6 +20,11 @@ public class KillsDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
+    public String getBehavior() {
+        return "mob kills";
+    }
+
+    @Override
     public int getDefaultPriority() {
         return 700;
     }

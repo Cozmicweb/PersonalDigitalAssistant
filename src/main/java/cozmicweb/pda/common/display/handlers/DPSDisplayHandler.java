@@ -18,6 +18,11 @@ public class DPSDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
+    public String getBehavior() {
+        return "damage per second";
+    }
+
+    @Override
     public int getDefaultPriority() {
         return 800;
     }

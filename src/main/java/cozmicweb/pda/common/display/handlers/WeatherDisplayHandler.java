@@ -15,6 +15,11 @@ public class WeatherDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
+    public String getBehavior() {
+        return "weather";
+    }
+
+    @Override
     public int getDefaultPriority() {
         return 100;
     }

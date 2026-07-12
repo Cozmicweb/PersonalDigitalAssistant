@@ -21,6 +21,11 @@ public class MonstersDisplayHandler extends InfoDisplayHandler {
         super(id);
     }
 
+    @Override
+    public String getBehavior() {
+        return "nearby monsters";
+    }
+
     public int getSize() {
         return PDAConfig.RADAR_SIZE.get();
     }

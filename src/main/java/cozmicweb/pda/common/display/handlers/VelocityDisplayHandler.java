@@ -13,6 +13,11 @@ public class VelocityDisplayHandler extends InfoDisplayHandler {
     }
 
     @Override
+    public String getBehavior() {
+        return "velocity";
+    }
+
+    @Override
     public int getDefaultPriority() {
         return 900;
     }
