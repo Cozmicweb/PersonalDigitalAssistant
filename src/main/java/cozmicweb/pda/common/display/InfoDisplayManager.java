@@ -21,6 +21,7 @@ public class InfoDisplayManager {
         register(PDACommon.id("display_position"), new PositionDisplayHandler());
         register(PDACommon.id("display_velocity"), new VelocityDisplayHandler());
         register(PDACommon.id("display_weather"), new WeatherDisplayHandler());
+        register(PDACommon.id("display_moon_phase"), new MoonPhaseDisplayHandler());
     }
 
     public static void register(Identifier id, InfoDisplayHandler logic) {
