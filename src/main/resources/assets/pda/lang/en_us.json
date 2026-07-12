@@ -1,4 +1,9 @@
 {
   "item.pda.tally_counter": "Tally Counter",
-  "item.pda.stopwatch": "Stopwatch"
+  "item.pda.stopwatch": "Stopwatch",
+
+
+  "pda.configuration.clock_time_format.hour12": "12 Hour",
+  "pda.configuration.clock_time_format.hour24": "24 Hour"
+
 }

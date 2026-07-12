@@ -1,5 +1,6 @@
 package cozmicweb.pda.common.item;
 
+import cozmicweb.pda.common.PDAConfig;
 import cozmicweb.pda.common.attachments.TallyAnimState;
 import cozmicweb.pda.common.registry.ModComponents;
 import cozmicweb.pda.common.registry.ModSounds;
@@ -19,17 +20,23 @@ import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 public class TallyCounterItem extends Item implements IClickReactive {
-    public static final int MAX_PLACES = 5;
-    public static final int MAX_TALLY = (int) Math.pow(10, TallyCounterItem.MAX_PLACES) - 1;;
-    public static final int[] POW10 = computePow10();
+
     public static final int CASCADE_DELAY_TICKS = 3;
     public static final int IDLE_REFRESH_TICKS = 10;
 
-    @Contract(pure = true)
-    private static int @NonNull [] computePow10() {
-        int[] arr = new int[TallyCounterItem.MAX_PLACES];
-        for (int i = 0; i < TallyCounterItem.MAX_PLACES; i++) {
-            arr[i] = (int) Math.pow(10, TallyCounterItem.MAX_PLACES - 1 - i);
+    public static int getMaxPlaces() {
+        return PDAConfig.TALLY_COUNT_LIMIT.get();
+    }
+
+    public static int getMaxTally() {
+        return (int) Math.pow(10, getMaxPlaces()) - 1;
+    }
+
+    public static int[] getPow10() {
+        int maxPlaces = getMaxPlaces();
+        int[] arr = new int[maxPlaces];
+        for (int i = 0; i < maxPlaces; i++) {
+            arr[i] = (int) Math.pow(10, maxPlaces - 1 - i);
         }
         return arr;
     }
@@ -42,9 +49,10 @@ public class TallyCounterItem extends Item implements IClickReactive {
 
     @Contract(pure = true)
     private static int @NonNull [] digits(int total) {
-        int[] d = new int[MAX_PLACES];
+        int maxPlaces = getMaxPlaces();
+        int[] d = new int[maxPlaces];
         int remaining = total;
-        for (int i = MAX_PLACES - 1; i >= 0; i--) {
+        for (int i = maxPlaces - 1; i >= 0; i--) {
             d[i] = remaining % 10;
             remaining /= 10;
         }
@@ -110,14 +118,15 @@ public class TallyCounterItem extends Item implements IClickReactive {
 
     private static void commit(ServerPlayer player, @NonNull ItemStack stack, boolean forward) {
         int current = stack.getOrDefault(ModComponents.TALLY_COUNT, 0);
-        int newTotal = Math.floorMod(current + (forward ? 1 : -1), MAX_TALLY + 1);
+        int newTotal = Math.floorMod(current + (forward ? 1 : -1), getMaxTally() + 1);
         stack.set(ModComponents.TALLY_COUNT, newTotal);
 
         int[] have = digits(stack.getOrDefault(ModComponents.TALLY_DISPLAY, 0));
         int[] want = digits(newTotal);
 
+        int maxPlaces = getMaxPlaces();
         boolean higherPlacesMatch = true;
-        for (int i = 0; i < MAX_PLACES - 1; i++) {
+        for (int i = 0; i < maxPlaces - 1; i++) {
             if (have[i] != want[i]) { higherPlacesMatch = false; break; }
         }
 
@@ -151,8 +160,9 @@ public class TallyCounterItem extends Item implements IClickReactive {
         int[] have = digits(displayed);
         int[] want = digits(anim.targetTotal());
 
+        int maxPlaces = getMaxPlaces();
         int idx = -1;
-        for (int i = MAX_PLACES - 1; i >= 0; i--) {
+        for (int i = maxPlaces - 1; i >= 0; i--) {
             if (have[i] != want[i]) { idx = i; break; }
         }
 
@@ -163,7 +173,7 @@ public class TallyCounterItem extends Item implements IClickReactive {
 
         int digit = have[idx];
         int newDigit = Math.floorMod(digit + (anim.forward() ? 1 : -1), 10);
-        int newDisplayed = displayed + (newDigit - digit) * POW10[idx];
+        int newDisplayed = displayed + (newDigit - digit) * getPow10()[idx];
 
         stack.set(ModComponents.TALLY_DISPLAY, newDisplayed);
         tick(player);

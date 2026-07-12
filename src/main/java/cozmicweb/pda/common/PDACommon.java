@@ -12,6 +12,8 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.jetbrains.annotations.Contract;
 import org.jspecify.annotations.NonNull;
@@ -23,7 +25,9 @@ public class PDACommon {
     public static final String MOD_ID = "pda";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public PDACommon(IEventBus modEventBus, ModContainer modContainer) {
+    public PDACommon(IEventBus modEventBus, ModContainer container) {
+        container.registerConfig(ModConfig.Type.COMMON, PDAConfig.SPEC);
+
         ModItems.register(modEventBus);
         ModAttachments.register(modEventBus);
         ModComponents.register(modEventBus);

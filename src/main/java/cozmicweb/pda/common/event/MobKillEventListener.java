@@ -1,6 +1,7 @@
 package cozmicweb.pda.common.event;
 
 import cozmicweb.pda.common.PDACommon;
+import cozmicweb.pda.common.PDAConfig;
 import cozmicweb.pda.common.display.InfoDisplayManager;
 import cozmicweb.pda.common.item.TallyCounterItem;
 import cozmicweb.pda.common.registry.ModAttachments;
@@ -24,7 +25,7 @@ public class MobKillEventListener {
             String victimTypeId = victimType.toString();
 
             player.setData(ModAttachments.LAST_ENTITY_TYPE_KILLED, victimTypeId);
-            if (InfoDisplayManager.isHandlerActive("display_kills"))
+            if (InfoDisplayManager.isHandlerActive("display_kills") && PDAConfig.TALLY_KILL_SOUND.get())
                 TallyCounterItem.tick(player);
         }
     }
