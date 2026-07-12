@@ -1,5 +1,6 @@
-package cozmicweb.pda.common;
+package cozmicweb.pda.common.registry;
 
+import cozmicweb.pda.common.PDACommon;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;

@@ -1,5 +1,6 @@
-package cozmicweb.pda.common;
+package cozmicweb.pda.common.registry;
 
+import cozmicweb.pda.common.PDACommon;
 import cozmicweb.pda.common.item.TallyCounterItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;

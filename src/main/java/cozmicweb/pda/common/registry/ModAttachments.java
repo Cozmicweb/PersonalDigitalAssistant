@@ -1,7 +1,7 @@
-package cozmicweb.pda.common;
+package cozmicweb.pda.common.registry;
 
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import cozmicweb.pda.common.PDACommon;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;

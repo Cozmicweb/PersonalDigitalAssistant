@@ -1,6 +1,8 @@
-package cozmicweb.pda.common;
+package cozmicweb.pda.common.registry;
 
 import com.mojang.serialization.Codec;
+import cozmicweb.pda.common.PDACommon;
+import cozmicweb.pda.common.TallyAnimState;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.codec.ByteBufCodecs;

@@ -2,6 +2,10 @@ package cozmicweb.pda.common;
 
 import com.mojang.logging.LogUtils;
 import cozmicweb.pda.common.display.InfoDisplayManager;
+import cozmicweb.pda.common.registry.ModAttachments;
+import cozmicweb.pda.common.registry.ModComponents;
+import cozmicweb.pda.common.registry.ModItems;
+import cozmicweb.pda.common.registry.ModSounds;
 import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;

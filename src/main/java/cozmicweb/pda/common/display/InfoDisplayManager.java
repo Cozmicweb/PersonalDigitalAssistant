@@ -1,6 +1,6 @@
 package cozmicweb.pda.common.display;
 
-import cozmicweb.pda.common.ModDataMaps;
+import cozmicweb.pda.common.registry.ModDataMaps;
 import cozmicweb.pda.common.PDACommon;
 import cozmicweb.pda.common.display.handlers.*;
 import net.minecraft.client.Minecraft;

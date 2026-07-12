@@ -1,5 +1,6 @@
-package cozmicweb.pda.common;
+package cozmicweb.pda.common.registry;
 
+import cozmicweb.pda.common.PDACommon;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;

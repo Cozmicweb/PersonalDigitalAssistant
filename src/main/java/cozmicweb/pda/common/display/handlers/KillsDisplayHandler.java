@@ -1,6 +1,6 @@
 package cozmicweb.pda.common.display.handlers;
 
-import cozmicweb.pda.common.ModAttachments;
+import cozmicweb.pda.common.registry.ModAttachments;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;

@@ -1,15 +1,13 @@
 package cozmicweb.pda.common.event;
 
-import cozmicweb.pda.common.ModAttachments;
 import cozmicweb.pda.common.PDACommon;
 import cozmicweb.pda.common.display.InfoDisplayManager;
-import cozmicweb.pda.common.display.handlers.InfoDisplayHandler;
 import cozmicweb.pda.common.item.TallyCounterItem;
+import cozmicweb.pda.common.registry.ModAttachments;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;

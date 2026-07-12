@@ -1,6 +1,8 @@
 package cozmicweb.pda.common.item;
 
 import cozmicweb.pda.common.*;
+import cozmicweb.pda.common.registry.ModComponents;
+import cozmicweb.pda.common.registry.ModSounds;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextColor;
