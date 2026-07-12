@@ -1,5 +1,7 @@
 package cozmicweb.pda.client;
 
+import cozmicweb.pda.client.gui.RenderTextHorizontalAlignment;
+import cozmicweb.pda.client.gui.RenderTextVerticalAlignment;
 import cozmicweb.pda.common.display.InfoDisplayManager;
 import cozmicweb.pda.common.display.handlers.TimeDisplayHandler;
 import net.minecraft.resources.Identifier;
@@ -29,17 +31,35 @@ public class PDAClientConfig {
     // Lifeform Analyzer
     public static final ModConfigSpec.BooleanValue LIFEFORM_ANALYZER_SOUND;
 
+    // Rendering
+    public static final ModConfigSpec.ConfigValue<Integer> RENDER_POS_X;
+    public static final ModConfigSpec.ConfigValue<Integer> RENDER_POS_Y;
+    public static final ModConfigSpec.IntValue RENDER_ALPHA;
+    public static final ModConfigSpec.BooleanValue RENDER_DROP_SHADOW;
+    public static final ModConfigSpec.IntValue RENDER_SIZE;
+    public static final ModConfigSpec.ConfigValue<String> RENDER_COLOR;
+    public static final ModConfigSpec.EnumValue<RenderTextVerticalAlignment> RENDER_TEXT_VERTICAL_ALIGNMENT;
+    public static final ModConfigSpec.EnumValue<RenderTextHorizontalAlignment> RENDER_TEXT_HORIZONTAL_ALIGNMENT;
+
     static {
-        // Stopwatch
-        BUILDER.push("stopwatch");
-        STOPWATCH_FORMAT = BUILDER.comment("The first Java format specifier will be replaced with your current velocity as a float.").define("stopwatch_format", "%.2f ᴍ/ꜱ");
+        // Rendering
+        BUILDER.push("rendering");
+        RENDER_POS_X = BUILDER.comment("The X position of the info display.").define("render_pos_x", 5);
+        RENDER_POS_Y = BUILDER.comment("The Y position of the info display.").define("render_pos_y", 5);
+        RENDER_DROP_SHADOW = BUILDER.comment("Whether to render a drop shadow behind the info display.").define("render_drop_shadow", true);
+        RENDER_ALPHA = BUILDER.comment("The alpha value of the info display.").defineInRange("render_alpha", 255, 0, 255);
+        RENDER_SIZE = BUILDER.comment("How large should the list be rendered?").defineInRange("render_size", 100, 0, 200);
+        RENDER_COLOR = BUILDER.comment("Text color as a 6-char hex (RRGGBB).").define("render_color", "FFFFFF");
+        RENDER_TEXT_VERTICAL_ALIGNMENT = BUILDER.comment("What direction should the list be rendered?").defineEnum("render_text_vertical_alignment", RenderTextVerticalAlignment.TOP_TO_BOTTOM);
+        RENDER_TEXT_HORIZONTAL_ALIGNMENT = BUILDER.comment("How should should the text be rendered?").defineEnum("render_text_horizontal_alignment", RenderTextHorizontalAlignment.LEFT_TO_RIGHT);
         BUILDER.pop();
 
-        // Position
-        BUILDER.push("position");
-        POSITION_FORMAT = BUILDER.comment("The first two Java format specifiers will be replaced with your current X and Z coordinates as floats.").define("position_format", "%.1f, %.1f");
-        DEPTH_FORMAT = BUILDER.comment("The first Java format specifier will be replaced with your current Y coordinate as a float.").define("depth_format", "%.1f");
-        COMBINED_POSITION_FORMAT = BUILDER.comment("The first three Java format specifiers will be replaced with your current X, Y, and Z coordinates as floats.").define("combined_position_format", "%.1f, %.1f, %.1f");
+        // All Display Handler Priorities
+        BUILDER.push("priorities");
+        InfoDisplayManager.getAllHandlers().forEach((id, handler) -> {
+            int defaultPriority = handler.getDefaultPriority();
+            PRIORITY_MAP.put(id, BUILDER.comment("Higher = Lower").define(id + "_priority", defaultPriority));
+        });
         BUILDER.pop();
 
         // Clock
@@ -54,12 +74,16 @@ public class PDAClientConfig {
         LIFEFORM_ANALYZER_SOUND = BUILDER.comment("Whether to play a sound when a new lifeform is detected.").define("lifeform_analyzer_sound", true);
         BUILDER.pop();
 
-        // All Display Handler Priorities
-        BUILDER.push("priorities");
-        InfoDisplayManager.getAllHandlers().forEach((id, handler) -> {
-            int defaultPriority = handler.getDefaultPriority();
-            PRIORITY_MAP.put(id, BUILDER.comment("Higher = Lower").define(id + "_priority", defaultPriority));
-        });
+        // Position
+        BUILDER.push("position");
+        POSITION_FORMAT = BUILDER.comment("The first two Java format specifiers will be replaced with your current X and Z coordinates as floats.").define("position_format", "%.1f, %.1f");
+        DEPTH_FORMAT = BUILDER.comment("The first Java format specifier will be replaced with your current Y coordinate as a float.").define("depth_format", "%.1f");
+        COMBINED_POSITION_FORMAT = BUILDER.comment("The first three Java format specifiers will be replaced with your current X, Y, and Z coordinates as floats.").define("combined_position_format", "%.1f, %.1f, %.1f");
+        BUILDER.pop();
+
+        // Stopwatch
+        BUILDER.push("stopwatch");
+        STOPWATCH_FORMAT = BUILDER.comment("The first Java format specifier will be replaced with your current velocity as a float.").define("stopwatch_format", "%.2f ᴍ/ꜱ");
         BUILDER.pop();
 
         SPEC = BUILDER.build();
