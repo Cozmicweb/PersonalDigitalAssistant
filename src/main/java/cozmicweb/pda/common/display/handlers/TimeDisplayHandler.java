@@ -11,15 +11,15 @@ import org.jspecify.annotations.NonNull;
 public class TimeDisplayHandler extends InfoDisplayHandler {
 
     public static boolean is24HourFormat() {
-        return PDAClientConfig.CLOCK_FORMAT.get() == TimeFormat.HOUR24;
+        return PDAClientConfig.TIME_FORMAT.get() == TimeFormat.HOUR24;
     }
 
     public static boolean shouldZerosPersist() {
-        return PDAClientConfig.CLOCK_ZEROS.get();
+        return PDAClientConfig.TIME_ZEROS.get();
     }
 
     public static boolean shouldAppendMeridiems() {
-        return PDAClientConfig.CLOCK_MERIDIEMS.get();
+        return PDAClientConfig.TIME_MERIDIEMS.get();
     }
 
     public TimeDisplayHandler(Identifier id) {

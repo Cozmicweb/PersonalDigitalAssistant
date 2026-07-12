@@ -34,7 +34,7 @@ public class DPSDisplayHandler extends InfoDisplayHandler {
 
     @Override
     public int getUpdateInterval() {
-        return PDAConfig.RADAR_UPDATE_RATE.get();
+        return PDAConfig.DPS_METER_UPDATE_RATE.get();
     }
 
     @Override

@@ -73,6 +73,10 @@ public abstract class InfoDisplayHandler {
         return Component.empty();
     }
 
+    public boolean isActive() {
+        return InfoDisplayManager.isHandlerActive(id.getPath());
+    }
+
     /**
      * Builds the text displayed on the PDA overlay.
      * <p>This is called on the client during overlay rendering.</p>

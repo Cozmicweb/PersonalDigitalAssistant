@@ -21,17 +21,17 @@ public class InfoDisplayManager {
 
     public static void initialize() {
         register(PDACommon.id("display_time"), TimeDisplayHandler.class);
-        register(PDACommon.id("display_kills"), KillsDisplayHandler.class);
+        register(PDACommon.id("display_mob_kills"), KillsDisplayHandler.class);
         register(PDACommon.id("display_horizontal_position"), HorizontalPositionDisplayHandler.class);
         register(PDACommon.id("display_vertical_position"), VerticalPositionDisplayHandler.class);
         register(PDACommon.id("display_velocity"), VelocityDisplayHandler.class);
         register(PDACommon.id("display_weather"), WeatherDisplayHandler.class);
         register(PDACommon.id("display_moon_phase"), MoonPhaseDisplayHandler.class);
-        register(PDACommon.id("display_monsters"), MonstersDisplayHandler.class);
-        register(PDACommon.id("display_rare"), RareMobDisplayHandler.class);
+        register(PDACommon.id("display_nearby_monsters"), MonstersDisplayHandler.class);
+        register(PDACommon.id("display_rare_mob"), RareMobDisplayHandler.class);
         register(PDACommon.id("display_dps"), DPSDisplayHandler.class);
         register(PDACommon.id("display_luck"), LuckDisplayHandler.class);
-        register(PDACommon.id("display_ore"), OreDisplayHandler.class);
+        register(PDACommon.id("display_valuable_ore"), OreDisplayHandler.class);
     }
 
     public static <T extends InfoDisplayHandler> void register(Identifier id, Class<T> clazz) {

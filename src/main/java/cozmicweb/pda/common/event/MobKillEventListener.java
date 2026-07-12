@@ -25,7 +25,7 @@ public class MobKillEventListener {
             String victimTypeId = victimType.toString();
 
             player.setData(ModAttachments.LAST_ENTITY_TYPE_KILLED, victimTypeId);
-            if (InfoDisplayManager.isHandlerActive("display_kills") && PDAConfig.TALLY_KILL_SOUND.get())
+            if (InfoDisplayManager.isHandlerActive("display_mob_kills") && PDAConfig.TALLY_COUNTER_KILL_SOUND.get())
                 TallyCounterItem.tick(player);
         }
     }

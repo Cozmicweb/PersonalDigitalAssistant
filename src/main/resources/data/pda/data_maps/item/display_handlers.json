@@ -3,20 +3,20 @@
     "minecraft:clock": "pda:display_time",
     "minecraft:compass": "pda:display_horizontal_position",
     "pda:depth_meter": "pda:display_vertical_position",
-    "pda:tally_counter": "pda:display_kills",
+    "pda:tally_counter": "pda:display_mob_kills",
     "pda:stopwatch": "pda:display_velocity",
     "pda:weather_radio": "pda:display_weather",
     "pda:sextant": "pda:display_moon_phase",
-    "pda:radar": "pda:display_monsters",
-    "pda:lifeform_analyzer": "pda:display_rare",
+    "pda:radar": "pda:display_nearby_monsters",
+    "pda:lifeform_analyzer": "pda:display_rare_mob",
     "pda:fishermans_pocket_guide": "pda:display_luck",
     "pda:dps_meter": "pda:display_dps",
-    "pda:metal_detector": "pda:display_ore",
+    "pda:metal_detector": "pda:display_valuable_ore",
 
     "pda:rek_3000": [
-      "pda:display_monsters",
-      "pda:display_rare",
-      "pda:display_kills"
+      "pda:display_nearby_monsters",
+      "pda:display_rare_mob",
+      "pda:display_mob_kills"
     ],
     "pda:gps": [
       "pda:display_time",
@@ -30,7 +30,7 @@
     ],
     "pda:pillager_tech": [
       "pda:display_velocity",
-      "pda:display_ore",
+      "pda:display_valuable_ore",
       "pda:display_dps"
     ],
 
@@ -39,10 +39,10 @@
       "pda:display_weather",
       "pda:display_moon_phase",
       "pda:display_luck",
-      "pda:display_ore",
-      "pda:display_rare",
-      "pda:display_monsters",
-      "pda:display_kills",
+      "pda:display_valuable_ore",
+      "pda:display_rare_mob",
+      "pda:display_nearby_monsters",
+      "pda:display_mob_kills",
       "pda:display_dps",
       "pda:display_velocity",
       "pda:display_horizontal_position",

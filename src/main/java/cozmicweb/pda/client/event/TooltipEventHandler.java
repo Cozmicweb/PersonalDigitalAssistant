@@ -1,15 +1,21 @@
 package cozmicweb.pda.client.event;
 
+import com.mojang.blaze3d.platform.InputConstants;
+import cozmicweb.pda.client.PDAClient;
 import cozmicweb.pda.common.PDACommon;
 import cozmicweb.pda.common.display.InfoDisplayManager;
 import cozmicweb.pda.common.display.handlers.InfoDisplayHandler;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
+import org.lwjgl.glfw.GLFW;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,40 +25,36 @@ public class TooltipEventHandler {
     @SubscribeEvent
     public static void onItemTooltip(ItemTooltipEvent event) {
         ItemStack stack = event.getItemStack();
+
         List<InfoDisplayHandler> handlers = InfoDisplayManager.getHandlersFor(stack);
-
-        if (handlers.isEmpty()) {
+        if (handlers.isEmpty())
             return;
-        }
+        handlers.sort(Comparator.comparingDouble(InfoDisplayHandler::getPriority));
 
-        List<Component> behaviors = handlers.stream()
-                .map(InfoDisplayHandler::getBehavior)
-                .filter(c -> !c.equals(Component.empty()))
-                .collect(Collectors.toList());
+        if (!InputConstants.isKeyDown(Minecraft.getInstance().getWindow(), PDAClient.VIEW_INFO_MAPPING.get().getKey().getValue())) {
+            Component keyComponent = PDAClient.VIEW_INFO_MAPPING.get().getTranslatedKeyMessage();
+            Component tooltip = Component.empty()
+                    .append(Component.translatable("tooltip.pda.more_info.prefix").withStyle(ChatFormatting.DARK_GRAY))
+                    .append(keyComponent.copy().withStyle(ChatFormatting.GRAY))
+                    .append(Component.translatable("tooltip.pda.more_info.suffix").withStyle(ChatFormatting.DARK_GRAY));
+            event.getToolTip().add(tooltip);
+        } else {
+            Component keyComponent = PDAClient.VIEW_INFO_MAPPING.get().getTranslatedKeyMessage();
+            Component tooltip = Component.empty()
+                    .append(Component.translatable("tooltip.pda.more_info.prefix").withStyle(ChatFormatting.DARK_GRAY))
+                    .append(keyComponent.copy().withStyle(ChatFormatting.WHITE))
+                    .append(Component.translatable("tooltip.pda.more_info.suffix").withStyle(ChatFormatting.DARK_GRAY));
+            event.getToolTip().add(tooltip);
+            event.getToolTip().add(Component.empty());
+            event.getToolTip().add(Component.translatable("tooltip.pda.header").withStyle(ChatFormatting.GRAY));
 
-        if (behaviors.isEmpty()) {
-            return;
-        }
-
-        for (int i = 0; i < behaviors.size(); i += 4) {
-            int end = Math.min(i + 4, behaviors.size());
-            List<Component> subList = behaviors.subList(i, end);
-            
-            Component line;
-            if (i == 0) {
-                line = Component.translatable("text.pda.tooltip.displays");
-            } else {
-                line = Component.empty();
-            }
-
-            for (int j = 0; j < subList.size(); j++) {
-                line = line.copy().append(subList.get(j));
-                if (j < subList.size() - 1 || end < behaviors.size()) {
-                    line = line.copy().append(Component.literal(", "));
+            for (InfoDisplayHandler handler : handlers) {
+                Component behavior = handler.getBehavior();
+                if (!behavior.getString().isEmpty()) {
+                    ChatFormatting color = handler.isActive() ? ChatFormatting.WHITE : ChatFormatting.DARK_GRAY;
+                    event.getToolTip().add(Component.literal(" ⏺ ").append(behavior).withStyle(color));
                 }
             }
-            
-            event.getToolTip().add(line.copy().withColor(0x8A8E92));
         }
     }
 }

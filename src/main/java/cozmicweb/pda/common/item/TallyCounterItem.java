@@ -25,7 +25,7 @@ public class TallyCounterItem extends Item implements IClickReactive {
     public static final int IDLE_REFRESH_TICKS = 10;
 
     public static int getMaxPlaces() {
-        return PDAConfig.TALLY_COUNT_LIMIT.get();
+        return PDAConfig.TALLY_COUNTER_LIMIT.get();
     }
 
     public static int getMaxTally() {

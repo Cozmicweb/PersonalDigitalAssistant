@@ -4,7 +4,6 @@ import cozmicweb.pda.client.PDAClientConfig;
 import cozmicweb.pda.common.PDAConfig;
 import cozmicweb.pda.common.data.RareMobEntry;
 import cozmicweb.pda.common.registry.ModSounds;
-import io.netty.handler.codec.spdy.SpdyHttpResponseStreamIdHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
@@ -33,7 +32,7 @@ public class RareMobDisplayHandler extends InfoDisplayHandler {
     }
 
     public int getSize() {
-        return PDAConfig.RADAR_SIZE.get();
+        return PDAConfig.LIFEFORM_ANALYZER_SIZE.get();
     }
 
     @Override
@@ -43,7 +42,7 @@ public class RareMobDisplayHandler extends InfoDisplayHandler {
 
     @Override
     public int getUpdateInterval() {
-        return PDAConfig.RADAR_UPDATE_RATE.get();
+        return PDAConfig.LIFEFORM_ANALYZER_UPDATE_RATE.get();
     }
 
     @Override
@@ -71,7 +70,7 @@ public class RareMobDisplayHandler extends InfoDisplayHandler {
         }
 
         LivingEntity rare = rareMobs.getFirst();
-        if (PDAClientConfig.LIFEFORM_ANALYZER_SOUND.get() && !lastMob.equals(rare.getStringUUID()))
+        if (PDAClientConfig.RARE_MOB_SOUND.get() && !lastMob.equals(rare.getStringUUID()))
             player.playSound(ModSounds.RADAR_BEEP.value(), 0.3F, 2.0F);
 
         lastMob = rare.getStringUUID();

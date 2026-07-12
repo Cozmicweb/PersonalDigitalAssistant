@@ -7,7 +7,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
-import net.minecraft.util.ARGB;
 import net.minecraft.util.FormattedCharSequence;
 import net.neoforged.neoforge.client.gui.GuiLayer;
 import cozmicweb.pda.common.display.InfoDisplayManager;
@@ -27,40 +26,40 @@ public class InfoOverlay implements GuiLayer {
     public static int getX(GuiGraphicsExtractor graphics) {
         RenderTextHorizontalAlignment alignment = getRenderAlignment();
         if (alignment == RenderTextHorizontalAlignment.LEFT_TO_RIGHT)
-            return PDAClientConfig.RENDER_POS_X.get();
+            return PDAClientConfig.LIST_POS_X.get();
         else if (alignment == RenderTextHorizontalAlignment.RIGHT_TO_LEFT)
-            return graphics.guiWidth() - PDAClientConfig.RENDER_POS_X.get();
+            return graphics.guiWidth() - PDAClientConfig.LIST_POS_X.get();
         else
-            return graphics.guiWidth() / 2 + PDAClientConfig.RENDER_POS_X.get();
+            return graphics.guiWidth() / 2 + PDAClientConfig.LIST_POS_X.get();
     }
 
     public static int getY(GuiGraphicsExtractor graphics) {
         if (getDirection() == RenderTextVerticalAlignment.TOP_TO_BOTTOM)
-            return PDAClientConfig.RENDER_POS_Y.get();
+            return PDAClientConfig.LIST_POS_Y.get();
         else if (getDirection() == RenderTextVerticalAlignment.BOTTOM_TO_TOP)
-            return graphics.guiHeight() - PDAClientConfig.RENDER_POS_Y.get();
+            return graphics.guiHeight() - PDAClientConfig.LIST_POS_Y.get();
         else
-            return graphics.guiHeight() / 2 + PDAClientConfig.RENDER_POS_Y.get();
+            return graphics.guiHeight() / 2 + PDAClientConfig.LIST_POS_Y.get();
     }
 
     public static RenderTextVerticalAlignment getDirection() {
-        return PDAClientConfig.RENDER_TEXT_VERTICAL_ALIGNMENT.get();
+        return PDAClientConfig.LIST_VERTICAL_ALIGNMENT.get();
     }
 
     public static int getAlpha() {
-        return PDAClientConfig.RENDER_ALPHA.get();
+        return PDAClientConfig.LIST_TEXT_ALPHA.get();
     }
 
     public static boolean getDropShadow() {
-        return PDAClientConfig.RENDER_DROP_SHADOW.get();
+        return PDAClientConfig.LIST_TEXT_DROP_SHADOW.get();
     }
 
     public static RenderTextHorizontalAlignment getRenderAlignment() {
-        return PDAClientConfig.RENDER_TEXT_HORIZONTAL_ALIGNMENT.get();
+        return PDAClientConfig.LIST_HORIZONTAL_ALIGNMENT.get();
     }
 
     public static int getColor() {
-        String hex = PDAClientConfig.RENDER_COLOR.get();
+        String hex = PDAClientConfig.LIST_TEXT_COLOR.get();
         boolean valid = hex.matches("^#?[0-9A-Fa-f]{6}$");
         int result;
 
@@ -78,7 +77,7 @@ public class InfoOverlay implements GuiLayer {
     }
 
     public static double getSize() {
-        return PDAClientConfig.RENDER_SIZE.get() / 100.0;
+        return PDAClientConfig.LIST_TEXT_SIZE.get() / 100.0;
     }
 
     @Override

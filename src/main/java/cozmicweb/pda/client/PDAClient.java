@@ -1,11 +1,13 @@
 package cozmicweb.pda.client;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.logging.LogUtils;
 import cozmicweb.pda.common.display.handlers.InfoDisplayHandler;
 import cozmicweb.pda.common.display.InfoDisplayManager;
 import cozmicweb.pda.client.gui.InfoOverlay;
 import cozmicweb.pda.common.PDACommon;
 import cozmicweb.pda.common.network.ServerDataRequestPayload;
+import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
@@ -19,13 +21,16 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
+import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
+import net.neoforged.neoforge.client.settings.KeyConflictContext;
+import net.neoforged.neoforge.common.util.Lazy;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
+import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 
 import java.util.ArrayList;
@@ -37,6 +42,15 @@ import java.util.Set;
 public class PDAClient {
     public static final Logger LOGGER = LogUtils.getLogger();
     private static int tickCounter = 0;
+
+    public static final KeyMapping.Category PDA_CATEGORY = new KeyMapping.Category(PDACommon.id("category"));
+    public static final Lazy<KeyMapping> VIEW_INFO_MAPPING = Lazy.of(
+            () -> new KeyMapping(
+                    "key.pda.view_info",
+                    KeyConflictContext.GUI,
+                    InputConstants.Type.KEYSYM,
+                    GLFW.GLFW_KEY_LEFT_CONTROL,
+                    PDA_CATEGORY));
 
     public PDAClient(ModContainer container) {
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
@@ -86,6 +100,12 @@ public class PDAClient {
     @SubscribeEvent
     public static void registerOverlay(RegisterGuiLayersEvent event) {
         event.registerAbove(VanillaGuiLayers.BOSS_OVERLAY, PDACommon.id("information_overlay"), new InfoOverlay());
+    }
+
+    @SubscribeEvent
+    public static void registerBindings(RegisterKeyMappingsEvent event) {
+        event.registerCategory(PDA_CATEGORY);
+        event.register(VIEW_INFO_MAPPING.get());
     }
 
 }
