@@ -64,6 +64,18 @@ public record ServerDataResponsePayload(List<Response> responses) implements Cus
                     buf.writeByte(3);
                     ByteBufCodecs.fromCodecWithRegistries(Identifier.CODEC).encode(buf, id);
                 }
+                case Float f -> {
+                    buf.writeByte(4);
+                    buf.writeFloat(f);
+                }
+                case Double d -> {
+                    buf.writeByte(5);
+                    buf.writeDouble(d);
+                }
+                case Long l -> {
+                    buf.writeByte(6);
+                    buf.writeLong(l);
+                }
                 case null, default -> buf.writeByte(-1);
             }
         }
@@ -75,6 +87,9 @@ public record ServerDataResponsePayload(List<Response> responses) implements Cus
                 case 1 -> buf.readUtf();
                 case 2 -> buf.readBoolean();
                 case 3 -> ByteBufCodecs.fromCodecWithRegistries(Identifier.CODEC).decode(buf);
+                case 4 -> buf.readFloat();
+                case 5 -> buf.readDouble();
+                case 6 -> buf.readLong();
                 default -> null;
             };
         }

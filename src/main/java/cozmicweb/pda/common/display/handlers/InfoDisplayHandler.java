@@ -39,6 +39,14 @@ public abstract class InfoDisplayHandler {
     }
 
     /**
+     * The interval (in ticks) at which this handler should request data from the server.
+     * <p>Only works if {@link #requiresServerSync()} is {@code true}.</p>
+     */
+    public int getUpdateInterval() {
+        return 20;
+    }
+
+    /**
      * Builds the text displayed on the PDA overlay.
      * <p>This is called on the client during overlay rendering.</p>
      * <p>For client-only handlers, this can calculate the text directly.</p>

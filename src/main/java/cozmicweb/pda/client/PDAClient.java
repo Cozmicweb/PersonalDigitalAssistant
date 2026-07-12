@@ -45,26 +45,27 @@ public class PDAClient {
 
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Post event) {
-        if (tickCounter++ % 20 == 0) {
-            LocalPlayer player = Minecraft.getInstance().player;
-            if (player == null) return;
+        LocalPlayer player = Minecraft.getInstance().player;
+        if (player == null) return;
 
-            Set<InfoDisplayHandler> handlers = InfoDisplayManager.getActiveHandlers();
-            List<ServerDataRequestPayload.Request> requests = new ArrayList<>();
+        Set<InfoDisplayHandler> handlers = InfoDisplayManager.getActiveHandlers();
+        List<ServerDataRequestPayload.Request> requests = new ArrayList<>();
 
-            for (InfoDisplayHandler handler : handlers) {
-                if (handler.requiresServerSync()) {
+        for (InfoDisplayHandler handler : handlers) {
+            if (handler.requiresServerSync()) {
+                if (tickCounter % handler.getUpdateInterval() == 0) {
                     Identifier id = InfoDisplayManager.getIdFor(handler);
                     if (id != null) {
                         requests.add(new ServerDataRequestPayload.Request(id, List.of(handler.getServerDataParameters())));
                     }
                 }
             }
-
-            if (!requests.isEmpty()) {
-                player.connection.send(new ServerDataRequestPayload(requests));
-            }
         }
+
+        if (!requests.isEmpty()) {
+            player.connection.send(new ServerDataRequestPayload(requests));
+        }
+        tickCounter++;
     }
 
     @SubscribeEvent

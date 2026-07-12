@@ -31,6 +31,7 @@ public class ModItems {
     public static final DeferredItem<Item> SEXTANT = ITEMS.registerItem("sextant", Item::new, props -> props.stacksTo(1).rarity(Rarity.UNCOMMON));
     public static final DeferredItem<Item> RADAR = ITEMS.registerItem("radar", Item::new, props -> props.stacksTo(1).rarity(Rarity.UNCOMMON));
     public static final DeferredItem<Item> LIFEFORM_ANALYZER = ITEMS.registerItem("lifeform_analyzer", Item::new, props -> props.stacksTo(1).rarity(Rarity.UNCOMMON));
+    public static final DeferredItem<Item> DPS_METER = ITEMS.registerItem("dps_meter", Item::new, props -> props.stacksTo(1).rarity(Rarity.UNCOMMON));
 
     public static void register(IEventBus modEventBus) {
         ITEMS.register(modEventBus);

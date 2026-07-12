@@ -16,11 +16,12 @@ public class MonstersDisplayHandler extends InfoDisplayHandler {
     private static long lastCheck = System.currentTimeMillis();
     private static Component lastText = Component.literal("");
 
-    public static int getSize() {
+    public int getSize() {
         return PDAConfig.RADAR_SIZE.get();
     }
 
-    public static int getUpdateInterval() {
+    @Override
+    public int getUpdateInterval() {
         return PDAConfig.RADAR_UPDATE_RATE.get();
     }
 

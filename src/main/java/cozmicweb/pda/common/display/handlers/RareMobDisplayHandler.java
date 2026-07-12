@@ -22,11 +22,12 @@ public class RareMobDisplayHandler extends InfoDisplayHandler {
     private static Component lastText = Component.literal("");
     private static String lastMob = "";
 
-    public static int getSize() {
+    public int getSize() {
         return PDAConfig.RADAR_SIZE.get();
     }
 
-    public static int getUpdateInterval() {
+    @Override
+    public int getUpdateInterval() {
         return PDAConfig.RADAR_UPDATE_RATE.get();
     }
 

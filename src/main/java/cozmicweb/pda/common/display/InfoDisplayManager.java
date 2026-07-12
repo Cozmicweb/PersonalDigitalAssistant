@@ -24,6 +24,7 @@ public class InfoDisplayManager {
         register(PDACommon.id("display_moon_phase"), new MoonPhaseDisplayHandler());
         register(PDACommon.id("display_monsters"), new MonstersDisplayHandler());
         register(PDACommon.id("display_rare"), new RareMobDisplayHandler());
+        register(PDACommon.id("display_dps"), new DPSDisplayHandler());
     }
 
     public static void register(Identifier id, InfoDisplayHandler logic) {

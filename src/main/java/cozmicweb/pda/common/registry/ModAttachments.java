@@ -2,6 +2,7 @@ package cozmicweb.pda.common.registry;
 
 import com.mojang.serialization.Codec;
 import cozmicweb.pda.common.PDACommon;
+import cozmicweb.pda.common.attachments.DamageTracker;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -15,6 +16,13 @@ public class ModAttachments {
 
     public static final Supplier<AttachmentType<String>> LAST_ENTITY_TYPE_KILLED = ATTACHMENT_TYPES.register(
             "last_entity_type_killed", () -> AttachmentType.builder(() -> "minecraft:zombie").serialize(Codec.STRING.fieldOf("last_entity_type_killed")).build()
+    );
+
+    public static final Supplier<AttachmentType<DamageTracker>> DAMAGE_TRACKER = ATTACHMENT_TYPES.register(
+            "damage_tracker", () -> AttachmentType.builder(DamageTracker::new)
+                    .serialize(DamageTracker.CODEC.fieldOf("data"))
+                    .copyOnDeath()
+                    .build()
     );
 
     public static void register(IEventBus modEventBus) {

@@ -18,6 +18,9 @@ public class PDAConfig {
     public static final ModConfigSpec.IntValue RADAR_SIZE;
     public static final ModConfigSpec.IntValue RADAR_UPDATE_RATE;
 
+    // DPS Meter
+    public static final ModConfigSpec.IntValue DPS_METER_UPDATE_RATE;
+
     static {
         // Tally Counter
         BUILDER.push("Tally Counter");
@@ -34,6 +37,11 @@ public class PDAConfig {
         BUILDER.push("Radar and Lifeform Analyzer");
         RADAR_SIZE = BUILDER.comment("Size of the radar's detection zone.").defineInRange("radar_size", 16, 8, 128);
         RADAR_UPDATE_RATE = BUILDER.comment("How often the radar should scan for monsters in seconds.").defineInRange("radar_update_rate", 5, 1, 30);
+        BUILDER.pop();
+
+        // DPS Meter
+        BUILDER.push("DPS Meter");
+        DPS_METER_UPDATE_RATE = BUILDER.comment("How often the DPS meter should update in seconds.").defineInRange("dps_meter_update_rate", 3, 1, 15);
         BUILDER.pop();
 
         SPEC = BUILDER.build();

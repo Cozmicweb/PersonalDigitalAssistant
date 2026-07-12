@@ -5,6 +5,7 @@
   "item.pda.sextant": "Sextant",
   "item.pda.radar": "Radar",
   "item.pda.lifeform_analyzer": "Lifeform Analyzer",
+  "item.pda.dps_meter": "DPS Meter",
 
   "text.pda.radar.detected_nearby": "%s enemies nearby!",
   "text.pda.lifeform_analyzer.nothing": "No rare mobs nearby",
