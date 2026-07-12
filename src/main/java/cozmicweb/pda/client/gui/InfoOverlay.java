@@ -2,11 +2,11 @@ package cozmicweb.pda.client.gui;
 
 import cozmicweb.pda.client.PDAClient;
 import cozmicweb.pda.client.PDAClientConfig;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.util.FormattedCharSequence;
 import net.neoforged.neoforge.client.gui.GuiLayer;
 import cozmicweb.pda.common.display.InfoDisplayManager;
@@ -70,7 +70,7 @@ public class InfoOverlay implements GuiLayer {
         } else {
             result = 0xFFFFFFFF;
             if (mc.player != null)
-                mc.player.sendOverlayMessage(Component.translatable("pda.configuration.render_text_color.error", hex).withColor(TextColor.RED));
+                mc.player.sendOverlayMessage(Component.translatable("pda.configuration.render_text_color.error", hex).withStyle(ChatFormatting.WHITE));
         }
 
         return result;
@@ -82,7 +82,7 @@ public class InfoOverlay implements GuiLayer {
 
     @Override
     public void render(@NonNull GuiGraphicsExtractor guiGraphics, @NonNull DeltaTracker deltaTracker) {
-        if (mc.player == null || mc.level == null || mc.gui.hud.isHidden() || mc.debugEntries.isOverlayVisible())
+        if (mc.player == null || mc.level == null || mc.options.hideGui || mc.debugEntries.isOverlayVisible())
             return;
 
         Set<InfoDisplayHandler> handlers = InfoDisplayManager.getActiveHandlers();
