@@ -8,16 +8,31 @@ To add existing handlers to more items, a datapack can be used. `data/pda/data_m
 Custom display handlers can be added by extending `InfoDisplayHandler` and following the same registration as stated above.
 ```
 repositories {
-    maven {
-        url = "https://api.modrinth.com/maven"
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        // forRepositories(fg.repository) // Uncomment when using ForgeGradle
+        filter {
+            includeGroup "maven.modrinth"
+        }
     }
 }
 
+// Standard Gradle dependency
 dependencies {
-    implementation "maven.modrinth:personal-digital-assistant:${version}"
+    implementation "${MAVEN_COORDINATES}"
+}
+
+// Legacy Loom dependency
+dependencies {
+    modImplementation "${MAVEN_COORDINATES}"
 }
 ```
-Replace ${version} with the version you want to use.
+Replace ${MAVEN_COORDINATES} with the version you want to use. This can be found under "Developer Information" on any version. For example, version [26.2-v1.0.0](https://modrinth.com/mod/personal-digital-assistant/version/26.2-v1.0.0#:~:text=Modrinth%20Maven%20API.-,Maven%20coordinates%3A,-maven.modrinth%3A8ibwFXBz).
 
 ## How It Works
 The `InfoDisplayHandler` class has some documentation to help but I will describe the pipeline here as well.
