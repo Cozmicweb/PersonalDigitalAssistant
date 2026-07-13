@@ -13,6 +13,8 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.UnmodifiableView;
 import org.jspecify.annotations.NonNull;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 import java.util.*;
 
@@ -51,17 +53,30 @@ public class InfoDisplayManager {
         Set<InfoDisplayHandler> active = new LinkedHashSet<>();
         LocalPlayer player = Minecraft.getInstance().player;
         if (player == null) return active;
+        boolean clientSide = player.level().isClientSide();
 
-        for (ItemStack stack : player.getInventory().getNonEquipmentItems()) {
-            if (stack.isEmpty()) continue;
-            List<InfoDisplayHandler> handlers = getHandlersFor(stack);
+        // Vanilla Inventory
+        player.getInventory().getNonEquipmentItems().forEach(stack -> collectHandlers(stack, clientSide, active));
 
-            if (player.level().isClientSide())
-                handlers.stream().filter(h -> PDAClientConfig.getVisibility(h.id)).forEach(active::add);
-            else
-                active.addAll(handlers);
-        }
+        // Curios Inventory
+        CuriosApi.getCuriosInventory(player).flatMap(curios -> curios.getStacksHandler("information_accessories")).ifPresent(stacksHandler -> {
+            IDynamicStackHandler stacks = stacksHandler.getStacks();
+            for (int i = 0; i < stacks.getSlots(); i++) {
+                collectHandlers(stacks.getStackInSlot(i), clientSide, active);
+            }
+        });
+
         return active;
+    }
+
+    private static void collectHandlers(@NonNull ItemStack stack, boolean clientSide, Set<InfoDisplayHandler> active) {
+        if (stack.isEmpty()) return;
+        List<InfoDisplayHandler> handlers = getHandlersFor(stack);
+
+        if (clientSide)
+            handlers.stream().filter(h -> PDAClientConfig.getVisibility(h.id)).forEach(active::add);
+        else
+            active.addAll(handlers);
     }
 
     public static boolean isHandlerActive(String id) {

@@ -4,7 +4,10 @@ import cozmicweb.pda.common.PDACommon;
 import cozmicweb.pda.common.registry.ModItems;
 import cozmicweb.pda.common.registry.ModTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.Identifier;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.data.ItemTagsProvider;
 import org.jspecify.annotations.NonNull;
@@ -38,6 +41,9 @@ public class ModTagProvider {
                 .add(ModItems.PDA.get())
                 .add(Items.COMPASS)
                 .add(Items.CLOCK);
+
+            this.tag(TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("curios", "information_accessories")))
+                    .addTag(ModTags.INFORMATION_ACCESSORIES);
         }
     }
 

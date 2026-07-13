@@ -27,6 +27,7 @@ public class PDADataGen {
         gen.addProvider(true, new ModLootTableProvider(pack, lookup));
         gen.addProvider(true, new ModLootModifierProvider(pack, lookup));
         gen.addProvider(true, new ModRecipeProvider.Runner(pack, lookup));
+        gen.addProvider(true, new ModCuriosProvider(pack, lookup));
     }
 
 }
