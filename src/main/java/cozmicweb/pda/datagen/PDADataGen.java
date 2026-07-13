@@ -1,6 +1,8 @@
 package cozmicweb.pda.datagen;
 
 import cozmicweb.pda.common.PDACommon;
+import cozmicweb.pda.common.PDACompat;
+import cozmicweb.pda.common.compat.curios.ModCuriosProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -10,7 +12,6 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
 @EventBusSubscriber(modid = PDACommon.MOD_ID)
 public class PDADataGen {
@@ -27,7 +28,9 @@ public class PDADataGen {
         gen.addProvider(true, new ModLootTableProvider(pack, lookup));
         gen.addProvider(true, new ModLootModifierProvider(pack, lookup));
         gen.addProvider(true, new ModRecipeProvider.Runner(pack, lookup));
-        gen.addProvider(true, new ModCuriosProvider(pack, lookup));
+
+        if (PDACompat.curiosLoaded)
+            gen.addProvider(true, new ModCuriosProvider(pack, lookup));
     }
 
 }

@@ -1,4 +1,4 @@
-package cozmicweb.pda.datagen;
+package cozmicweb.pda.common.compat.curios;
 
 import cozmicweb.pda.common.PDACommon;
 import net.minecraft.core.HolderLookup;

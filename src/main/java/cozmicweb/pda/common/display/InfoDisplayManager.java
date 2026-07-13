@@ -1,6 +1,8 @@
 package cozmicweb.pda.common.display;
 
 import cozmicweb.pda.client.PDAClientConfig;
+import cozmicweb.pda.common.PDACompat;
+import cozmicweb.pda.common.compat.curios.CuriosCompat;
 import cozmicweb.pda.common.registry.ModDataMaps;
 import cozmicweb.pda.common.PDACommon;
 import cozmicweb.pda.common.display.handlers.*;
@@ -59,17 +61,13 @@ public class InfoDisplayManager {
         player.getInventory().getNonEquipmentItems().forEach(stack -> collectHandlers(stack, clientSide, active));
 
         // Curios Inventory
-        CuriosApi.getCuriosInventory(player).flatMap(curios -> curios.getStacksHandler("information_accessories")).ifPresent(stacksHandler -> {
-            IDynamicStackHandler stacks = stacksHandler.getStacks();
-            for (int i = 0; i < stacks.getSlots(); i++) {
-                collectHandlers(stacks.getStackInSlot(i), clientSide, active);
-            }
-        });
+        if (PDACompat.curiosLoaded)
+            CuriosCompat.collectCurios(player, clientSide, active);
 
         return active;
     }
 
-    private static void collectHandlers(@NonNull ItemStack stack, boolean clientSide, Set<InfoDisplayHandler> active) {
+    public static void collectHandlers(@NonNull ItemStack stack, boolean clientSide, Set<InfoDisplayHandler> active) {
         if (stack.isEmpty()) return;
         List<InfoDisplayHandler> handlers = getHandlersFor(stack);
 
