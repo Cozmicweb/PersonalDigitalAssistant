@@ -4,7 +4,6 @@ import cozmicweb.pda.common.display.InfoDisplayManager;
 import cozmicweb.pda.common.display.handlers.InfoDisplayHandler;
 import net.minecraft.world.entity.player.Player;
 import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 import java.util.Set;
