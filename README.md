@@ -1,3 +1,18 @@
+<p align="center">
+  <img width="170" height="170" src="https://i.imgur.com/Mkkl8gz.gif">
+</p>
+
+<h1 align="center">Personal Display Assistant</h1>
+
+<p align="center">
+  <a href="https://modrinth.com/mod/personal-digital-assistant">
+    <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3.3.1/assets/cozy/available/modrinth_vector.svg">
+  </a>
+  <a href="https://www.curseforge.com/minecraft/mc-mods/personal-digital-assistant/preview">
+    <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3.3.1/assets/cozy/available/curseforge_vector.svg">
+  </a>
+</p>
+
 **P**ersonal **D**igital **A**ssistant (**PDA**) is a mod for [NeoForge](https://neoforged.net/) that ports Terraria's [Informational Accessories](https://terraria.wiki.gg/wiki/Informational_Accessories) to Minecraft. Every accessory is toggleable and many of them are customizable both on the client and server.
 Find these accessories in Pillager Outposts, Abandoned Mineshafts, Dungeons, and Buried Treasure. Combine them to compact their benefits into a single item.
 
