@@ -1,5 +1,6 @@
 {
   "values": [
+    "pda:crt_tv",
     "pda:tally_counter",
     "pda:stopwatch",
     "pda:weather_radio",

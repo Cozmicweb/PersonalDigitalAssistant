@@ -21,6 +21,7 @@ public class ModCreativeTabs {
                 .displayItems((parameters, output) -> {
                     output.accept(Items.COMPASS);
                     output.accept(Items.CLOCK);
+                    output.accept(ModItems.CRT_TV.get());
                     output.accept(ModItems.TALLY_COUNTER.get());
                     output.accept(ModItems.STOPWATCH.get());
                     output.accept(ModItems.WEATHER_RADIO.get());

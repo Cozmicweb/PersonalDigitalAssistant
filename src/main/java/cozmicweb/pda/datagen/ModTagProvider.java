@@ -22,6 +22,7 @@ public class ModTagProvider {
         @Override
         protected void addTags(HolderLookup.@NonNull Provider registries) {
             this.tag(ModTags.INFORMATION_ACCESSORIES)
+                .add(ModItems.CRT_TV.getKey())
                 .add(ModItems.TALLY_COUNTER.getKey())
                 .add(ModItems.STOPWATCH.getKey())
                 .add(ModItems.WEATHER_RADIO.getKey())

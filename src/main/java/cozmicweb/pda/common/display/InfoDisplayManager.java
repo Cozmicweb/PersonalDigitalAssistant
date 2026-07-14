@@ -32,6 +32,7 @@ public class InfoDisplayManager {
         register(PDACommon.id("display_dps"), DPSDisplayHandler.class);
         register(PDACommon.id("display_luck"), LuckDisplayHandler.class);
         register(PDACommon.id("display_valuable_ore"), OreDisplayHandler.class);
+        register(PDACommon.id("display_fps"), FPSDisplayHandler.class);
     }
 
     public static <T extends InfoDisplayHandler> void register(Identifier id, Class<T> clazz) {
