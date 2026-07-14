@@ -2,6 +2,8 @@
   "values": {
     "minecraft:clock": "pda:display_time",
     "minecraft:compass": "pda:display_horizontal_position",
+
+    "pda:crt_tv": "pda:display_fps",
     "pda:depth_meter": "pda:display_vertical_position",
     "pda:tally_counter": "pda:display_mob_kills",
     "pda:stopwatch": "pda:display_velocity",

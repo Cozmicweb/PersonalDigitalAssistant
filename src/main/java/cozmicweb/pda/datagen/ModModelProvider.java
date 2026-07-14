@@ -31,6 +31,7 @@ public class ModModelProvider extends ModelProvider {
 
     @Override
     protected void registerModels(BlockModelGenerators blockGen, @NonNull ItemModelGenerators itemGen) {
+        itemGen.generateFlatItem(ModItems.CRT_TV.get(), ModelTemplates.FLAT_ITEM);
         itemGen.generateFlatItem(ModItems.WEATHER_RADIO.get(), ModelTemplates.FLAT_ITEM);
         itemGen.generateFlatItem(ModItems.SEXTANT.get(), ModelTemplates.FLAT_ITEM);
         itemGen.generateFlatItem(ModItems.RADAR.get(), ModelTemplates.FLAT_ITEM);
