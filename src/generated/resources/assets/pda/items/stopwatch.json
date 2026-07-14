@@ -1,6 +1,141 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "pda:item/stopwatch"
+    "type": "minecraft:composite",
+    "models": [
+      {
+        "type": "minecraft:condition",
+        "on_false": {
+          "type": "minecraft:model",
+          "model": "pda:item/stopwatch"
+        },
+        "on_true": {
+          "type": "minecraft:model",
+          "model": "pda:item/stopwatch_pressed"
+        },
+        "property": "pda:mechanism_pressed"
+      },
+      {
+        "type": "minecraft:select",
+        "cases": [
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "pda:item/stopwatch_needle_0"
+            },
+            "when": 0
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "pda:item/stopwatch_needle_1"
+            },
+            "when": 1
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "pda:item/stopwatch_needle_2"
+            },
+            "when": 2
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "pda:item/stopwatch_needle_3"
+            },
+            "when": 3
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "pda:item/stopwatch_needle_4"
+            },
+            "when": 4
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "pda:item/stopwatch_needle_5"
+            },
+            "when": 5
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "pda:item/stopwatch_needle_6"
+            },
+            "when": 6
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "pda:item/stopwatch_needle_7"
+            },
+            "when": 7
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "pda:item/stopwatch_needle_8"
+            },
+            "when": 8
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "pda:item/stopwatch_needle_9"
+            },
+            "when": 9
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "pda:item/stopwatch_needle_10"
+            },
+            "when": 10
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "pda:item/stopwatch_needle_11"
+            },
+            "when": 11
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "pda:item/stopwatch_needle_12"
+            },
+            "when": 12
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "pda:item/stopwatch_needle_13"
+            },
+            "when": 13
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "pda:item/stopwatch_needle_14"
+            },
+            "when": 14
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "pda:item/stopwatch_needle_15"
+            },
+            "when": 15
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:model",
+          "model": "pda:item/stopwatch_needle_0"
+        },
+        "property": "pda:needle_rotation"
+      }
+    ]
   }
 }

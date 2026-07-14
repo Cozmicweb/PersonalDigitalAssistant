@@ -47,6 +47,10 @@ public class TallyCounterItem extends Item implements IClickReactive {
                 .component(ModComponents.TALLY_DISPLAY.get(), 0));
     }
 
+    static void setPressed(@NonNull ItemStack stack, boolean state) {
+        stack.set(ModComponents.STOPWATCH_PRESSED.get(), state);
+    }
+
     @Contract(pure = true)
     private static int @NonNull [] digits(int total) {
         int maxPlaces = getMaxPlaces();
@@ -79,22 +83,26 @@ public class TallyCounterItem extends Item implements IClickReactive {
 
     @Override
     public void onLeftClickDown(ServerPlayer player, ItemStack stack) {
+        setPressed(stack, true);
         nudgeOnes(player, stack, true);
     }
 
     @Override
     public void onRightClickDown(ServerPlayer player, ItemStack stack) {
+        setPressed(stack, true);
         nudgeOnes(player, stack, false);
     }
 
     @Override
     public void onLeftClickUp(ServerPlayer player, ItemStack stack) {
+        setPressed(stack, false);
         commit(player, stack, true);
         player.level().playSound(null, player.blockPosition(), ModSounds.TALLY_FORWARD.value(), player.getSoundSource(), 1.0F, 1.0F);
     }
 
     @Override
     public void onRightClickUp(ServerPlayer player, ItemStack stack) {
+        setPressed(stack, false);
         commit(player, stack, false);
         player.level().playSound(null, player.blockPosition(), ModSounds.TALLY_BACKWARD.value(), player.getSoundSource(), 1.0F, 1.0F);
     }

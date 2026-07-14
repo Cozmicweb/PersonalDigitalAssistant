@@ -51,6 +51,18 @@ public class ModComponents {
                     .networkSynchronized(ByteBufCodecs.BOOL)
                     .build());
 
+    public static final Supplier<DataComponentType<Boolean>> STOPWATCH_PRESSED = DATA_COMPONENTS.register("stopwatch_pressed",
+            () -> DataComponentType.<Boolean>builder()
+                    .persistent(Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+                    .build());
+
+    public static final Supplier<DataComponentType<Integer>> STOPWATCH_ANIM = DATA_COMPONENTS.register("stopwatch_anim",
+            () -> DataComponentType.<Integer>builder()
+                    .persistent(Codec.INT)
+                    .networkSynchronized(ByteBufCodecs.INT)
+                    .build());
+
     public static void register(IEventBus modEventBus) {
         DATA_COMPONENTS.register(modEventBus);
     }
