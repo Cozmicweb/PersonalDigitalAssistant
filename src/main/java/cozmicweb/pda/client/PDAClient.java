@@ -7,6 +7,8 @@ import cozmicweb.pda.common.display.InfoDisplayManager;
 import cozmicweb.pda.client.gui.InfoOverlay;
 import cozmicweb.pda.common.PDACommon;
 import cozmicweb.pda.common.network.ServerDataRequestPayload;
+import cozmicweb.pda.datagen.MechanismPressedProperty;
+import cozmicweb.pda.datagen.NeedleRotationProperty;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
@@ -21,9 +23,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.neoforge.client.event.ClientTickEvent;
-import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
-import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
+import net.neoforged.neoforge.client.event.*;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
@@ -106,6 +106,16 @@ public class PDAClient {
     public static void registerBindings(RegisterKeyMappingsEvent event) {
         event.registerCategory(PDA_CATEGORY);
         event.register(VIEW_INFO_MAPPING.get());
+    }
+
+    @SubscribeEvent
+    public static void onRegisterSelectItemModelProperty(RegisterSelectItemModelPropertyEvent event) {
+        event.register(PDACommon.id("needle_rotation"), NeedleRotationProperty.TYPE);
+    }
+
+    @SubscribeEvent
+    public static void onRegisterConditionalItemModelProperty(RegisterConditionalItemModelPropertyEvent event) {
+        event.register(PDACommon.id("mechanism_pressed"), MechanismPressedProperty.MAP_CODEC);
     }
 
 }

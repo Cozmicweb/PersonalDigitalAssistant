@@ -43,8 +43,17 @@ public class StopwatchItem extends Item implements IClickReactive {
         }
     }
 
+    public static void incrementAnim(ItemStack stack) {
+        stack.set(ModComponents.STOPWATCH_ANIM, (stack.getOrDefault(ModComponents.STOPWATCH_ANIM, 0) + 1) % 16);
+    }
+
+    public static void setPressed(@NonNull ItemStack stack, boolean state) {
+        stack.set(ModComponents.STOPWATCH_PRESSED.get(), state);
+    }
+
     @Override
     public void onLeftClickDown(ServerPlayer player, @NonNull ItemStack stack) {
+        setPressed(stack, true);
         TallyCounterItem.tick(player);
 
         boolean paused = stack.getOrDefault(ModComponents.STOPWATCH_PAUSED.get(), true);
@@ -63,11 +72,13 @@ public class StopwatchItem extends Item implements IClickReactive {
 
     @Override
     public void onLeftClickUp(@NonNull ServerPlayer player, ItemStack stack) {
+        setPressed(stack, false);
         player.level().playSound(null, player.blockPosition(), ModSounds.TALLY_FORWARD.value(), player.getSoundSource(), 1.0F, 1.0F);
     }
 
     @Override
     public void onRightClickDown(ServerPlayer player, @NonNull ItemStack stack) {
+        setPressed(stack, true);
         TallyCounterItem.tick(player);
         long now = now(player);
         stack.set(ModComponents.STOPWATCH_PAUSED.get(), true);
@@ -77,6 +88,7 @@ public class StopwatchItem extends Item implements IClickReactive {
 
     @Override
     public void onRightClickUp(@NonNull ServerPlayer player, ItemStack stack) {
+        setPressed(stack, false);
         player.level().playSound(null, player.blockPosition(), ModSounds.TALLY_BACKWARD.value(), player.getSoundSource(), 1.0F, 1.0F);
 
         long now = now(player);
@@ -110,8 +122,10 @@ public class StopwatchItem extends Item implements IClickReactive {
             player.sendSystemMessage(builder, true);
         }
 
-        if (!paused)
+        if (!paused) {
             tick(player, elapsed, mainHand ? 0.6f : 0.2f);
+            incrementAnim(stack);
+        }
     }
 
     @Override
