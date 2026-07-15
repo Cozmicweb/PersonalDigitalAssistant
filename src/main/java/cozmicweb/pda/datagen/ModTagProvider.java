@@ -40,6 +40,11 @@ public class ModTagProvider {
                 .add(ModItems.PDA.getKey())
                 .add(BuiltInRegistries.ITEM.getResourceKey(Items.COMPASS).orElseThrow())
                 .add(BuiltInRegistries.ITEM.getResourceKey(Items.CLOCK).orElseThrow());
+
+            this.tag(ModTags.STANDARDS)
+                    .add(ModItems.STANDARD.getKey())
+                    .add(ModItems.OMINOUS_STANDARD.getKey())
+                    .add(ModItems.WARDING_STANDARD.getKey());
         }
     }
 

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_empty_standard": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pda:empty_standard"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_golden_apple": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:golden_apple"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pda:warding_standard"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_empty_standard",
+      "has_golden_apple"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pda:warding_standard"
+    ]
+  }
+}

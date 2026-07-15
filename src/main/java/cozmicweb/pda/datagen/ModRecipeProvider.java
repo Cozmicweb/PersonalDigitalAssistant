@@ -1,11 +1,14 @@
 package cozmicweb.pda.datagen;
 
 import cozmicweb.pda.common.registry.ModItems;
+import cozmicweb.pda.common.registry.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import org.jspecify.annotations.NonNull;
 
@@ -81,6 +84,32 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.PILLAGER_TECH), has(ModItems.PILLAGER_TECH))
                 .unlockedBy(getHasName(ModItems.FISH_FINDER), has(ModItems.FISH_FINDER))
                 .save(output);
+
+        shapeless(RecipeCategory.TOOLS, ModItems.OMINOUS_STANDARD)
+                .requires(ModItems.STANDARD)
+                .requires(Items.OMINOUS_BOTTLE)
+                .requires(ItemTags.WOOL)
+                .unlockedBy(getHasName(ModItems.STANDARD), has(ModItems.STANDARD))
+                .unlockedBy(getHasName(Items.OMINOUS_BOTTLE), has(Items.OMINOUS_BOTTLE))
+                .save(output);
+
+        shapeless(RecipeCategory.TOOLS, ModItems.WARDING_STANDARD)
+                .requires(ModItems.STANDARD)
+                .requires(Items.GOLDEN_APPLE)
+                .requires(ItemTags.WOOL)
+                .unlockedBy(getHasName(ModItems.STANDARD), has(ModItems.STANDARD))
+                .unlockedBy(getHasName(Items.GOLDEN_APPLE), has(Items.GOLDEN_APPLE))
+                .save(output);
+
+        shaped(RecipeCategory.TOOLS, ModItems.STANDARD)
+                .pattern("###")
+                .pattern(" # ")
+                .pattern("#%#")
+                .define('#', Items.STICK)
+                .define('%', ItemTags.WOODEN_SLABS)
+                .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
+                .save(output);
+
     }
 
 }

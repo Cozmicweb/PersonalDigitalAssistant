@@ -9,6 +9,7 @@ import org.jspecify.annotations.NonNull;
 public class ModTags {
 
     public static final TagKey<Item> INFORMATION_ACCESSORIES = bind("information_accessories");
+    public static final TagKey<Item> STANDARDS = bind("standards");
 
     private ModTags() {}
 

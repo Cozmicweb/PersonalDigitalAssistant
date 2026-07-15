@@ -48,6 +48,10 @@ public class ModModelProvider extends ModelProvider {
 
         itemGen.generateFlatItem(ModItems.PDA.get(), ModelTemplates.FLAT_ITEM);
 
+        itemGen.generateFlatItem(ModItems.STANDARD.get(), ModelTemplates.FLAT_ITEM);
+        itemGen.generateFlatItem(ModItems.OMINOUS_STANDARD.get(), ModelTemplates.FLAT_ITEM);
+        itemGen.generateFlatItem(ModItems.WARDING_STANDARD.get(), ModelTemplates.FLAT_ITEM);
+
         generateStopwatchModel(itemGen);
         generateTallyCounterModel(itemGen);
     }
