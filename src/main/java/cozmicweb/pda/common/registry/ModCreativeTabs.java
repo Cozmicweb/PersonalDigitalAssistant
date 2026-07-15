@@ -14,9 +14,9 @@ public class ModCreativeTabs {
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, PDACommon.MOD_ID);
 
-    public static final Supplier<CreativeModeTab> INFORMATIONAL_ACCESSORIES_TAB = CREATIVE_TABS.register("informational_accessories_tab",() ->
+    public static final Supplier<CreativeModeTab> PDA_TAB = CREATIVE_TABS.register("pda_tab",() ->
         CreativeModeTab.builder()
-                .title(Component.translatable("itemGroup.pda.informational_accessories_tab"))
+                .title(Component.translatable("itemGroup.pda.pda_tab"))
                 .icon(() -> ModItems.PDA.get().getDefaultInstance())
                 .displayItems((parameters, output) -> {
                     output.accept(Items.COMPASS);
