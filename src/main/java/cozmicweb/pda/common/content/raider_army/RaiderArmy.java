@@ -21,6 +21,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -338,6 +339,7 @@ public class RaiderArmy {
             entity.setPersistenceRequired();
             entity.setHealth(entity.getMaxHealth());
             entity.getPersistentData().putBoolean("starjam_army_mob", true);
+            entity.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(entity, Player.class, false));
             createdMembers.add(entity);
 
             if (entity instanceof Phantom)
