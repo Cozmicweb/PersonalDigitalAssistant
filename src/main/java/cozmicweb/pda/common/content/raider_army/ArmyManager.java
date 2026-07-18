@@ -91,7 +91,7 @@ public class ArmyManager {
             return;
 
         if (event.getEntity() instanceof Player player && canSpawnArmy(player))
-            if (player.getRandom().nextInt(69250) == 0)
+            if (player.getRandom().nextInt(140000) == 0) // 50% to have spawned within the next 4 days (80 minutes)
                 ArmyDifficulty.getRandomUnlocked(player).ifPresent(difficulty -> spawnArmyAtPlayer(player, difficulty));
     }
 
