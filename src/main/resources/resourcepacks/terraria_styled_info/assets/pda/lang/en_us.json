@@ -1,4 +1,6 @@
 {
+  "event.pda.army.warning": "A goblin army is approaching from the %1$s!",
+  "event.pda.army.win": "A goblin army has been defeated!",
   "item.pda.pillager_tech": "Goblin Tech",
   "text.pda.depth.format": "%s'",
   "text.pda.dps.text": "%s damage per second",

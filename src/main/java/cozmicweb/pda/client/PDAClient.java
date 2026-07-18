@@ -2,13 +2,13 @@ package cozmicweb.pda.client;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.logging.LogUtils;
-import cozmicweb.pda.common.display.handlers.InfoDisplayHandler;
-import cozmicweb.pda.common.display.InfoDisplayManager;
 import cozmicweb.pda.client.gui.InfoOverlay;
 import cozmicweb.pda.common.PDACommon;
+import cozmicweb.pda.common.display.InfoDisplayManager;
+import cozmicweb.pda.common.display.handlers.InfoDisplayHandler;
 import cozmicweb.pda.common.network.ServerDataRequestPayload;
-import cozmicweb.pda.datagen.MechanismPressedProperty;
-import cozmicweb.pda.datagen.NeedleRotationProperty;
+import cozmicweb.pda.datagen.item.property.MechanismPressedProperty;
+import cozmicweb.pda.datagen.item.property.NeedleRotationProperty;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;

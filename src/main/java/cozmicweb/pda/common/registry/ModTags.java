@@ -8,8 +8,9 @@ import org.jspecify.annotations.NonNull;
 
 public class ModTags {
 
-    public static final TagKey<Item> INFORMATION_ACCESSORIES = bind("information_accessories");
-    public static final TagKey<Item> STANDARDS = bind("standards");
+    public static final TagKey<Item> ALL_INFORMATION_ACCESSORIES = bind("all_information_accessories");
+    public static final TagKey<Item> ARMY_INFORMATION_ACCESSORIES = bind("army_information_accessories");
+    public static final TagKey<Item> BATTLE_STANDARDS = bind("battle_standards");
 
     private ModTags() {}
 

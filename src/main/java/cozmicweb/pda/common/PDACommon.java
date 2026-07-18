@@ -10,7 +10,6 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.jetbrains.annotations.Contract;
 import org.jspecify.annotations.NonNull;
@@ -31,6 +30,9 @@ public class PDACommon {
         ModSounds.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
         ModLootFunctions.register(modEventBus);
+        ModGlobalLootModifiers.register(modEventBus);
+        ModLootConditions.register(modEventBus);
+        ModGameRules.register(modEventBus);
         InfoDisplayManager.initialize();
     }
 

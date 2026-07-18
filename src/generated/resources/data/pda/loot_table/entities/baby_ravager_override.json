@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:empty",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:saddle"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "pda:entities/baby_ravager_override"
+}

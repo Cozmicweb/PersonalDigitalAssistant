@@ -37,9 +37,9 @@ public class ModCreativeTabs {
                     output.accept(ModItems.FISH_FINDER.get());
                     output.accept(ModItems.PILLAGER_TECH.get());
                     output.accept(ModItems.PDA.get());
-                    output.accept(ModItems.STANDARD.get());
-                    output.accept(ModItems.OMINOUS_STANDARD.get());
-                    output.accept(ModItems.WARDING_STANDARD.get());
+                    output.accept(ModItems.EMPTY_BATTLE_STANDARD.get());
+                    output.accept(ModItems.OMINOUS_BATTLE_STANDARD.get());
+                    output.accept(ModItems.WARDING_BATTLE_STANDARD.get());
                 })
                 .build());
 

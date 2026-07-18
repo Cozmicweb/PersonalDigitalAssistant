@@ -1,10 +1,11 @@
 package cozmicweb.pda.common.registry;
 
 import cozmicweb.pda.common.PDACommon;
+import cozmicweb.pda.common.content.raider_army.BattleStandardType;
+import cozmicweb.pda.common.item.BattleStandardItem;
 import cozmicweb.pda.common.item.StopwatchItem;
 import cozmicweb.pda.common.item.TallyCounterItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -33,9 +34,9 @@ public class ModItems {
 
     public static final DeferredItem<Item> PDA = ITEMS.registerItem("pda", Item::new, props -> props.stacksTo(1).rarity(Rarity.EPIC));
 
-    public static final DeferredItem<Item> STANDARD = ITEMS.registerItem("empty_standard", Item::new, props -> props.stacksTo(16));
-    public static final DeferredItem<Item> OMINOUS_STANDARD = ITEMS.registerItem("ominous_standard", Item::new, props -> props.stacksTo(1).rarity(Rarity.UNCOMMON));
-    public static final DeferredItem<Item> WARDING_STANDARD = ITEMS.registerItem("warding_standard", Item::new, props -> props.stacksTo(1).rarity(Rarity.UNCOMMON));
+    public static final DeferredItem<Item> EMPTY_BATTLE_STANDARD = ITEMS.registerItem("battle_standard_empty", Item::new, props -> props.stacksTo(16));
+    public static final DeferredItem<Item> OMINOUS_BATTLE_STANDARD = ITEMS.registerItem("battle_standard_ominous", props -> new BattleStandardItem(props, BattleStandardType.OMINOUS), props -> props.stacksTo(1).rarity(Rarity.UNCOMMON));
+    public static final DeferredItem<Item> WARDING_BATTLE_STANDARD = ITEMS.registerItem("battle_standard_warding", props -> new BattleStandardItem(props, BattleStandardType.WARDING), props -> props.stacksTo(1).rarity(Rarity.UNCOMMON));
 
     public static void register(IEventBus modEventBus) {
         ITEMS.register(modEventBus);
