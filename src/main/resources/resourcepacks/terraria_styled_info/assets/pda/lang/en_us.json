@@ -1,4 +1,6 @@
 {
+  "event.pda.army.title.left": "%1$s Goblins Left",
+  "event.pda.army.title.name": "%1$s Goblin Army",
   "event.pda.army.warning": "A goblin army is approaching from the %1$s!",
   "event.pda.army.win": "A goblin army has been defeated!",
   "item.pda.pillager_tech": "Goblin Tech",
