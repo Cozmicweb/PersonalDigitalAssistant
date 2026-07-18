@@ -33,7 +33,7 @@ public class PDAConfig {
             RAIDER_ARMY_SIZE = BUILDER.defineInRange("raider_army_size", 8, 1, 12);
             RAIDER_ARMY_MIN_Y = BUILDER.defineInRange("raider_army_min_y", 50, -64, 256);
             RAIDER_ARMY_ABANDON_TIMEOUT = BUILDER.defineInRange("raider_army_abandon_timeout", 60, 1, 1000); // Seconds
-            RAIDER_ARMY_IDLE_TIMEOUT = BUILDER.defineInRange("raider_army_idle_timeout", 600, 1, 1000); // Seconds
+            RAIDER_ARMY_IDLE_TIMEOUT = BUILDER.defineInRange("raider_army_idle_timeout", 1200, 1, 2400); // Seconds
             RAIDER_ARMY_START_TIME = BUILDER.defineInRange("raider_army_start_time", 10, 0, 60); // Seconds
         BUILDER.pop();
 
