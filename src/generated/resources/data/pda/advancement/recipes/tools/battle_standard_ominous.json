@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_battle_standard_empty": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pda:battle_standard_empty"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ominous_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:ominous_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pda:battle_standard_ominous"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_battle_standard_empty",
+      "has_ominous_bottle"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pda:battle_standard_ominous"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "pda:battle_standard_empty",
+    "minecraft:ominous_bottle",
+    "#minecraft:wool"
+  ],
+  "result": {
+    "id": "pda:battle_standard_ominous"
+  }
+}

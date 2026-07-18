@@ -1,0 +1,12 @@
+{
+  "values": [
+    "pda:stopwatch",
+    "pda:weather_radio",
+    "pda:sextant",
+    "pda:radar",
+    "pda:lifeform_analyzer",
+    "pda:dps_meter",
+    "pda:depth_meter",
+    "pda:crt_tv"
+  ]
+}

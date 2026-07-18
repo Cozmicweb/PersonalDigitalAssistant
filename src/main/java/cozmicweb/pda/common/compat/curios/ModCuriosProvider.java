@@ -15,12 +15,13 @@ public class ModCuriosProvider extends CuriosDataProvider {
 
     @Override
     public void generate(HolderLookup.Provider registries) {
-        this.createSlot("information_accessories")
+        this.createSlot("all_information_accessories")
+                .addValidator(PDACommon.id("all_information_accessories"))
                 .icon(PDACommon.id("slot/information_accessory_slot"))
                 .renderToggle(false)
                 .size(2);
 
-        this.createEntities("information_bearing_entities").addPlayer().addSlots("information_accessories");
+        this.createEntities("information_bearing_entities").addPlayer().addSlots("all_information_accessories");
     }
 
 }

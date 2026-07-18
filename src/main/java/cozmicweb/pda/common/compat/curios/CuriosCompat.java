@@ -11,7 +11,7 @@ import java.util.Set;
 public class CuriosCompat {
 
     public static void collectCurios(Player player, boolean clientSide, Set<InfoDisplayHandler> active) {
-        CuriosApi.getCuriosInventory(player).flatMap(curios -> curios.getStacksHandler("information_accessories")).ifPresent(stacksHandler -> {
+        CuriosApi.getCuriosInventory(player).flatMap(curios -> curios.getStacksHandler("all_information_accessories")).ifPresent(stacksHandler -> {
             IDynamicStackHandler stacks = stacksHandler.getStacks();
             for (int i = 0; i < stacks.getSlots(); i++) {
                 InfoDisplayManager.collectHandlers(stacks.getStackInSlot(i), clientSide, active);

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "pda:battle_standard_empty",
+    "minecraft:golden_apple",
+    "#minecraft:wool"
+  ],
+  "result": {
+    "id": "pda:battle_standard_warding"
+  }
+}

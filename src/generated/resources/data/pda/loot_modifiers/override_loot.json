@@ -1,0 +1,9 @@
+{
+  "type": "pda:override_loot",
+  "conditions": [
+    {
+      "condition": "pda:has_overridden_loot"
+    }
+  ],
+  "priority": 0
+}
