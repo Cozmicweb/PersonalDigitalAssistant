@@ -22,19 +22,19 @@ public class PDAConfig {
     public static final ModConfigSpec.IntValue METAL_DETECTOR_SIZE;
     public static final ModConfigSpec.IntValue METAL_DETECTOR_UPDATE_RATE;
 
-    public static final ModConfigSpec.IntValue PILLAGER_ARMY_SIZE;
-    public static final ModConfigSpec.IntValue PILLAGER_ARMY_MIN_Y;
-    public static final ModConfigSpec.IntValue PILLAGER_ARMY_ABANDON_TIMEOUT;
-    public static final ModConfigSpec.IntValue PILLAGER_ARMY_IDLE_TIMEOUT;
-    public static final ModConfigSpec.IntValue PILLAGER_ARMY_START_TIME;
+    public static final ModConfigSpec.IntValue RAIDER_ARMY_SIZE;
+    public static final ModConfigSpec.IntValue RAIDER_ARMY_MIN_Y;
+    public static final ModConfigSpec.IntValue RAIDER_ARMY_ABANDON_TIMEOUT;
+    public static final ModConfigSpec.IntValue RAIDER_ARMY_IDLE_TIMEOUT;
+    public static final ModConfigSpec.IntValue RAIDER_ARMY_START_TIME;
 
     static {
-        BUILDER.push("common_pillager_army");
-            PILLAGER_ARMY_SIZE = BUILDER.defineInRange("pillager_army_size", 8, 1, 12);
-            PILLAGER_ARMY_MIN_Y = BUILDER.defineInRange("pillager_army_min_y", 50, -64, 256);
-            PILLAGER_ARMY_ABANDON_TIMEOUT = BUILDER.defineInRange("pillager_army_abandon_timeout", 60, 1, 1000); // Seconds
-            PILLAGER_ARMY_IDLE_TIMEOUT = BUILDER.defineInRange("pillager_army_idle_timeout", 600, 1, 1000); // Seconds
-            PILLAGER_ARMY_START_TIME = BUILDER.defineInRange("pillager_army_start_time", 10, 0, 60); // Seconds
+        BUILDER.push("common_raider_army");
+            RAIDER_ARMY_SIZE = BUILDER.defineInRange("raider_army_size", 8, 1, 12);
+            RAIDER_ARMY_MIN_Y = BUILDER.defineInRange("raider_army_min_y", 50, -64, 256);
+            RAIDER_ARMY_ABANDON_TIMEOUT = BUILDER.defineInRange("raider_army_abandon_timeout", 60, 1, 1000); // Seconds
+            RAIDER_ARMY_IDLE_TIMEOUT = BUILDER.defineInRange("raider_army_idle_timeout", 1200, 1, 2400); // Seconds
+            RAIDER_ARMY_START_TIME = BUILDER.defineInRange("raider_army_start_time", 10, 0, 60); // Seconds
         BUILDER.pop();
 
         BUILDER.push("common_items");

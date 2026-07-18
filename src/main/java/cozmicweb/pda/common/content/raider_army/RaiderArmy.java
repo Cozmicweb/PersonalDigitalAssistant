@@ -65,7 +65,7 @@ public class RaiderArmy {
         this.center = center;
         this.level = level;
         this.difficulty = difficulty;
-        this.size = PDAConfig.PILLAGER_ARMY_SIZE.get() * 16;
+        this.size = PDAConfig.RAIDER_ARMY_SIZE.get() * 16;
         this.random = level.getRandom();
 
         this.lastDirection = Direction.NORTH;
@@ -122,8 +122,8 @@ public class RaiderArmy {
     }
 
     public boolean isActive() {
-        boolean shouldTimeout = tick > (PDAConfig.PILLAGER_ARMY_IDLE_TIMEOUT.get() * 20);
-        boolean shouldAbandon = emptyTick != null && tick - emptyTick > (PDAConfig.PILLAGER_ARMY_ABANDON_TIMEOUT.get() * 20);
+        boolean shouldTimeout = tick > (PDAConfig.RAIDER_ARMY_IDLE_TIMEOUT.get() * 20);
+        boolean shouldAbandon = emptyTick != null && tick - emptyTick > (PDAConfig.RAIDER_ARMY_ABANDON_TIMEOUT.get() * 20);
         boolean isRunning = wave <= maxWave;
         return active && isRunning && !shouldTimeout && !shouldAbandon;
     }
@@ -161,7 +161,7 @@ public class RaiderArmy {
     }
 
     public int getStartTime() {
-        return PDAConfig.PILLAGER_ARMY_START_TIME.get() * 20;
+        return PDAConfig.RAIDER_ARMY_START_TIME.get() * 20;
     }
 
     public void updateEventStart() {

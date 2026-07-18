@@ -83,7 +83,7 @@ public class ArmyManager {
         return ArmyManager.getArmyAtPos(player.blockPosition(), player.level()) == null
                 && player.level().dimension() == Level.OVERWORLD
                 && player.gameMode() != GameType.SPECTATOR
-                && player.getY() > PDAConfig.PILLAGER_ARMY_MIN_Y.get();
+                && player.getY() > PDAConfig.RAIDER_ARMY_MIN_Y.get();
     }
 
     @SubscribeEvent
