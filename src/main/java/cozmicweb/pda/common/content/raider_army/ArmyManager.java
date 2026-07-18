@@ -8,6 +8,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
@@ -15,7 +16,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.server.ServerStoppedEvent;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
@@ -115,12 +116,16 @@ public class ArmyManager {
     }
 
     @SubscribeEvent
+    public static void onServerStarting(@NonNull ServerStartingEvent event) {
+        for (ServerLevel level : event.getServer().getAllLevels())
+            for (Entity entity : level.getAllEntities())
+                if (entity.getPersistentData().getBoolean("starjam_army_mob").orElse(false))
+                    entity.discard();
+    }
+
+    @SubscribeEvent
     public static void onServerStopping(ServerStoppingEvent event) {
         cleanAllArmies();
     }
 
-    @SubscribeEvent
-    public static void onServerStopped(ServerStoppedEvent event) {
-        cleanAllArmies();
-    }
 }
