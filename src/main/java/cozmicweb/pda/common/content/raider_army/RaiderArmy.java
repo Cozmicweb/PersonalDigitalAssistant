@@ -20,7 +20,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.player.Player;
@@ -101,9 +100,6 @@ public class RaiderArmy {
         if (tick % 100 == 0)
             recallFarMembers();
 
-        if (tick % 20 == 0)
-            pathfindToNearestPlayer();
-
         if (tick % 400 == 0)
             peekActiveMembers();
 
@@ -146,18 +142,6 @@ public class RaiderArmy {
             pauseStartTick = null;
             spawnNextWave();
         }
-    }
-
-    private void pathfindToNearestPlayer() {
-        activeMembers.stream()
-                .filter(PathfinderMob.class::isInstance)
-                .map(PathfinderMob.class::cast)
-                .forEach(entity ->
-                        armyEvent.getPlayers().stream()
-                                .filter(Player::isInvulnerable)
-                                .min(Comparator.comparingDouble(entity::distanceToSqr))
-                                .ifPresent(player -> entity.getNavigation().moveTo(player, 1.0))
-                );
     }
 
     public int getStartTime() {
