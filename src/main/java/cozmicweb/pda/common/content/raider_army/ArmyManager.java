@@ -79,9 +79,12 @@ public class ArmyManager {
         return pos.immutable();
     }
 
+    public static boolean noArmyAtPlayer(@NonNull Player player) {
+        return ArmyManager.getArmyAtPos(player.blockPosition(), player.level()) == null;
+    }
+
     public static boolean canSpawnArmy(@NonNull Player player) {
-        return ArmyManager.getArmyAtPos(player.blockPosition(), player.level()) == null
-                && player.level().dimension() == Level.OVERWORLD
+        return player.level().dimension() == Level.OVERWORLD
                 && player.gameMode() != GameType.SPECTATOR
                 && player.getY() > PDAConfig.RAIDER_ARMY_MIN_Y.get();
     }
@@ -91,7 +94,7 @@ public class ArmyManager {
         if (event.getEntity().level() instanceof ServerLevel level && !level.getGameRules().get(ModGameRules.SPAWN_ARMIES.get()))
             return;
 
-        if (event.getEntity() instanceof Player player && canSpawnArmy(player))
+        if (event.getEntity() instanceof Player player && noArmyAtPlayer(player) && canSpawnArmy(player))
             if (player.getRandom().nextInt(140000) == 0) // 50% to have spawned within the next 4 days (80 minutes)
                 ArmyDifficulty.getRandomUnlocked(player).ifPresent(difficulty -> spawnArmyAtPlayer(player, difficulty));
     }

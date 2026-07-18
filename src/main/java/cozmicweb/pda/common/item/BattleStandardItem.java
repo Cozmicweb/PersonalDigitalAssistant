@@ -1,5 +1,6 @@
 package cozmicweb.pda.common.item;
 
+import cozmicweb.pda.common.PDAConfig;
 import cozmicweb.pda.common.content.raider_army.ArmyDifficulty;
 import cozmicweb.pda.common.content.raider_army.ArmyManager;
 import cozmicweb.pda.common.content.raider_army.BattleStandardType;
@@ -56,10 +57,16 @@ public class BattleStandardItem extends Item {
                     result = InteractionResult.SUCCESS;
                 }
             } else {
-                ArmyManager.spawnArmyAtPlayer(player, ArmyDifficulty.EASY);
-                if (level instanceof ServerLevel)
-                    player.sendSystemMessage(Component.translatable("text.pda.standard.success.start").withColor(TextColor.GREEN));
-                result = InteractionResult.SUCCESS;
+                if (ArmyManager.canSpawnArmy(player)) {
+                    ArmyManager.spawnArmyAtPlayer(player, ArmyDifficulty.EASY);
+                    if (level instanceof ServerLevel)
+                        player.sendSystemMessage(Component.translatable("text.pda.standard.success.start").withColor(TextColor.GREEN));
+                    result = InteractionResult.SUCCESS;
+                } else {
+                    if (level instanceof ServerLevel)
+                        player.sendSystemMessage(Component.translatable("text.pda.standard.fail.bad_spot", PDAConfig.RAIDER_ARMY_MIN_Y.get()).withColor(TextColor.RED));
+                    result = InteractionResult.FAIL;
+                }
             }
         } else if (type == BattleStandardType.WARDING) {
             RaiderArmy army = ArmyManager.getArmyAtPos(pos, level);
