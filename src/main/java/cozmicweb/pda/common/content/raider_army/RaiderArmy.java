@@ -337,6 +337,7 @@ public class RaiderArmy {
             entity.setPos(Vec3.atCenterOf(positions.get(i)));
             entity.setPersistenceRequired();
             entity.setHealth(entity.getMaxHealth());
+            entity.getPersistentData().putBoolean("starjam_army_mob", true);
             createdMembers.add(entity);
 
             if (entity instanceof Phantom)
