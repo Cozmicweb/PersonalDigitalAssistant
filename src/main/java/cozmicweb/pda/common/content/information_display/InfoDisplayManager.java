@@ -1,11 +1,11 @@
-package cozmicweb.pda.common.display;
+package cozmicweb.pda.common.content.information_display;
 
 import cozmicweb.pda.client.PDAClientConfig;
+import cozmicweb.pda.common.PDACommon;
 import cozmicweb.pda.common.PDACompat;
 import cozmicweb.pda.common.compat.curios.CuriosCompat;
+import cozmicweb.pda.common.content.information_display.handlers.*;
 import cozmicweb.pda.common.registry.ModDataMaps;
-import cozmicweb.pda.common.PDACommon;
-import cozmicweb.pda.common.display.handlers.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.resources.Identifier;

@@ -1,6 +1,5 @@
-package cozmicweb.pda.common.display.handlers;
+package cozmicweb.pda.common.content.information_display.handlers;
 
-import cozmicweb.pda.client.PDAClientConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;

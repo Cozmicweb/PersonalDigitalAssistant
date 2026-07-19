@@ -1,9 +1,9 @@
 package cozmicweb.pda.common.network;
 
-import cozmicweb.pda.common.item.IClickReactive;
 import cozmicweb.pda.common.PDACommon;
-import cozmicweb.pda.common.display.handlers.InfoDisplayHandler;
-import cozmicweb.pda.common.display.InfoDisplayManager;
+import cozmicweb.pda.common.content.information_display.InfoDisplayManager;
+import cozmicweb.pda.common.content.information_display.handlers.InfoDisplayHandler;
+import cozmicweb.pda.common.item.IClickReactive;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;

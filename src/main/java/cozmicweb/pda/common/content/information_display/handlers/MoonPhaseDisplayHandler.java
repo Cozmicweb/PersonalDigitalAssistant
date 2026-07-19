@@ -1,15 +1,12 @@
-package cozmicweb.pda.common.display.handlers;
+package cozmicweb.pda.common.content.information_display.handlers;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.MoonPhase;
-import net.neoforged.neoforge.event.level.NoteBlockEvent;
 
 import java.util.Map;
 

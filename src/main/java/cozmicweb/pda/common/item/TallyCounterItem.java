@@ -1,7 +1,7 @@
 package cozmicweb.pda.common.item;
 
 import cozmicweb.pda.common.PDAConfig;
-import cozmicweb.pda.common.attachments.TallyAnimState;
+import cozmicweb.pda.common.component.TallyAnimState;
 import cozmicweb.pda.common.registry.ModComponents;
 import cozmicweb.pda.common.registry.ModSounds;
 import net.minecraft.ChatFormatting;

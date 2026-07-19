@@ -1,4 +1,4 @@
-package cozmicweb.pda.common.attachments;
+package cozmicweb.pda.common.component;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

@@ -3,8 +3,8 @@ package cozmicweb.pda.client.event;
 import com.mojang.blaze3d.platform.InputConstants;
 import cozmicweb.pda.client.PDAClient;
 import cozmicweb.pda.common.PDACommon;
-import cozmicweb.pda.common.display.InfoDisplayManager;
-import cozmicweb.pda.common.display.handlers.InfoDisplayHandler;
+import cozmicweb.pda.common.content.information_display.InfoDisplayManager;
+import cozmicweb.pda.common.content.information_display.handlers.InfoDisplayHandler;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -13,11 +13,9 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
-import org.lwjgl.glfw.GLFW;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @EventBusSubscriber(modid = PDACommon.MOD_ID, value = Dist.CLIENT)
 public class TooltipEventHandler {

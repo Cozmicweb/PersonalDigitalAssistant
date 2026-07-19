@@ -2,8 +2,8 @@ package cozmicweb.pda.client;
 
 import cozmicweb.pda.client.gui.RenderTextHorizontalAlignment;
 import cozmicweb.pda.client.gui.RenderTextVerticalAlignment;
-import cozmicweb.pda.common.display.InfoDisplayManager;
-import cozmicweb.pda.common.display.handlers.TimeDisplayHandler;
+import cozmicweb.pda.common.content.information_display.InfoDisplayManager;
+import cozmicweb.pda.common.content.information_display.handlers.TimeDisplayHandler;
 import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.common.ModConfigSpec;
 

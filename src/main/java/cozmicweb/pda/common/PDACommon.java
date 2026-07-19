@@ -1,7 +1,7 @@
 package cozmicweb.pda.common;
 
 import com.mojang.logging.LogUtils;
-import cozmicweb.pda.common.display.InfoDisplayManager;
+import cozmicweb.pda.common.content.information_display.InfoDisplayManager;
 import cozmicweb.pda.common.registry.*;
 import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;

@@ -2,6 +2,8 @@ package cozmicweb.pda.client.gui;
 
 import cozmicweb.pda.client.PDAClient;
 import cozmicweb.pda.client.PDAClientConfig;
+import cozmicweb.pda.common.content.information_display.InfoDisplayManager;
+import cozmicweb.pda.common.content.information_display.handlers.InfoDisplayHandler;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
@@ -9,8 +11,6 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.FormattedCharSequence;
 import net.neoforged.neoforge.client.gui.GuiLayer;
-import cozmicweb.pda.common.display.InfoDisplayManager;
-import cozmicweb.pda.common.display.handlers.InfoDisplayHandler;
 import org.jspecify.annotations.NonNull;
 
 import java.util.ArrayList;

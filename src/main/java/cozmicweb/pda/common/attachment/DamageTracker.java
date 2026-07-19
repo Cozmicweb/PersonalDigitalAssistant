@@ -1,8 +1,7 @@
-package cozmicweb.pda.common.attachments;
+package cozmicweb.pda.common.attachment;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import cozmicweb.pda.common.PDAConfig;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import org.jspecify.annotations.NonNull;

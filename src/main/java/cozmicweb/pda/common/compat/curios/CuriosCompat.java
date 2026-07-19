@@ -1,7 +1,7 @@
 package cozmicweb.pda.common.compat.curios;
 
-import cozmicweb.pda.common.display.InfoDisplayManager;
-import cozmicweb.pda.common.display.handlers.InfoDisplayHandler;
+import cozmicweb.pda.common.content.information_display.InfoDisplayManager;
+import cozmicweb.pda.common.content.information_display.handlers.InfoDisplayHandler;
 import net.minecraft.world.entity.player.Player;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
