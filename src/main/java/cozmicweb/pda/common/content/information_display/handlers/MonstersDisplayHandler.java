@@ -1,4 +1,4 @@
-package cozmicweb.pda.common.display.handlers;
+package cozmicweb.pda.common.content.information_display.handlers;
 
 import cozmicweb.pda.common.PDAConfig;
 import net.minecraft.client.Minecraft;

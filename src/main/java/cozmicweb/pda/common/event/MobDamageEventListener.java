@@ -1,10 +1,7 @@
 package cozmicweb.pda.common.event;
 
 import cozmicweb.pda.common.PDACommon;
-import cozmicweb.pda.common.PDAConfig;
-import cozmicweb.pda.common.display.InfoDisplayManager;
-import cozmicweb.pda.common.item.TallyCounterItem;
-import cozmicweb.pda.common.attachments.DamageTracker;
+import cozmicweb.pda.common.attachment.DamageTracker;
 import cozmicweb.pda.common.registry.ModAttachments;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Player;

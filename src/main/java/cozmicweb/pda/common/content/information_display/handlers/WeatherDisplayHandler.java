@@ -1,12 +1,9 @@
-package cozmicweb.pda.common.display.handlers;
+package cozmicweb.pda.common.content.information_display.handlers;
 
-import cozmicweb.pda.client.PDAClientConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import net.neoforged.neoforge.common.TranslatableEnum;
-import org.jspecify.annotations.NonNull;
 
 public class WeatherDisplayHandler extends InfoDisplayHandler {
 

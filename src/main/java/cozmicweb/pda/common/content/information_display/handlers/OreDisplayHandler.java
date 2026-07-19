@@ -1,4 +1,4 @@
-package cozmicweb.pda.common.display.handlers;
+package cozmicweb.pda.common.content.information_display.handlers;
 
 import cozmicweb.pda.common.PDAConfig;
 import it.unimi.dsi.fastutil.Pair;
@@ -14,7 +14,9 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.Tags;
 import org.jspecify.annotations.NonNull;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 public class OreDisplayHandler extends InfoDisplayHandler {

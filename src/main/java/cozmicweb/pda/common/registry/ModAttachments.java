@@ -2,7 +2,7 @@ package cozmicweb.pda.common.registry;
 
 import com.mojang.serialization.Codec;
 import cozmicweb.pda.common.PDACommon;
-import cozmicweb.pda.common.attachments.DamageTracker;
+import cozmicweb.pda.common.attachment.DamageTracker;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;

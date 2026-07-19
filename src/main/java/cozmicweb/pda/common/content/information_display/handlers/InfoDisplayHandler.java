@@ -1,7 +1,7 @@
-package cozmicweb.pda.common.display.handlers;
+package cozmicweb.pda.common.content.information_display.handlers;
 
 import cozmicweb.pda.client.PDAClientConfig;
-import cozmicweb.pda.common.display.InfoDisplayManager;
+import cozmicweb.pda.common.content.information_display.InfoDisplayManager;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
@@ -11,11 +11,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Base class for anything that can display text in the PDA information overlay.
+ * Base class for anything that can information_display text in the PDA information overlay.
  * <ul>
  *     <li>
  *         <b>Client-only handlers</b>:
- *         These can calculate their display text entirely on the client.
+ *         These can calculate their information_display text entirely on the client.
  *     </li>
  *     <li>
  *         <b>Server-synced handlers</b>:
@@ -40,7 +40,7 @@ public abstract class InfoDisplayHandler {
 
     /**
      * Whether this handler needs to request data from the server.
-     * <p>Return {@code false} if the display text can be generated entirely on the client.</p>
+     * <p>Return {@code false} if the information_display text can be generated entirely on the client.</p>
      * <p>Return {@code true} if the handler needs server-only data.</p>
      */
     public boolean requiresServerSync() {
