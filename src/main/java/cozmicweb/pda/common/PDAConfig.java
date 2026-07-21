@@ -1,6 +1,9 @@
 package cozmicweb.pda.common;
 
+import cozmicweb.pda.common.content.reforge_modifier.ReforgeModifierRegistry;
 import net.neoforged.neoforge.common.ModConfigSpec;
+
+import java.util.List;
 
 public class PDAConfig {
     public static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
@@ -27,6 +30,10 @@ public class PDAConfig {
     public static final ModConfigSpec.IntValue RAIDER_ARMY_ABANDON_TIMEOUT;
     public static final ModConfigSpec.IntValue RAIDER_ARMY_IDLE_TIMEOUT;
     public static final ModConfigSpec.IntValue RAIDER_ARMY_START_TIME;
+
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> REFORGE_MODIFIER_MULTIPLIERS;
+    public static final ModConfigSpec.DoubleValue REFORGE_MODIFIER_GLOBAL_MULTIPLIER;
+    public static final ModConfigSpec.DoubleValue REFORGE_CRAFTING_CHANCE;
 
     static {
         BUILDER.push("common_raider_army");
@@ -65,6 +72,17 @@ public class PDAConfig {
                 TALLY_COUNTER_KILL_SOUND = BUILDER.define("item_tally_kill_sound", true);
                 TALLY_COUNTER_LIMIT = BUILDER.defineInRange("item_tally_limit", 5, 1, 9);
             BUILDER.pop();
+        BUILDER.pop();
+
+        BUILDER.push("reforges");
+            REFORGE_CRAFTING_CHANCE = BUILDER.defineInRange("reforge_crafting_chance", 0.2, 0.0, 1.0);
+            REFORGE_MODIFIER_GLOBAL_MULTIPLIER = BUILDER.defineInRange("reforge_modifier_global_multiplier", 2.0, 0.0, 10.0);
+            REFORGE_MODIFIER_MULTIPLIERS = BUILDER.defineList(
+                    "reforge_modifier_multipliers",
+                    List.of("minecraft:mining_efficiency = 1.0"),
+                    () -> "namespace:path = multiplier",
+                    ReforgeModifierRegistry::reforgeModifierMultipliersConfigValidator
+            );
         BUILDER.pop();
 
         SPEC = BUILDER.build();

@@ -13,6 +13,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
+import org.jspecify.annotations.NonNull;
 
 import java.util.Comparator;
 import java.util.List;
@@ -22,6 +23,10 @@ public class TooltipEventHandler {
 
     @SubscribeEvent
     public static void onItemTooltip(ItemTooltipEvent event) {
+        accessoryTooltip(event);
+    }
+
+    private static void accessoryTooltip(@NonNull ItemTooltipEvent event) {
         ItemStack stack = event.getItemStack();
 
         List<InfoDisplayHandler> handlers = InfoDisplayManager.getHandlersFor(stack);
@@ -55,4 +60,5 @@ public class TooltipEventHandler {
             }
         }
     }
+
 }

@@ -1,0 +1,223 @@
+{
+  "items": [
+    "c:tools/ranged_weapon"
+  ],
+  "reforges": {
+    "pda:sighted": {
+      "tier": 1,
+      "attributes": {
+        "minecraft:attack_damage": 0.1,
+        "apothic_attributes:projectile_damage": 0.1,
+        "apothic_attributes:crit_chance": 0.03
+      }
+    },
+    "pda:rapid": {
+      "tier": 2,
+      "attributes": {
+        "minecraft:attack_speed": 0.15,
+        "apothic_attributes:draw_speed": 0.15,
+        "apothic_attributes:cooldown_reduction": 0.15,
+        "apothic_attributes:arrow_velocity": 0.1
+      }
+    },
+    "pda:hasty": {
+      "tier": 2,
+      "attributes": {
+        "minecraft:attack_speed": 0.1,
+        "apothic_attributes:draw_speed": 0.1,
+        "apothic_attributes:cooldown_reduction": 0.1,
+        "apothic_attributes:arrow_velocity": 0.15
+      }
+    },
+    "pda:intimidating": {
+      "tier": 2,
+      "attributes": {
+        "apothic_attributes:arrow_velocity": 0.05,
+        "minecraft:attack_knockback": 0.15
+      }
+    },
+    "pda:deadly": {
+      "tier": 2,
+      "attributes": {
+        "minecraft:attack_damage": 0.1,
+        "apothic_attributes:projectile_damage": 0.1,
+        "minecraft:attack_speed": 0.05,
+        "apothic_attributes:draw_speed": 0.05,
+        "apothic_attributes:cooldown_reduction": 0.05,
+        "apothic_attributes:crit_chance": 0.02,
+        "apothic_attributes:arrow_velocity": 0.05,
+        "minecraft:attack_knockback": 0.05
+      }
+    },
+    "pda:staunch": {
+      "tier": 2,
+      "attributes": {
+        "minecraft:attack_damage": 0.1,
+        "apothic_attributes:projectile_damage": 0.1,
+        "minecraft:attack_knockback": 0.15
+      }
+    },
+    "pda:awful": {
+      "tier": -2,
+      "attributes": {
+        "minecraft:attack_damage": -0.15,
+        "apothic_attributes:projectile_damage": -0.15,
+        "apothic_attributes:arrow_velocity": -0.1,
+        "minecraft:attack_knockback": -0.1
+      }
+    },
+    "pda:lethargic": {
+      "tier": -2,
+      "attributes": {
+        "minecraft:attack_speed": -0.15,
+        "apothic_attributes:draw_speed": -0.15,
+        "apothic_attributes:cooldown_reduction": -0.15,
+        "apothic_attributes:arrow_velocity": -0.1
+      }
+    },
+    "pda:awkward": {
+      "tier": -2,
+      "attributes": {
+        "minecraft:attack_speed": -0.1,
+        "apothic_attributes:draw_speed": -0.1,
+        "apothic_attributes:cooldown_reduction": -0.1,
+        "minecraft:attack_knockback": -0.2
+      }
+    },
+    "pda:powerful": {
+      "tier": 1,
+      "attributes": {
+        "minecraft:attack_damage": 0.15,
+        "apothic_attributes:projectile_damage": 0.15,
+        "minecraft:attack_speed": -0.1,
+        "apothic_attributes:draw_speed": -0.1,
+        "apothic_attributes:cooldown_reduction": -0.1,
+        "apothic_attributes:crit_chance": 0.01
+      }
+    },
+    "pda:frenzying": {
+      "attributes": {
+        "minecraft:attack_damage": -0.15,
+        "apothic_attributes:projectile_damage": -0.15,
+        "minecraft:attack_speed": 0.15,
+        "apothic_attributes:draw_speed": 0.15,
+        "apothic_attributes:cooldown_reduction": 0.15
+      }
+    },
+    "pda:unreal": {
+      "tier": 2,
+      "attributes": {
+        "minecraft:attack_damage": 0.15,
+        "apothic_attributes:projectile_damage": 0.15,
+        "minecraft:attack_speed": 0.1,
+        "apothic_attributes:draw_speed": 0.1,
+        "apothic_attributes:cooldown_reduction": 0.1,
+        "apothic_attributes:crit_chance": 0.05,
+        "apothic_attributes:arrow_velocity": 0.1,
+        "minecraft:attack_knockback": 0.15
+      }
+    },
+    "pda:keen": {
+      "tier": 1,
+      "attributes": {
+        "apothic_attributes:crit_chance": 0.03
+      }
+    },
+    "pda:superior": {
+      "tier": 2,
+      "attributes": {
+        "minecraft:attack_damage": 0.1,
+        "apothic_attributes:projectile_damage": 0.1,
+        "apothic_attributes:crit_chance": 0.03,
+        "minecraft:attack_knockback": 0.1
+      }
+    },
+    "pda:forceful": {
+      "tier": 1,
+      "attributes": {
+        "minecraft:attack_knockback": 0.15
+      }
+    },
+    "pda:broken": {
+      "tier": -2,
+      "attributes": {
+        "minecraft:attack_damage": -0.3,
+        "apothic_attributes:projectile_damage": -0.3,
+        "minecraft:attack_knockback": -0.2
+      }
+    },
+    "pda:damaged": {
+      "tier": -1,
+      "attributes": {
+        "minecraft:attack_damage": -0.15,
+        "apothic_attributes:projectile_damage": -0.15
+      }
+    },
+    "pda:shoddy": {
+      "tier": -2,
+      "attributes": {
+        "minecraft:attack_damage": -0.1,
+        "apothic_attributes:projectile_damage": -0.1,
+        "minecraft:attack_knockback": -0.15
+      }
+    },
+    "pda:hurtful": {
+      "tier": 1,
+      "attributes": {
+        "minecraft:attack_damage": 0.1,
+        "apothic_attributes:projectile_damage": 0.1
+      }
+    },
+    "pda:strong": {
+      "tier": 1,
+      "attributes": {
+        "minecraft:attack_knockback": 0.15
+      }
+    },
+    "pda:unpleasant": {
+      "tier": 2,
+      "attributes": {
+        "minecraft:attack_damage": 0.05,
+        "apothic_attributes:projectile_damage": 0.05,
+        "minecraft:attack_knockback": 0.15
+      }
+    },
+    "pda:weak": {
+      "tier": -2,
+      "attributes": {
+        "minecraft:attack_knockback": -0.2
+      }
+    },
+    "pda:ruthless": {
+      "tier": 1,
+      "attributes": {
+        "minecraft:attack_damage": 0.18,
+        "apothic_attributes:projectile_damage": 0.18,
+        "minecraft:attack_knockback": -0.1
+      }
+    },
+    "pda:godly": {
+      "tier": 2,
+      "attributes": {
+        "minecraft:attack_damage": 0.15,
+        "apothic_attributes:projectile_damage": 0.15,
+        "apothic_attributes:crit_chance": 0.05,
+        "minecraft:attack_knockback": 0.15
+      }
+    },
+    "pda:demonic": {
+      "tier": 2,
+      "attributes": {
+        "minecraft:attack_damage": 0.15,
+        "apothic_attributes:projectile_damage": 0.15,
+        "apothic_attributes:crit_chance": 0.05
+      }
+    },
+    "pda:zealous": {
+      "tier": 1,
+      "attributes": {
+        "apothic_attributes:crit_chance": 0.05
+      }
+    }
+  }
+}

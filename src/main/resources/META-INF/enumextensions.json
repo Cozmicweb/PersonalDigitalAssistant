@@ -1,0 +1,82 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PDA_GRAY",
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      "parameters": { "class": "cozmicweb/pda/common/registry/ModRarities", "field": "GRAY" }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PDA_WHITE",
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      "parameters": { "class": "cozmicweb/pda/common/registry/ModRarities", "field": "WHITE" }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PDA_BLUE",
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      "parameters": { "class": "cozmicweb/pda/common/registry/ModRarities", "field": "BLUE" }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PDA_GREEN",
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      "parameters": { "class": "cozmicweb/pda/common/registry/ModRarities", "field": "GREEN" }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PDA_ORANGE",
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      "parameters": { "class": "cozmicweb/pda/common/registry/ModRarities", "field": "ORANGE" }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PDA_LIGHT_RED",
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      "parameters": { "class": "cozmicweb/pda/common/registry/ModRarities", "field": "LIGHT_RED" }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PDA_PINK",
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      "parameters": { "class": "cozmicweb/pda/common/registry/ModRarities", "field": "PINK" }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PDA_LIGHT_PURPLE",
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      "parameters": { "class": "cozmicweb/pda/common/registry/ModRarities", "field": "LIGHT_PURPLE" }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PDA_LIME",
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      "parameters": { "class": "cozmicweb/pda/common/registry/ModRarities", "field": "LIME" }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PDA_YELLOW",
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      "parameters": { "class": "cozmicweb/pda/common/registry/ModRarities", "field": "YELLOW" }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PDA_CYAN",
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      "parameters": { "class": "cozmicweb/pda/common/registry/ModRarities", "field": "CYAN" }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PDA_RED",
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      "parameters": { "class": "cozmicweb/pda/common/registry/ModRarities", "field": "RED" }
+    },
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "PDA_PURPLE",
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      "parameters": { "class": "cozmicweb/pda/common/registry/ModRarities", "field": "PURPLE" }
+    }
+  ]
+}
