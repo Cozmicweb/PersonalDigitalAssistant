@@ -42,7 +42,7 @@ public class OverrideLootModifier extends LootModifier {
         LootParams params = new LootParams.Builder(serverLevel)
                 .withParameter(LootContextParams.THIS_ENTITY, entity)
                 .withParameter(LootContextParams.ORIGIN, entity.position())
-                .withParameter(LootContextParams.DAMAGE_SOURCE, context.getParameter(LootContextParams.DAMAGE_SOURCE))
+                .withOptionalParameter(LootContextParams.DAMAGE_SOURCE, context.getOptionalParameter(LootContextParams.DAMAGE_SOURCE))
                 .withOptionalParameter(LootContextParams.ATTACKING_ENTITY, context.getOptionalParameter(LootContextParams.ATTACKING_ENTITY))
                 .withOptionalParameter(LootContextParams.DIRECT_ATTACKING_ENTITY, context.getOptionalParameter(LootContextParams.DIRECT_ATTACKING_ENTITY))
                 .withOptionalParameter(LootContextParams.LAST_DAMAGE_PLAYER, context.getOptionalParameter(LootContextParams.LAST_DAMAGE_PLAYER))
