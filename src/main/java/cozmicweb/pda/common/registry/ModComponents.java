@@ -5,7 +5,10 @@ import cozmicweb.pda.common.PDACommon;
 import cozmicweb.pda.common.component.TallyAnimState;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.ComponentSerialization;
 import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -61,6 +64,24 @@ public class ModComponents {
             () -> DataComponentType.<Integer>builder()
                     .persistent(Codec.INT)
                     .networkSynchronized(ByteBufCodecs.INT)
+                    .build());
+
+    public static final Supplier<DataComponentType<Identifier>> REFORGE_MODIFIER = DATA_COMPONENTS.register("reforge_modifier",
+            () -> DataComponentType.<Identifier>builder()
+                    .persistent(Identifier.CODEC)
+                    .networkSynchronized(Identifier.STREAM_CODEC)
+                    .build());
+
+    public static final Supplier<DataComponentType<Identifier>> REFORGE_GROUP = DATA_COMPONENTS.register("reforge_group",
+            () -> DataComponentType.<Identifier>builder()
+                    .persistent(Identifier.CODEC)
+                    .networkSynchronized(Identifier.STREAM_CODEC)
+                    .build());
+
+    public static final Supplier<DataComponentType<Component>> ORIGINAL_NAME = DATA_COMPONENTS.register("original_name",
+            () -> DataComponentType.<Component>builder()
+                    .persistent(ComponentSerialization.CODEC)
+                    .networkSynchronized(ComponentSerialization.STREAM_CODEC)
                     .build());
 
     public static void register(IEventBus modEventBus) {

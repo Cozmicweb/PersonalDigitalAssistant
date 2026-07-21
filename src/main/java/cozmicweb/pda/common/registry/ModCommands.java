@@ -3,6 +3,7 @@ package cozmicweb.pda.common.registry;
 import com.mojang.brigadier.CommandDispatcher;
 import cozmicweb.pda.common.PDACommon;
 import cozmicweb.pda.common.command.ArmiesCommand;
+import cozmicweb.pda.common.command.ReforgeCommand;
 import net.minecraft.commands.CommandSourceStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -17,6 +18,7 @@ public class ModCommands {
         CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
 
         ArmiesCommand.register(dispatcher);
+        ReforgeCommand.register(dispatcher);
     }
 
 }
