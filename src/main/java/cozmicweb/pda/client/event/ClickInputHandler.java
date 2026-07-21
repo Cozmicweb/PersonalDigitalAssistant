@@ -1,5 +1,6 @@
 package cozmicweb.pda.client.event;
 
+import cozmicweb.pda.common.PDACommon;
 import cozmicweb.pda.common.item.IClickReactive;
 import cozmicweb.pda.common.network.ClickStatePayload;
 import net.minecraft.client.Minecraft;
@@ -10,7 +11,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
-@EventBusSubscriber(modid = "pda", value = Dist.CLIENT)
+@EventBusSubscriber(modid = PDACommon.MOD_ID, value = Dist.CLIENT)
 public class ClickInputHandler {
     private static boolean wasAttackDown = false;
     private static boolean wasUseDown = false;
