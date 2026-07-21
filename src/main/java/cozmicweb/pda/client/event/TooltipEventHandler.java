@@ -5,6 +5,7 @@ import cozmicweb.pda.client.PDAClient;
 import cozmicweb.pda.common.PDACommon;
 import cozmicweb.pda.common.content.information_display.InfoDisplayManager;
 import cozmicweb.pda.common.content.information_display.handlers.InfoDisplayHandler;
+import cozmicweb.pda.common.registry.ModItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -24,6 +25,20 @@ public class TooltipEventHandler {
     @SubscribeEvent
     public static void onItemTooltip(ItemTooltipEvent event) {
         accessoryTooltip(event);
+        battleStandardTooltip(event);
+    }
+
+    private static void battleStandardTooltip(@NonNull ItemTooltipEvent event) {
+        ItemStack stack = event.getItemStack();
+
+        String text = "";
+        if (stack.is(ModItems.WARDING_BATTLE_STANDARD))
+            text = "Cancels current army event";
+        else if (stack.is(ModItems.OMINOUS_BATTLE_STANDARD))
+            text = "Summons an army or increases the difficulty of the current one";
+
+        if (!text.isEmpty())
+            event.getToolTip().add(1, Component.translatable(text).withStyle(ChatFormatting.DARK_GRAY));
     }
 
     private static void accessoryTooltip(@NonNull ItemTooltipEvent event) {
