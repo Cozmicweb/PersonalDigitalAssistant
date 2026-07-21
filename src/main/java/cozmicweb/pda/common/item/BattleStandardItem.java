@@ -84,7 +84,8 @@ public class BattleStandardItem extends Item {
 
         if (result == InteractionResult.SUCCESS) {
             player.swing(hand);
-            player.getInventory().removeItem(player.getItemInHand(hand));
+            if (!player.isCreative())
+                player.getInventory().removeItem(player.getItemInHand(hand));
             RandomSource random = player.getRandom();
             for (int i = 0; i < 5; i++) {
                 double xa = random.nextGaussian() * 0.02;
