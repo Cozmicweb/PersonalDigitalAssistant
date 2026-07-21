@@ -162,7 +162,7 @@ public class ReforgeManager {
             return;
 
         RandomSource random = event.getEntity().getRandom();
-        if (random.nextDouble() < PDAConfig.REFORGE_CRAFTING_CHANCE.get())
+        if (random.nextDouble() < PDAConfig.REFORGE_RANDOM_CHANCE.get())
             addRandomReforge(event.getCrafting(), random);
     }
 

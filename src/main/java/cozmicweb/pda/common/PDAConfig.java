@@ -33,7 +33,7 @@ public class PDAConfig {
 
     public static final ModConfigSpec.ConfigValue<List<? extends String>> REFORGE_MODIFIER_MULTIPLIERS;
     public static final ModConfigSpec.DoubleValue REFORGE_MODIFIER_GLOBAL_MULTIPLIER;
-    public static final ModConfigSpec.DoubleValue REFORGE_CRAFTING_CHANCE;
+    public static final ModConfigSpec.DoubleValue REFORGE_RANDOM_CHANCE;
 
     static {
         BUILDER.push("common_raider_army");
@@ -75,7 +75,7 @@ public class PDAConfig {
         BUILDER.pop();
 
         BUILDER.push("reforges");
-            REFORGE_CRAFTING_CHANCE = BUILDER.defineInRange("reforge_crafting_chance", 0.2, 0.0, 1.0);
+            REFORGE_RANDOM_CHANCE = BUILDER.defineInRange("reforge_random_chance", 0.2, 0.0, 1.0);
             REFORGE_MODIFIER_GLOBAL_MULTIPLIER = BUILDER.defineInRange("reforge_modifier_global_multiplier", 2.0, 0.0, 10.0);
             REFORGE_MODIFIER_MULTIPLIERS = BUILDER.defineList(
                     "reforge_modifier_multipliers",

@@ -3,6 +3,7 @@ package cozmicweb.pda.datagen.loot;
 import cozmicweb.pda.common.PDACommon;
 import cozmicweb.pda.common.loot.OverrideLootCondition;
 import cozmicweb.pda.common.loot.OverrideLootModifier;
+import cozmicweb.pda.common.loot.RandomReforgeModifier;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
@@ -22,6 +23,7 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
     @Override
     protected void start() {
         this.add("override_loot", new OverrideLootModifier(new LootItemCondition[] { new OverrideLootCondition() }, 0));
+        this.add("random_reforge", new RandomReforgeModifier(new LootItemCondition[] {}, 0)); // Don't use LootItemRandomChanceCondition so the chance can be configured
 
         this.add("add_mineshaft_loot",
                 new AddTableLootModifier(
