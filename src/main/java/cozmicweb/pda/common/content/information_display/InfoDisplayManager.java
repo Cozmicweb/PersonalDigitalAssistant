@@ -2,6 +2,8 @@ package cozmicweb.pda.common.content.information_display;
 
 import cozmicweb.pda.client.PDAClientConfig;
 import cozmicweb.pda.common.PDACommon;
+import cozmicweb.pda.common.PDACompat;
+import cozmicweb.pda.common.compat.curios.CuriosCompat;
 import cozmicweb.pda.common.content.information_display.handlers.*;
 import cozmicweb.pda.common.registry.ModDataMaps;
 import net.minecraft.client.Minecraft;
@@ -52,17 +54,26 @@ public class InfoDisplayManager {
         Set<InfoDisplayHandler> active = new LinkedHashSet<>();
         LocalPlayer player = Minecraft.getInstance().player;
         if (player == null) return active;
+        boolean clientSide = player.level().isClientSide();
 
-        for (ItemStack stack : player.getInventory().getNonEquipmentItems()) {
-            if (stack.isEmpty()) continue;
-            List<InfoDisplayHandler> handlers = getHandlersFor(stack);
+        // Vanilla Inventory
+        player.getInventory().getNonEquipmentItems().forEach(stack -> collectHandlers(stack, clientSide, active));
 
-            if (player.level().isClientSide())
-                handlers.stream().filter(h -> PDAClientConfig.getVisibility(h.id)).forEach(active::add);
-            else
-                active.addAll(handlers);
-        }
+        // Curios Inventory
+        if (PDACompat.curiosLoaded)
+            CuriosCompat.collectCurios(player, clientSide, active);
+
         return active;
+    }
+
+    public static void collectHandlers(@NonNull ItemStack stack, boolean clientSide, Set<InfoDisplayHandler> active) {
+        if (stack.isEmpty()) return;
+        List<InfoDisplayHandler> handlers = getHandlersFor(stack);
+
+        if (clientSide)
+            handlers.stream().filter(h -> PDAClientConfig.getVisibility(h.id)).forEach(active::add);
+        else
+            active.addAll(handlers);
     }
 
     public static boolean isHandlerActive(String id) {

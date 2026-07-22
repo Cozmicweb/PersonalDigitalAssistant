@@ -1,6 +1,8 @@
 package cozmicweb.pda.datagen;
 
 import cozmicweb.pda.common.PDACommon;
+import cozmicweb.pda.common.PDACompat;
+import cozmicweb.pda.common.compat.curios.ModCuriosProvider;
 import cozmicweb.pda.datagen.item.ModModelProvider;
 import cozmicweb.pda.datagen.item.ModRecipeProvider;
 import cozmicweb.pda.datagen.loot.ModGlobalLootModifierProvider;
@@ -32,6 +34,9 @@ public class PDADataGen {
         gen.addProvider(true, new ModLootTableProvider(pack, lookup));
         gen.addProvider(true, new ModGlobalLootModifierProvider(pack, lookup));
         gen.addProvider(true, new ModRecipeProvider.Runner(pack, lookup));
+
+        if (PDACompat.curiosLoaded)
+            gen.addProvider(true, new ModCuriosProvider(pack, lookup));
     }
 
 }
