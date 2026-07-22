@@ -6,7 +6,9 @@ import org.jspecify.annotations.NonNull;
 public enum BattleStandardType implements StringRepresentable {
     STANDARD,
     OMINOUS,
-    WARDING;
+    WARDING,
+    REVEALING,
+    GATHERING;
 
     @Override
     public @NonNull String getSerializedName() {

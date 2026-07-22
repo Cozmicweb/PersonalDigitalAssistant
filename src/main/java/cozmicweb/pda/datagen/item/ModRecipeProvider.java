@@ -99,6 +99,22 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.GOLDEN_APPLE), has(Items.GOLDEN_APPLE))
                 .save(output);
 
+        shapeless(RecipeCategory.TOOLS, ModItems.REVEALING_BATTLE_STANDARD)
+                .requires(ModItems.EMPTY_BATTLE_STANDARD)
+                .requires(Items.GLOWSTONE)
+                .requires(ItemTags.WOOL)
+                .unlockedBy(getHasName(ModItems.EMPTY_BATTLE_STANDARD), has(ModItems.EMPTY_BATTLE_STANDARD))
+                .unlockedBy(getHasName(Items.GLOWSTONE), has(Items.GLOWSTONE))
+                .save(output);
+
+        shapeless(RecipeCategory.TOOLS, ModItems.GATHERING_BATTLE_STANDARD)
+                .requires(ModItems.EMPTY_BATTLE_STANDARD)
+                .requires(Items.ENDER_PEARL)
+                .requires(ItemTags.WOOL)
+                .unlockedBy(getHasName(ModItems.EMPTY_BATTLE_STANDARD), has(ModItems.EMPTY_BATTLE_STANDARD))
+                .unlockedBy(getHasName(Items.ENDER_PEARL), has(Items.ENDER_PEARL))
+                .save(output);
+
         shaped(RecipeCategory.TOOLS, ModItems.EMPTY_BATTLE_STANDARD)
                 .pattern("###")
                 .pattern(" # ")
