@@ -132,4 +132,10 @@ public class StopwatchItem extends Item implements IClickReactive {
     public boolean onEntitySwing(@NonNull ItemStack stack, @NonNull LivingEntity entity, @NonNull InteractionHand hand) {
         return true;
     }
+
+    @Override
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        return slotChanged;
+    }
+
 }
