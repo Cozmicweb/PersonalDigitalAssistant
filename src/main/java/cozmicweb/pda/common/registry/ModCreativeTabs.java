@@ -40,6 +40,8 @@ public class ModCreativeTabs {
                     output.accept(ModItems.EMPTY_BATTLE_STANDARD.get());
                     output.accept(ModItems.OMINOUS_BATTLE_STANDARD.get());
                     output.accept(ModItems.WARDING_BATTLE_STANDARD.get());
+                    output.accept(ModItems.REVEALING_BATTLE_STANDARD.get());
+                    output.accept(ModItems.GATHERING_BATTLE_STANDARD.get());
                 })
                 .build());
 

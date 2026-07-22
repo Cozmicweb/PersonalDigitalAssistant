@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "pda:battle_standard_empty",
+    "minecraft:glowstone",
+    "#minecraft:wool"
+  ],
+  "result": {
+    "id": "pda:battle_standard_revealing"
+  }
+}

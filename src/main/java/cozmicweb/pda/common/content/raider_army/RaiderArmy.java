@@ -101,7 +101,7 @@ public class RaiderArmy {
             recallFarMembers();
 
         if (tick % 400 == 0)
-            peekActiveMembers();
+            peekActiveMembers(400);
 
         cleanActiveMembers();
         checkForAbandonment();
@@ -193,7 +193,7 @@ public class RaiderArmy {
         });
 
         if (recalled.get())
-            peekActiveMembers();
+            peekActiveMembers(200);
     }
 
     public float calculateWaveHealth(boolean max) {
@@ -201,8 +201,8 @@ public class RaiderArmy {
         return activeMembers == null ? 1 : activeMembers.stream().map(method).reduce(0.0f, Float::sum);
     }
 
-    private void peekActiveMembers() {
-        MobEffectInstance effect = new MobEffectInstance(MobEffects.GLOWING, 400, 3, true, false);
+    public void peekActiveMembers(int duration) {
+        MobEffectInstance effect = new MobEffectInstance(MobEffects.GLOWING, duration, 3, true, false);
         activeMembers.forEach(e -> e.addEffect(effect));
     }
 

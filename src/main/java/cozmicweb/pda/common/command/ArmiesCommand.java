@@ -15,8 +15,6 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.neoforged.neoforge.server.command.EnumArgument;
 import org.jetbrains.annotations.Nullable;
@@ -176,8 +174,12 @@ public class ArmiesCommand {
         ServerPlayer player = source.getPlayerOrException();
         BlockPos pos = player.blockPosition();
         RaiderArmy army = ArmyManager.getArmyAtPos(pos, player.level());
-        if (army != null)
-            army.getActiveMembers().forEach(member -> member.addEffect(new MobEffectInstance(MobEffects.GLOWING, 1000, 1)));
+        if (army != null) {
+            army.peekActiveMembers(500);
+            source.sendSuccess(() -> Component.literal("Peeked at " + army.getActiveMembers().size() + " members"), false);
+        } else {
+            source.sendFailure(Component.literal("No army nearby").withColor(TextColor.RED));
+        }
         return 1;
     }
 

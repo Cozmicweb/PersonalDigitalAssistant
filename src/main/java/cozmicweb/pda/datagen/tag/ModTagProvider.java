@@ -54,7 +54,9 @@ public class ModTagProvider {
             this.tag(ModTags.BATTLE_STANDARDS)
                     .add(ModItems.EMPTY_BATTLE_STANDARD.getKey())
                     .add(ModItems.OMINOUS_BATTLE_STANDARD.getKey())
-                    .add(ModItems.WARDING_BATTLE_STANDARD.getKey());
+                    .add(ModItems.WARDING_BATTLE_STANDARD.getKey())
+                    .add(ModItems.REVEALING_BATTLE_STANDARD.getKey())
+                    .add(ModItems.GATHERING_BATTLE_STANDARD.getKey());
         }
     }
 

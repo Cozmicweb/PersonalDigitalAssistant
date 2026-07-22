@@ -48,6 +48,8 @@ public class ModModelProvider extends ModelProvider {
         itemGen.generateFlatItem(ModItems.EMPTY_BATTLE_STANDARD.get(), ModelTemplates.FLAT_ITEM);
         itemGen.generateFlatItem(ModItems.OMINOUS_BATTLE_STANDARD.get(), ModelTemplates.FLAT_ITEM);
         itemGen.generateFlatItem(ModItems.WARDING_BATTLE_STANDARD.get(), ModelTemplates.FLAT_ITEM);
+        itemGen.generateFlatItem(ModItems.REVEALING_BATTLE_STANDARD.get(), ModelTemplates.FLAT_ITEM);
+        itemGen.generateFlatItem(ModItems.GATHERING_BATTLE_STANDARD.get(), ModelTemplates.FLAT_ITEM);
 
         generateStopwatchModel(itemGen);
         generateTallyCounterModel(itemGen);

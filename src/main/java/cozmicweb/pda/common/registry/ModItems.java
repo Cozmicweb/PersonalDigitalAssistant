@@ -36,6 +36,8 @@ public class ModItems {
     public static final DeferredItem<Item> EMPTY_BATTLE_STANDARD = ITEMS.registerItem("battle_standard_empty", Item::new, props -> props.stacksTo(16));
     public static final DeferredItem<Item> OMINOUS_BATTLE_STANDARD = ITEMS.registerItem("battle_standard_ominous", props -> new BattleStandardItem(props, BattleStandardType.OMINOUS), props -> props.stacksTo(1).rarity(ModRarities.BLUE.getValue()));
     public static final DeferredItem<Item> WARDING_BATTLE_STANDARD = ITEMS.registerItem("battle_standard_warding", props -> new BattleStandardItem(props, BattleStandardType.WARDING), props -> props.stacksTo(1).rarity(ModRarities.BLUE.getValue()));
+    public static final DeferredItem<Item> REVEALING_BATTLE_STANDARD = ITEMS.registerItem("battle_standard_revealing", props -> new BattleStandardItem(props, BattleStandardType.REVEALING), props -> props.stacksTo(1).rarity(ModRarities.BLUE.getValue()).durability(10));
+    public static final DeferredItem<Item> GATHERING_BATTLE_STANDARD = ITEMS.registerItem("battle_standard_gathering", props -> new BattleStandardItem(props, BattleStandardType.GATHERING), props -> props.stacksTo(1).rarity(ModRarities.BLUE.getValue()).durability(10));
 
     public static void register(IEventBus modEventBus) {
         ITEMS.register(modEventBus);
