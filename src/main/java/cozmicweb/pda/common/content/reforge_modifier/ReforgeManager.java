@@ -1,6 +1,8 @@
 package cozmicweb.pda.common.content.reforge_modifier;
 
+import cozmicweb.pda.common.PDACommon;
 import cozmicweb.pda.common.PDAConfig;
+import cozmicweb.pda.common.content.reforge_modifier.tracking.ResolvedReforge;
 import cozmicweb.pda.common.registry.ModComponents;
 import cozmicweb.pda.common.registry.ModRarities;
 import net.minecraft.core.Holder;
@@ -17,6 +19,7 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
@@ -42,68 +45,59 @@ public class ReforgeManager {
                     .filter(IS_REFORGE_MODIFIER.negate())
                     .toList();
 
-            ItemAttributeModifiers newAttributes = new ItemAttributeModifiers(remainingModifiers);
-            stack.set(DataComponents.ATTRIBUTE_MODIFIERS, newAttributes);
+            stack.set(DataComponents.ATTRIBUTE_MODIFIERS, new ItemAttributeModifiers(remainingModifiers));
         }
 
         if (stack.has(ModComponents.ORIGINAL_NAME)) {
             stack.set(DataComponents.ITEM_NAME, stack.get(ModComponents.ORIGINAL_NAME));
-            stack.remove(ModComponents.ORIGINAL_NAME);
         }
 
         stack.remove(ModComponents.ORIGINAL_NAME);
-        stack.remove(ModComponents.REFORGE_GROUP);
         stack.remove(ModComponents.REFORGE_MODIFIER);
         stack.set(DataComponents.RARITY, stack.getItem().getDefaultInstance().getRarity());
     }
 
-    public static void addReforge(ItemStack stack, @NonNull ItemReforge reforge) {
+    public static boolean addReforge(@NotNull ItemStack stack, @NonNull String reforgeId) {
+        if (stack.isEmpty()) return false;
+
+        ResolvedReforge reforge = ReforgeModifierRegistry.resolve(stack, reforgeId);
+        if (reforge == null) return false;
+
+        applyReforge(stack, reforge);
+        return true;
+    }
+
+    private static void applyReforge(ItemStack stack, @NonNull ResolvedReforge reforge) {
         removeReforge(stack);
 
         Map<Holder<Attribute>, Double> multipliers = ReforgeModifierRegistry.getAttributeMultipliers();
         ItemAttributeModifiers attributes = stack.getOrDefault(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY);
 
-        for (Map.Entry<Holder<Attribute>, Double> entry : reforge.modifiers().entrySet()) {
+        for (Map.Entry<Holder<Attribute>, Double> entry : reforge.attributes().entrySet()) {
             Holder<Attribute> attribute = entry.getKey();
             double finalValue = entry.getValue() * multipliers.getOrDefault(attribute, PDAConfig.REFORGE_MODIFIER_GLOBAL_MULTIPLIER.get());
-            AttributeModifier modifier = new AttributeModifier(addAttributeModifierPrefix(reforge.id()), finalValue, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+            AttributeModifier modifier = new AttributeModifier(attributeModifierId(reforge.id()), finalValue, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
             attributes = attributes.withModifierAdded(attribute, modifier, EquipmentSlotGroup.MAINHAND);
         }
 
-        String reforgeTranslation = ItemReforge.getTranslationKey(reforge.id());
-        Component name = Component.translatable(reforgeTranslation).append(" ").append(stack.getItemName());
+        Component name = Component.translatable(translationKey(reforge.id())).append(" ").append(stack.getItemName());
 
         stack.set(DataComponents.RARITY, getReforgedRarity(stack, reforge.tier()));
         stack.set(ModComponents.ORIGINAL_NAME, stack.getItemName());
         stack.set(ModComponents.REFORGE_MODIFIER, reforge.id());
-        stack.set(ModComponents.REFORGE_GROUP, reforge.groupId());
         stack.set(DataComponents.ATTRIBUTE_MODIFIERS, attributes);
         stack.set(DataComponents.ITEM_NAME, name);
     }
 
     public static void addRandomReforge(ItemStack stack, RandomSource random) {
-        ReforgeGroup groupId = getGroup(stack);
-        if (groupId == null) return;
+        List<String> validIds = List.copyOf(ReforgeModifierRegistry.getValidReforgeIds(stack));
+        if (validIds.isEmpty()) return;
 
-        List<ItemReforge> allReforges = List.copyOf(ReforgeModifierRegistry.getAllReforges());
-        addReforge(stack, allReforges.get(random.nextInt(allReforges.size())));
+        addReforge(stack, validIds.get(random.nextInt(validIds.size())));
     }
 
-    public static boolean addReforge(@NotNull ItemStack stack, @NonNull Identifier reforgeId) {
-        if (stack.isEmpty()) return false;
-
-        return ReforgeModifierRegistry.getGroupId(stack.getItem()).map(groupId -> {
-            ItemReforge reforge = getReforge(groupId, reforgeId);
-            if (reforge != null) {
-                addReforge(stack, reforge);
-                return true;
-            }
-            return false;
-        }).orElse(false);
-    }
-
-    public static boolean removeReforge(@NotNull ItemStack stack, @NonNull Identifier reforgeId) {
-        Identifier currentReforgeId = getReforgeId(stack);
+    public static boolean removeReforge(@NotNull ItemStack stack, @NonNull String reforgeId) {
+        String currentReforgeId = getReforgeId(stack);
 
         if (reforgeId.equals(currentReforgeId)) {
             removeReforge(stack);
@@ -113,41 +107,25 @@ public class ReforgeManager {
         return false;
     }
 
-    public static @Nullable ItemReforge getReforge(@NotNull ItemStack stack) {
-        Identifier reforgeId = getReforgeId(stack);
-        Identifier groupId = getGroupId(stack);
+    public static @Nullable ResolvedReforge getReforge(@NotNull ItemStack stack) {
+        String reforgeId = getReforgeId(stack);
+        if (reforgeId == null) return null;
 
-        if (reforgeId == null || groupId == null) return null;
-
-        return getReforge(reforgeId, groupId);
+        return ReforgeModifierRegistry.resolve(stack, reforgeId);
     }
 
-    public static @Nullable ItemReforge getReforge(@NotNull Identifier groupId, @NotNull Identifier reforgeId) {
-        return ReforgeModifierRegistry.getReforge(groupId, reforgeId);
-    }
-
-    public static @Nullable ReforgeGroup getGroup(@NotNull ItemStack stack) {
-        if (stack.isEmpty()) return null;
-
-        return ReforgeModifierRegistry.getGroupId(stack.getItem())
-                .map(ReforgeModifierRegistry::getGroup)
-                .orElse(null);
-    }
-
-    public static @Nullable ReforgeGroup getGroup(Identifier id) {
-        return ReforgeModifierRegistry.getGroup(id);
-    }
-
-    public static @Nullable Identifier getReforgeId(@NonNull ItemStack stack) {
+    public static @Nullable String getReforgeId(@NonNull ItemStack stack) {
         return stack.get(ModComponents.REFORGE_MODIFIER);
     }
 
-    public static @Nullable Identifier getGroupId(@NonNull ItemStack stack) {
-        return stack.get(ModComponents.REFORGE_GROUP);
+    @Contract("_ -> new")
+    private static @NonNull Identifier attributeModifierId(@NonNull String reforgeId) {
+        return PDACommon.id(ATTRIBUTE_MODIFIER_PREFIX + reforgeId);
     }
 
-    public static Identifier addAttributeModifierPrefix(@NonNull Identifier original) {
-        return Identifier.tryParse(original.getNamespace() + ":" + ATTRIBUTE_MODIFIER_PREFIX + original.getPath());
+    @Contract(pure = true)
+    private static @NonNull String translationKey(@NonNull String reforgeId) {
+        return "reforge." + PDACommon.MOD_ID + "." + reforgeId;
     }
 
     public static Rarity getReforgedRarity(@NonNull ItemStack stack, int tier) {
