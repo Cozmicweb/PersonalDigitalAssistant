@@ -3,10 +3,12 @@ package cozmicweb.pda.common.content.reforge_modifier;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableTable;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import cozmicweb.pda.common.PDAConfig;
+import cozmicweb.pda.common.content.reforge_modifier.tracking.ReforgeDefinition;
+import cozmicweb.pda.common.content.reforge_modifier.tracking.ReforgePool;
+import cozmicweb.pda.common.content.reforge_modifier.tracking.ResolvedReforge;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -14,6 +16,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
@@ -27,54 +30,31 @@ import java.util.stream.StreamSupport;
 @EventBusSubscriber
 public class ReforgeModifierRegistry {
 
-    private static ImmutableMap<Identifier, ReforgeGroup> groups = ImmutableMap.of();
-    private static ImmutableTable<Identifier, Identifier, ItemReforge> table = ImmutableTable.of(); // groupId, modifierId -> ItemReforge
-    private static ImmutableSet<ItemReforge> allReforges = ImmutableSet.of();
+    private static ImmutableList<ReforgePool> pools = ImmutableList.of();
+    private static ImmutableSet<String> allReforgeIds = ImmutableSet.of();
 
-    private static final Map<Item, Optional<Identifier>> itemGroupCache = new IdentityHashMap<>();
+    private static final Map<Item, List<ReforgePool>> itemPoolCache = new IdentityHashMap<>();
     private static final Map<Holder<Attribute>, Double> attributeMultipliers = new HashMap<>();
 
     private ReforgeModifierRegistry() {}
 
-    public static @NonNull ReforgeGroup expectGroup(Identifier groupId) {
-        ReforgeGroup group = groups.get(groupId);
-        if (group == null) throw new IllegalStateException("Reforge groupId " + groupId + " does not exist");
-        return group;
-    }
+    public static void load(@NonNull Map<Identifier, JsonObject> files) {
+        List<Map.Entry<Identifier, JsonObject>> sortedFiles = new ArrayList<>(files.entrySet());
+        sortedFiles.sort(Map.Entry.comparingByKey());
 
-    public static @Nullable ReforgeGroup getGroup(Identifier groupId) {
-        return groups.get(groupId);
-    }
+        ImmutableList.Builder<ReforgePool> poolsBuilder = ImmutableList.builder();
+        ImmutableSet.Builder<String> idsBuilder = ImmutableSet.builder();
 
-    public static @Nullable ItemReforge getReforge(Identifier groupId, Identifier reforgeId) {
-        return table.get(groupId, reforgeId);
-    }
+        for (Map.Entry<Identifier, JsonObject> fileEntry : sortedFiles) {
+            JsonObject fileObj = fileEntry.getValue();
 
-    public static Optional<Identifier> getGroupId(Item item) {
-        return itemGroupCache.computeIfAbsent(item, i -> {
-            for (ReforgeGroup group : groups.values())
-                for (TagKey<Item> tag : group.items())
-                    if (BuiltInRegistries.ITEM.wrapAsHolder(i).is(tag))
-                        return Optional.of(group.id());
-            return Optional.empty();
-        });
-    }
+            List<TagKey<Item>> itemTags = parseItems(fileObj.get("items"));
+            JsonObject reforgesObj = fileObj.getAsJsonObject("reforges");
 
-    public static void load(@NonNull Map<Identifier, JsonObject> groupJsons) {
-        ImmutableMap.Builder<Identifier, ReforgeGroup> groupsBuilder = ImmutableMap.builder();
-        ImmutableTable.Builder<Identifier, Identifier, ItemReforge> tableBuilder = ImmutableTable.builder();
+            ImmutableMap.Builder<String, ReforgeDefinition> defsBuilder = ImmutableMap.builder();
 
-        for (Map.Entry<Identifier, JsonObject> entry : groupJsons.entrySet()) {
-            Identifier groupId = entry.getKey();
-            JsonObject groupObj = entry.getValue();
-
-            JsonObject modifiersObj = groupObj.getAsJsonObject("reforges");
-            List<TagKey<Item>> itemTags = parseItems(groupObj.get("items"));
-
-            ImmutableList.Builder<ItemReforge> reforgesBuilder = ImmutableList.builder();
-
-            for (Map.Entry<String, JsonElement> modEntry : modifiersObj.entrySet()) {
-                Identifier reforgeId = Identifier.parse(modEntry.getKey());
+            for (Map.Entry<String, JsonElement> modEntry : reforgesObj.entrySet()) {
+                String reforgeId = normalizeId(modEntry.getKey());
                 JsonObject reforgeObj = modEntry.getValue().getAsJsonObject();
 
                 int tier = reforgeObj.has("tier") ? reforgeObj.get("tier").getAsInt() : 0;
@@ -90,19 +70,21 @@ public class ReforgeModifierRegistry {
                             attr -> attrsBuilder.put(BuiltInRegistries.ATTRIBUTE.wrapAsHolder(attr), value.getAsDouble()));
                 }
 
-                ItemReforge reforge = new ItemReforge(reforgeId, tier, groupId, attrsBuilder.build());
-                reforgesBuilder.add(reforge);
-                tableBuilder.put(groupId, reforgeId, reforge);
+                defsBuilder.put(reforgeId, new ReforgeDefinition(tier, attrsBuilder.build()));
+                idsBuilder.add(reforgeId);
             }
 
-            ReforgeGroup group = new ReforgeGroup(groupId, itemTags, reforgesBuilder.build());
-            groupsBuilder.put(groupId, group);
+            poolsBuilder.add(new ReforgePool(itemTags, defsBuilder.build()));
         }
 
-        groups = groupsBuilder.build();
-        table = tableBuilder.build();
-        allReforges = ImmutableSet.copyOf(table.values());
-        itemGroupCache.clear();
+        pools = poolsBuilder.build();
+        allReforgeIds = idsBuilder.build();
+        itemPoolCache.clear();
+    }
+
+    private static @NonNull String normalizeId(@NonNull String raw) {
+        int colon = raw.indexOf(':');
+        return (colon >= 0 ? raw.substring(colon + 1) : raw).toLowerCase(Locale.ROOT);
     }
 
     private static @Unmodifiable List<TagKey<Item>> parseItems(@Nullable JsonElement el) {
@@ -115,8 +97,53 @@ public class ReforgeModifierRegistry {
                 .toList();
     }
 
-    public static @Unmodifiable Set<ItemReforge> getAllReforges() {
-        return allReforges;
+    private static List<ReforgePool> getPools(@NonNull Item item) {
+        return itemPoolCache.computeIfAbsent(item, i -> {
+            Holder<Item> holder = BuiltInRegistries.ITEM.wrapAsHolder(i);
+            return pools.stream()
+                    .filter(pool -> pool.items().stream().anyMatch(holder::is))
+                    .toList();
+        });
+    }
+
+    public static boolean canSupport(@NonNull ItemStack stack) {
+        return !stack.isEmpty() && !getPools(stack.getItem()).isEmpty();
+    }
+
+    public static @Unmodifiable Set<String> getAllReforgeIds() {
+        return allReforgeIds;
+    }
+
+    public static @Unmodifiable @NonNull Set<String> getValidReforgeIds(@NonNull ItemStack stack) {
+        if (stack.isEmpty()) return Set.of();
+
+        Set<String> ids = new LinkedHashSet<>();
+        for (ReforgePool pool : getPools(stack.getItem())) ids.addAll(pool.reforges().keySet());
+        return ids;
+    }
+
+    public static @Nullable ResolvedReforge resolve(@NonNull ItemStack stack, @NonNull String reforgeId) {
+        if (stack.isEmpty()) return null;
+
+        List<ReforgePool> applicable = getPools(stack.getItem());
+        if (applicable.isEmpty()) return null;
+
+        boolean found = false;
+        int tier = 0;
+        Map<Holder<Attribute>, Double> merged = new LinkedHashMap<>();
+
+        for (ReforgePool pool : applicable) {
+            ReforgeDefinition def = pool.reforges().get(reforgeId);
+            if (def == null) continue;
+
+            if (!found) tier = def.tier();
+            found = true;
+
+            for (Map.Entry<Holder<Attribute>, Double> attr : def.attributes().entrySet())
+                merged.putIfAbsent(attr.getKey(), attr.getValue());
+        }
+
+        return found ? new ResolvedReforge(reforgeId, tier, merged) : null;
     }
 
     public static Map<Holder<Attribute>, Double> getAttributeMultipliers() {
@@ -170,7 +197,6 @@ public class ReforgeModifierRegistry {
             double value = tryParseDouble(valueString).orElse(1.0);
             attributeMultipliers.putIfAbsent(BuiltInRegistries.ATTRIBUTE.wrapAsHolder(attribute), value);
         }
-
     }
 
 }

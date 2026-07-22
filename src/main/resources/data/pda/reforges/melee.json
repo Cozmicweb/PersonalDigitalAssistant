@@ -1,0 +1,218 @@
+{
+  "items": [
+    "c:tools/melee_weapon"
+  ],
+  "reforges": {
+    "legendary": {
+      "tier": 2,
+      "attributes": {
+        "minecraft:attack_damage": 0.15,
+        "minecraft:attack_speed": 0.1,
+        "apothic_attributes:cooldown_reduction": 0.1,
+        "apothic_attributes:crit_chance": 0.05,
+        "minecraft:entity_interaction_range": 0.1,
+        "minecraft:attack_knockback": 0.15
+      }
+    },
+    "savage": {
+      "tier": 2,
+      "attributes": {
+        "minecraft:attack_damage": 0.1,
+        "minecraft:entity_interaction_range": 0.1,
+        "minecraft:attack_knockback": 0.1
+      }
+    },
+    "massive": {
+      "tier": 1,
+      "attributes": {
+        "minecraft:entity_interaction_range": 0.18
+      }
+    },
+    "sharp": {
+      "tier": 1,
+      "attributes": {
+        "minecraft:attack_damage": 0.15
+      }
+    },
+    "dangerous": {
+      "tier": 1,
+      "attributes": {
+        "minecraft:attack_damage": 0.05,
+        "apothic_attributes:crit_chance": 0.02,
+        "minecraft:entity_interaction_range": 0.05
+      }
+    },
+    "large": {
+      "tier": 1,
+      "attributes": {
+        "minecraft:entity_interaction_range": 0.12
+      }
+    },
+    "pointy": {
+      "tier": 1,
+      "attributes": {
+        "minecraft:attack_damage": 0.1
+      }
+    },
+    "bulky": {
+      "tier": 1,
+      "attributes": {
+        "minecraft:attack_damage": 0.05,
+        "minecraft:attack_speed": -0.15,
+        "apothic_attributes:cooldown_reduction": -0.15,
+        "minecraft:entity_interaction_range": 0.1,
+        "minecraft:attack_knockback": 0.1
+      }
+    },
+    "heavy": {
+      "attributes": {
+        "minecraft:attack_speed": -0.1,
+        "apothic_attributes:cooldown_reduction": -0.1,
+        "minecraft:attack_knockback": 0.15
+      }
+    },
+    "light": {
+      "attributes": {
+        "minecraft:attack_speed": 0.15,
+        "apothic_attributes:cooldown_reduction": 0.15,
+        "minecraft:attack_knockback": -0.1
+      }
+    },
+    "small": {
+      "tier": -1,
+      "attributes": {
+        "minecraft:entity_interaction_range": -0.1
+      }
+    },
+    "dull": {
+      "tier": -1,
+      "attributes": {
+        "minecraft:attack_damage": -0.15
+      }
+    },
+    "tiny": {
+      "tier": -1,
+      "attributes": {
+        "minecraft:entity_interaction_range": -0.18
+      }
+    },
+    "shameful": {
+      "tier": -2,
+      "attributes": {
+        "minecraft:attack_damage": -0.1,
+        "minecraft:entity_interaction_range": 0.1,
+        "minecraft:attack_knockback": -0.2
+      }
+    },
+    "unhappy": {
+      "tier": -2,
+      "attributes": {
+        "minecraft:attack_speed": -0.1,
+        "apothic_attributes:cooldown_reduction": -0.1,
+        "minecraft:entity_interaction_range": -0.1,
+        "minecraft:attack_knockback": -0.1
+      }
+    },
+    "terrible": {
+      "tier": -2,
+      "attributes": {
+        "minecraft:attack_damage": -0.15,
+        "minecraft:entity_interaction_range": -0.13,
+        "minecraft:attack_knockback": -0.15
+      }
+    },
+    "keen": {
+      "tier": 1,
+      "attributes": {
+        "apothic_attributes:crit_chance": 0.03
+      }
+    },
+    "superior": {
+      "tier": 2,
+      "attributes": {
+        "minecraft:attack_damage": 0.1,
+        "apothic_attributes:crit_chance": 0.03,
+        "minecraft:attack_knockback": 0.1
+      }
+    },
+    "forceful": {
+      "tier": 1,
+      "attributes": {
+        "minecraft:attack_knockback": 0.15
+      }
+    },
+    "broken": {
+      "tier": -2,
+      "attributes": {
+        "minecraft:attack_damage": -0.3,
+        "minecraft:attack_knockback": -0.2
+      }
+    },
+    "damaged": {
+      "tier": -1,
+      "attributes": {
+        "minecraft:attack_damage": -0.15
+      }
+    },
+    "shoddy": {
+      "tier": -2,
+      "attributes": {
+        "minecraft:attack_damage": -0.1,
+        "minecraft:attack_knockback": -0.15
+      }
+    },
+    "hurtful": {
+      "tier": 1,
+      "attributes": {
+        "minecraft:attack_damage": 0.1
+      }
+    },
+    "strong": {
+      "tier": 1,
+      "attributes": {
+        "minecraft:attack_knockback": 0.15
+      }
+    },
+    "unpleasant": {
+      "tier": 2,
+      "attributes": {
+        "minecraft:attack_damage": 0.05,
+        "minecraft:attack_knockback": 0.15
+      }
+    },
+    "weak": {
+      "tier": -2,
+      "attributes": {
+        "minecraft:attack_knockback": -0.2
+      }
+    },
+    "ruthless": {
+      "tier": 1,
+      "attributes": {
+        "minecraft:attack_damage": 0.18,
+        "minecraft:attack_knockback": -0.1
+      }
+    },
+    "godly": {
+      "tier": 2,
+      "attributes": {
+        "minecraft:attack_damage": 0.15,
+        "apothic_attributes:crit_chance": 0.05,
+        "minecraft:attack_knockback": 0.15
+      }
+    },
+    "demonic": {
+      "tier": 2,
+      "attributes": {
+        "minecraft:attack_damage": 0.15,
+        "apothic_attributes:crit_chance": 0.05
+      }
+    },
+    "zealous": {
+      "tier": 1,
+      "attributes": {
+        "apothic_attributes:crit_chance": 0.05
+      }
+    }
+  }
+}
