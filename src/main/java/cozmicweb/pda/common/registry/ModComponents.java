@@ -8,7 +8,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentSerialization;
 import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -66,16 +65,16 @@ public class ModComponents {
                     .networkSynchronized(ByteBufCodecs.INT)
                     .build());
 
-    public static final Supplier<DataComponentType<Identifier>> REFORGE_MODIFIER = DATA_COMPONENTS.register("reforge_modifier",
-            () -> DataComponentType.<Identifier>builder()
-                    .persistent(Identifier.CODEC)
-                    .networkSynchronized(Identifier.STREAM_CODEC)
+    public static final Supplier<DataComponentType<String>> REFORGE_MODIFIER = DATA_COMPONENTS.register("reforge_modifier",
+            () -> DataComponentType.<String>builder()
+                    .persistent(Codec.STRING)
+                    .networkSynchronized(ByteBufCodecs.STRING_UTF8)
                     .build());
 
-    public static final Supplier<DataComponentType<Identifier>> REFORGE_GROUP = DATA_COMPONENTS.register("reforge_group",
-            () -> DataComponentType.<Identifier>builder()
-                    .persistent(Identifier.CODEC)
-                    .networkSynchronized(Identifier.STREAM_CODEC)
+    public static final Supplier<DataComponentType<String>> REFORGE_GROUP = DATA_COMPONENTS.register("reforge_group",
+            () -> DataComponentType.<String>builder()
+                    .persistent(Codec.STRING)
+                    .networkSynchronized(ByteBufCodecs.STRING_UTF8)
                     .build());
 
     public static final Supplier<DataComponentType<Component>> ORIGINAL_NAME = DATA_COMPONENTS.register("original_name",

@@ -1,271 +1,197 @@
 {
   "items": [
-    "c:tools/melee_weapon",
-    "minecraft:hoes",
-    "minecraft:axes",
-    "minecraft:pickaxes",
-    "minecraft:shovels"
+    "minecraft:enchantable/mining"
   ],
   "reforges": {
-    "pda:legendary": {
+    "legendary": {
       "tier": 2,
       "attributes": {
-        "minecraft:attack_damage": 0.15,
-        "apothic_attributes:projectile_damage": 0.15,
-        "minecraft:attack_speed": 0.1,
-        "apothic_attributes:draw_speed": 0.1,
         "apothic_attributes:cooldown_reduction": 0.1,
-        "apothic_attributes:crit_chance": 0.05,
-        "minecraft:entity_interaction_range": 0.1,
-        "minecraft:attack_knockback": 0.15,
+        "minecraft:block_interaction_range": 0.1,
         "minecraft:mining_efficiency": 2
       }
     },
-    "pda:savage": {
+    "savage": {
       "tier": 2,
       "attributes": {
-        "minecraft:attack_damage": 0.1,
-        "apothic_attributes:projectile_damage": 0.1,
-        "minecraft:entity_interaction_range": 0.1,
-        "minecraft:attack_knockback": 0.1,
+        "minecraft:block_interaction_range": 0.1,
         "minecraft:mining_efficiency": 2
       }
     },
-    "pda:massive": {
+    "massive": {
       "tier": 1,
       "attributes": {
-        "minecraft:entity_interaction_range": 0.18,
+        "minecraft:block_interaction_range": 0.18,
         "minecraft:mining_efficiency": 1.5
       }
     },
-    "pda:sharp": {
+    "sharp": {
       "tier": 1,
       "attributes": {
-        "minecraft:attack_damage": 0.15,
-        "apothic_attributes:projectile_damage": 0.15,
         "minecraft:mining_efficiency": 1.5
       }
     },
-    "pda:dangerous": {
+    "dangerous": {
       "tier": 1,
       "attributes": {
-        "minecraft:attack_damage": 0.05,
-        "apothic_attributes:projectile_damage": 0.05,
-        "apothic_attributes:crit_chance": 0.02,
-        "minecraft:entity_interaction_range": 0.05,
+        "minecraft:block_interaction_range": 0.05,
         "minecraft:mining_efficiency": 1.5
       }
     },
-    "pda:large": {
+    "large": {
       "tier": 1,
       "attributes": {
-        "minecraft:entity_interaction_range": 0.12,
+        "minecraft:block_interaction_range": 0.12,
         "minecraft:mining_efficiency": 1.5
       }
     },
-    "pda:pointy": {
+    "pointy": {
       "tier": 1,
       "attributes": {
-        "minecraft:attack_damage": 0.1,
-        "apothic_attributes:projectile_damage": 0.1,
         "minecraft:mining_efficiency": 1.5
       }
     },
-    "pda:bulky": {
+    "bulky": {
       "tier": 1,
       "attributes": {
-        "minecraft:attack_damage": 0.05,
-        "apothic_attributes:projectile_damage": 0.05,
-        "minecraft:attack_speed": -0.15,
-        "apothic_attributes:draw_speed": -0.15,
         "apothic_attributes:cooldown_reduction": -0.15,
-        "minecraft:entity_interaction_range": 0.1,
-        "minecraft:attack_knockback": 0.1,
+        "minecraft:block_interaction_range": 0.1,
         "minecraft:mining_efficiency": 1.5
       }
     },
-    "pda:heavy": {
+    "heavy": {
       "attributes": {
-        "minecraft:attack_speed": -0.1,
-        "apothic_attributes:draw_speed": -0.1,
+        "apothic_attributes:cooldown_reduction": -0.1
+      }
+    },
+    "light": {
+      "attributes": {
+        "apothic_attributes:cooldown_reduction": 0.15
+      }
+    },
+    "small": {
+      "tier": -1,
+      "attributes": {
+        "minecraft:block_interaction_range": -0.1,
+        "minecraft:mining_efficiency": 0.6666666666666666
+      }
+    },
+    "dull": {
+      "tier": -1,
+      "attributes": {
+        "minecraft:mining_efficiency": 0.6666666666666666
+      }
+    },
+    "tiny": {
+      "tier": -1,
+      "attributes": {
+        "minecraft:block_interaction_range": -0.18,
+        "minecraft:mining_efficiency": 0.6666666666666666
+      }
+    },
+    "shameful": {
+      "tier": -2,
+      "attributes": {
+        "minecraft:block_interaction_range": 0.1,
+        "minecraft:mining_efficiency": 0.5
+      }
+    },
+    "unhappy": {
+      "tier": -2,
+      "attributes": {
         "apothic_attributes:cooldown_reduction": -0.1,
-        "minecraft:attack_knockback": 0.15
-      }
-    },
-    "pda:light": {
-      "attributes": {
-        "minecraft:attack_speed": 0.15,
-        "apothic_attributes:draw_speed": 0.15,
-        "apothic_attributes:cooldown_reduction": 0.15,
-        "minecraft:attack_knockback": -0.1
-      }
-    },
-    "pda:small": {
-      "tier": -1,
-      "attributes": {
-        "minecraft:entity_interaction_range": -0.1,
-        "minecraft:mining_efficiency": 0.6666666666666666
-      }
-    },
-    "pda:dull": {
-      "tier": -1,
-      "attributes": {
-        "minecraft:attack_damage": -0.15,
-        "apothic_attributes:projectile_damage": -0.15,
-        "minecraft:mining_efficiency": 0.6666666666666666
-      }
-    },
-    "pda:tiny": {
-      "tier": -1,
-      "attributes": {
-        "minecraft:entity_interaction_range": -0.18,
-        "minecraft:mining_efficiency": 0.6666666666666666
-      }
-    },
-    "pda:shameful": {
-      "tier": -2,
-      "attributes": {
-        "minecraft:attack_damage": -0.1,
-        "apothic_attributes:projectile_damage": -0.1,
-        "minecraft:entity_interaction_range": 0.1,
-        "minecraft:attack_knockback": -0.2,
+        "minecraft:block_interaction_range": -0.1,
         "minecraft:mining_efficiency": 0.5
       }
     },
-    "pda:unhappy": {
+    "terrible": {
       "tier": -2,
       "attributes": {
-        "minecraft:attack_speed": -0.1,
-        "apothic_attributes:draw_speed": -0.1,
-        "apothic_attributes:cooldown_reduction": -0.1,
-        "minecraft:entity_interaction_range": -0.1,
-        "minecraft:attack_knockback": -0.1,
+        "minecraft:block_interaction_range": -0.13,
         "minecraft:mining_efficiency": 0.5
       }
     },
-    "pda:terrible": {
-      "tier": -2,
-      "attributes": {
-        "minecraft:attack_damage": -0.15,
-        "apothic_attributes:projectile_damage": -0.15,
-        "minecraft:entity_interaction_range": -0.13,
-        "minecraft:attack_knockback": -0.15,
-        "minecraft:mining_efficiency": 0.5
-      }
-    },
-    "pda:keen": {
+    "keen": {
       "tier": 1,
       "attributes": {
-        "apothic_attributes:crit_chance": 0.03,
         "minecraft:mining_efficiency": 1.5
       }
     },
-    "pda:superior": {
+    "superior": {
       "tier": 2,
       "attributes": {
-        "minecraft:attack_damage": 0.1,
-        "apothic_attributes:projectile_damage": 0.1,
-        "apothic_attributes:crit_chance": 0.03,
-        "minecraft:attack_knockback": 0.1,
         "minecraft:mining_efficiency": 2
       }
     },
-    "pda:forceful": {
+    "forceful": {
       "tier": 1,
       "attributes": {
-        "minecraft:attack_knockback": 0.15,
         "minecraft:mining_efficiency": 1.5
       }
     },
-    "pda:broken": {
+    "broken": {
       "tier": -2,
       "attributes": {
-        "minecraft:attack_damage": -0.3,
-        "apothic_attributes:projectile_damage": -0.3,
-        "minecraft:attack_knockback": -0.2,
         "minecraft:mining_efficiency": 0.5
       }
     },
-    "pda:damaged": {
+    "damaged": {
       "tier": -1,
       "attributes": {
-        "minecraft:attack_damage": -0.15,
-        "apothic_attributes:projectile_damage": -0.15,
         "minecraft:mining_efficiency": 0.6666666666666666
       }
     },
-    "pda:shoddy": {
+    "shoddy": {
       "tier": -2,
       "attributes": {
-        "minecraft:attack_damage": -0.1,
-        "apothic_attributes:projectile_damage": -0.1,
-        "minecraft:attack_knockback": -0.15,
         "minecraft:mining_efficiency": 0.5
       }
     },
-    "pda:hurtful": {
+    "hurtful": {
       "tier": 1,
       "attributes": {
-        "minecraft:attack_damage": 0.1,
-        "apothic_attributes:projectile_damage": 0.1,
         "minecraft:mining_efficiency": 1.5
       }
     },
-    "pda:strong": {
+    "strong": {
       "tier": 1,
       "attributes": {
-        "minecraft:attack_knockback": 0.15,
         "minecraft:mining_efficiency": 1.5
       }
     },
-    "pda:unpleasant": {
+    "unpleasant": {
       "tier": 2,
       "attributes": {
-        "minecraft:attack_damage": 0.05,
-        "apothic_attributes:projectile_damage": 0.05,
-        "minecraft:attack_knockback": 0.15,
         "minecraft:mining_efficiency": 2
       }
     },
-    "pda:weak": {
+    "weak": {
       "tier": -2,
       "attributes": {
-        "minecraft:attack_knockback": -0.2,
         "minecraft:mining_efficiency": 0.5
       }
     },
-    "pda:ruthless": {
+    "ruthless": {
       "tier": 1,
       "attributes": {
-        "minecraft:attack_damage": 0.18,
-        "apothic_attributes:projectile_damage": 0.18,
-        "minecraft:attack_knockback": -0.1,
         "minecraft:mining_efficiency": 1.5
       }
     },
-    "pda:godly": {
+    "godly": {
       "tier": 2,
       "attributes": {
-        "minecraft:attack_damage": 0.15,
-        "apothic_attributes:projectile_damage": 0.15,
-        "apothic_attributes:crit_chance": 0.05,
-        "minecraft:attack_knockback": 0.15,
         "minecraft:mining_efficiency": 2
       }
     },
-    "pda:demonic": {
+    "demonic": {
       "tier": 2,
       "attributes": {
-        "minecraft:attack_damage": 0.15,
-        "apothic_attributes:projectile_damage": 0.15,
-        "apothic_attributes:crit_chance": 0.05,
         "minecraft:mining_efficiency": 2
       }
     },
-    "pda:zealous": {
+    "zealous": {
       "tier": 1,
       "attributes": {
-        "apothic_attributes:crit_chance": 0.05,
         "minecraft:mining_efficiency": 1.5
       }
     }
