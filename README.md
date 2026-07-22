@@ -2,7 +2,7 @@
   <img width="170" height="170" src="https://i.imgur.com/Mkkl8gz.gif">
 </p>
 
-<h1 align="center">Personal Display Assistant</h1>
+<h1 align="center">Personal Digital Assistant</h1>
 
 <p align="center">
   <a href="https://modrinth.com/mod/personal-digital-assistant">
