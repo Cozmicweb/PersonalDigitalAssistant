@@ -30,6 +30,7 @@ public class OverrideLootModifier extends LootModifier {
 
     @Override
     protected @NonNull ObjectArrayList<ItemStack> doApply(@NonNull ObjectArrayList<ItemStack> loot, @NonNull LootContext context) {
+        if (!context.hasParameter(LootContextParams.DAMAGE_SOURCE)) return loot;
         Entity entity = context.getParameter(LootContextParams.THIS_ENTITY);
         String lootString = entity.getData(ModAttachments.OVERRIDE_LOOT);
         if (lootString.isBlank()) return loot;
